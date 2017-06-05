@@ -6,26 +6,62 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#show-driver" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="show-driver" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:display bean="driver" />
-            <g:form resource="${this.driver}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.driver}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
+        <div class="right_col" role="main">
+            <div class="">
+
+                <g:render template="/layouts/form_nav"/>
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="x_panel">
+                            <div class="inner_nav_title">
+                                <p class="lead">Show Driver</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th style="width:50%">First Name:</th>
+                                            <td>${driver.firstName}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Last Name:</th>
+                                            <td>${driver.lastName}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Medical Card:</th>
+                                            <td>${driver.medCardExpDate}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Drivers License:</th>
+                                            <td>${driver.driversLicenseExpDate}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Hazmat:</th>
+                                            <td>${driver.hazmatExpDate}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <g:form id="demo-form2" url="[resource:driver, action:'edit']" class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <g:link class="btn btn-primary" action="index">Cancel</g:link>
+
+                                        <g:if test="${actionName == "create"}">
+                                            <g:submitButton name="create" type="submit" class="btn btn-success" value="Create"/>
+                                        </g:if>
+                                        <g:else>
+                                            <g:submitButton name="update" type="submit" class="btn btn-success" value="Edit"/>
+                                        </g:else>
+                                    </div>
+                                </div>
+                            </g:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
