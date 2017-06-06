@@ -50,8 +50,9 @@
                             <g:each in="${accountList}" var="account">
                                 <tr>
                                     <th scope="row">${account.id}</th>
-                                <th><g:link action="show" id="${account.id}">${account.name}</g:link></th>
-                                <th>${account.numberOfTickets}</th>
+                                    <th><g:link action="show" id="${account.id}">${account.name}</g:link></th>
+                                    <th>${account.numberOfTickets}</th>
+                                </tr>
                             </g:each>
                             </tbody>
                         </table>

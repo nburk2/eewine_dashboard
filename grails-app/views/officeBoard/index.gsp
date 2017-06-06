@@ -120,26 +120,16 @@
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="x_panel">
                     <div class="x_content">
-                        <p class="lead">Truck Numbers</p>
+                        <p class="lead">Truck Drivers</p>
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                <tr>
-                                    <th style="width:50%">Jim</th>
-                                    <td>157</td>
-                                </tr>
-                                <tr>
-                                    <th>Ray</th>
-                                    <td>294</td>
-                                </tr>
-                                <tr>
-                                    <th>john</th>
-                                    <td>971</td>
-                                </tr>
-                                <tr>
-                                    <th>Alex</th>
-                                    <td>117</td>
-                                </tr>
+                                <g:each in="${driverTruckList}" var="driverTruck">
+                                    <tr>
+                                        <th style="width:50%">${driverTruck.driver.firstName}</th>
+                                        <td>${driverTruck.truck.number}</td>
+                                    </tr>
+                                </g:each>
                                 </tbody>
                             </table>
                         </div>
@@ -156,7 +146,7 @@
 
         <div class="row">
             <!--start of table design  -->
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Table design <small>Custom design</small></h2>

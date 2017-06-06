@@ -14,4 +14,6 @@ class Driver {
         driversLicenseExpDate   nullable: true
         hazmatExpDate           nullable: true
     }
+
+    String toString() { firstName + " " + lastName }
 }

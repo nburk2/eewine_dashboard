@@ -15,4 +15,6 @@ class Truck {
         tankVKExpDate           nullable: true
         tankIPExpDate           nullable: true
     }
+
+    String toString() { number }
 }

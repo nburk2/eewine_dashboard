@@ -8,99 +8,102 @@ import static org.springframework.http.HttpStatus.OK
 class DriverTruckController {
 
     def index() {
-        [accountList:Account.list()]
+        [driverTruckList:DriverTruck.list()]
     }
 
     def create() {
-        respond new Account()
+        respond new DriverTruck()
     }
 
-    def save(Account account) {
-        if (account == null) {
+    def save(DriverTruck driverTruck) {
+        if (driverTruck == null) {
             notFound()
             return
         }
+        println "params: " + params
 
-        account.save()
-
-        if(account.hasErrors()){
-            flash.errors = account.errors.allErrors.collect { [message: g.message([error: it])] }
-            respond account, view:'create', model: []
+        driverTruck.save()
+println "errors: " + driverTruck.errors
+        if(driverTruck.hasErrors()){
+            flash.errors = driverTruck.errors.allErrors.collect { [message: g.message([error: it])] }
+            respond driverTruck, view:'create', model: []
             return
         }
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), [account.name]])
-                redirect account
+                flash.message = message(code: 'default.created.message', args: [message(code: 'driverTruck.label', default: 'DriverTruck'), [driverTruck.id]])
+                redirect driverTruck
             }
-            '*' { respond account, [status: CREATED] }
+            '*' { respond driverTruck, [status: CREATED] }
         }
     }
 
-    def edit(Account account) {
-        if (account == null) {
+    def edit(DriverTruck driverTruck) {
+        if (driverTruck == null) {
             notFound()
             return
         }
 
-        respond account
+        respond driverTruck
     }
 
-    def show(Account account) {
-        respond account
+    def show(DriverTruck driverTruck) {
+        respond driverTruck
     }
 
-    def update(Account account) {
-        if (account == null) {
+    def update(DriverTruck driverTruck) {
+        if (driverTruck == null) {
             notFound()
             return
         }
 
-        account.save(flush:true)
+        driverTruck.save(flush:true)
 
-        if(account.hasErrors()){
-            flash.errors = account.errors.allErrors.collect { [message: g.message([error: it])] }
+        if(driverTruck.hasErrors()){
+            flash.errors = driverTruck.errors.allErrors.collect { [message: g.message([error: it])] }
             redirect action:"edit", id:params.id
             return
         }
 
+        println "errors update:" + params
+
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'account.label', default: 'Account'), [account.name]])
-                redirect account
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'driverTruck.label', default: 'DriverTruck'), [driverTruck.id]])
+                redirect driverTruck
             }
-            '*' { respond account, [status: OK] }
+            '*' { respond driverTruck, [status: OK] }
         }
     }
 
-    def delete(Account account) {
-        if (account == null) {
+    def delete(DriverTruck driverTruck) {
+        if (driverTruck == null) {
             notFound()
             return
         }
-        def accountName = account.name
-        account.delete(flush: true)
+        def driverTruckId = driverTruck.id
+        driverTruck.delete(flush: true)
 
-        if(account.hasErrors()){
-            flash.errors = account.errors.allErrors.collect { [message: g.message([error: it])] }
+        if(driverTruck.hasErrors()){
+            flash.errors = driverTruck.errors.allErrors.collect { [message: g.message([error: it])] }
             redirect action:"show", id:params.id
             return
         }
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), [accountName]])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'driverTruck.label', default: 'DriverTruck'), [driverTruckId]])
                 redirect action: "index", method: "GET"
             }
-            '*' { respond account, [status: OK] }
+            '*' { respond driverTruck, [status: OK] }
         }
     }
 
     protected void notFound() {
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Account'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'driverTruck.label', default: 'DriverTruck'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }

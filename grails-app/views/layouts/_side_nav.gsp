@@ -35,7 +35,7 @@
                             <li><g:link controller="driver" action="index">Driver</g:link></li>
                             <li><g:link controller="account" action="index">Account</g:link></li>
                             <li><g:link controller="truck" action="index">Truck</g:link></li>
-                            <li><a href="form_wizards.html">Form Wizard</a></li>
+                            <li><g:link controller="driverTruck" action="index">Trucks Drivers</g:link></li>
                             <li><a href="form_upload.html">Form Upload</a></li>
                             <li><a href="form_buttons.html">Form Buttons</a></li>
                         </ul>

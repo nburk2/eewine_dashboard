@@ -14,7 +14,7 @@ class AccountController {
     def create() {
         respond new Account()
     }
-    
+
     def save(Account account) {
         if (account == null) {
             notFound()

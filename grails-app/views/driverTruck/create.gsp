@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'driverTruck.label', default: 'DriverTruck')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
-    </head>
+<head>
+    <meta name="layout" content="main" />
+    <asset:stylesheet src="switchery.min.css"/>
+    <asset:javascript src="switchery.min.js"/>
+    <g:set var="entityName" value="${message(code: 'driverTruck.label', default: 'DriverTruck')}" />
+    <title><g:message code="default.create.label" args="[entityName]" /></title>
+</head>
     <body>
-        <a href="#create-driverTruck" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="create-driverTruck" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <g:hasErrors bean="${this.driverTruck}">
-            <ul class="errors" role="alert">
-                <g:eachError bean="${this.driverTruck}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
-            </g:hasErrors>
-            <g:form resource="${this.driverTruck}" method="POST">
-                <fieldset class="form">
-                    <f:all bean="driverTruck"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
-            </g:form>
+        <div class="right_col" role="main">
+            <div class="">
+
+                <g:render template="/layouts/form_nav"/>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Create Driver & Truck Association</h2>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <br />
+                                <g:form id="demo-form2" url="[resource:driverTruck, action:'save']" class="form-horizontal form-label-left">
+
+                                    <g:render template="form"/>
+
+                                </g:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
