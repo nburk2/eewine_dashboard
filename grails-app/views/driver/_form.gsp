@@ -40,7 +40,7 @@
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
         <g:link class="btn btn-primary" action="index">Cancel</g:link>
 
-        <g:if test="${actionName == "create"}">
+        <g:if test="${actionName == "create" || actionName == "save"}">
             <g:submitButton name="create" type="submit" class="btn btn-success" value="Create"/>
         </g:if>
         <g:else>

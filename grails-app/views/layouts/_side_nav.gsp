@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            <a href="index.html" class="site_title"><i class="fa fa-lightbulb-o"></i> <span>EEWine</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -9,7 +9,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <asset:image class="img-circle profile_img" src="wine-logo.png"/>
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -34,7 +34,7 @@
                         <ul class="nav child_menu">
                             <li><g:link controller="driver" action="index">Driver</g:link></li>
                             <li><g:link controller="account" action="index">Account</g:link></li>
-                            <li><a href="form_validation.html">Form Validation</a></li>
+                            <li><g:link controller="truck" action="index">Truck</g:link></li>
                             <li><a href="form_wizards.html">Form Wizard</a></li>
                             <li><a href="form_upload.html">Form Upload</a></li>
                             <li><a href="form_buttons.html">Form Buttons</a></li>

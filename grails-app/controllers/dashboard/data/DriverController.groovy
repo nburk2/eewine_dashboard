@@ -12,7 +12,7 @@ class DriverController {
     }
 
     def create() {
-        respond new Driver(firstName: "test")
+        respond new Driver()
     }
 
 
@@ -58,7 +58,7 @@ class DriverController {
             return
         }
 
-        driver.save()
+        driver.save(flush:true)
 
         if(driver.hasErrors()){
             flash.errors = driver.errors.allErrors.collect { [message: g.message([error: it])] }
@@ -68,8 +68,31 @@ class DriverController {
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'driver.label', default: 'Driver'), [driver.firstName]])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'driver.label', default: 'Driver'), [driver.firstName]])
                 redirect driver
+            }
+            '*' { respond driver, [status: OK] }
+        }
+    }
+
+    def delete(Driver driver) {
+        if (driver == null) {
+            notFound()
+            return
+        }
+        def driverName = driver.firstName
+        driver.delete(flush: true)
+
+        if(driver.hasErrors()){
+            flash.errors = driver.errors.allErrors.collect { [message: g.message([error: it])] }
+            redirect action:"show", id:params.id
+            return
+        }
+
+        request.withFormat {
+            form multipartForm{
+                flash.message = message(code: 'default.created.message', args: [message(code: 'driver.label', default: 'Driver'), [driverName]])
+                redirect action: "index", method: "GET"
             }
             '*' { respond driver, [status: OK] }
         }

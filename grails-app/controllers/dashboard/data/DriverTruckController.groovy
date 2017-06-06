@@ -5,7 +5,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.OK
 
-class AccountController {
+class DriverTruckController {
 
     def index() {
         [accountList:Account.list()]
@@ -14,7 +14,7 @@ class AccountController {
     def create() {
         respond new Account()
     }
-    
+
     def save(Account account) {
         if (account == null) {
             notFound()

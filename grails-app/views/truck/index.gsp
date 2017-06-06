@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'driver.label', default: 'Driver')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
-    </head>
-    <body>
+<head>
+    <meta name="layout" content="main" />
+    <g:set var="entityName" value="${message(code: 'truck.label', default: 'Truck')}" />
+    <title><g:message code="default.list.label" args="[entityName]" /></title>
+</head>
+<body>
     <!-- page content -->
     <div class="right_col" role="main">
         <div class="">
@@ -18,7 +18,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Drivers</h2>
+                            <h2>Trucks</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -42,24 +42,24 @@
                                 <thead>
                                 <tr>
                                     <g:sortableColumn class="idTables" property="id" title="Id"/>
-                                    <g:sortableColumn class="idTables" property="firstName" title="First Name"/>
-                                    <g:sortableColumn class="idTables" property="lastName" title="Last Name"/>
-                                    <g:sortableColumn class="idTables" property="medCardExpDate" title="Medical Card"/>
-                                    <g:sortableColumn class="idTables" property="driversLicenseExpDate" title="Drivers License"/>
-                                    <g:sortableColumn class="idTables" property="hazmatExpDate" title="Hazmat"/>
+                                    <g:sortableColumn class="idTables" property="number" title="Number"/>
+                                    <g:sortableColumn class="idTables" property="modelYear" title="Model Year"/>
+                                    <g:sortableColumn class="idTables" property="stateInspectionExpDate" title="State Inspection"/>
+                                    <g:sortableColumn class="idTables" property="tankVKExpDate" title="Tank VK"/>
+                                    <g:sortableColumn class="idTables" property="tankIPExpDate" title="Tank IP"/>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <g:each in="${driverList}" var="driver">
-                                        <tr>
-                                            <th scope="row">${driver.id}</th>
-                                            <th><g:link action="show" id="${driver.id}">${driver.firstName}</g:link></th>
-                                            <th>${driver.lastName}</th>
-                                            <th>${driver.medCardExpDate}</th>
-                                            <th>${driver.driversLicenseExpDate}</th>
-                                            <th>${driver.hazmatExpDate}</th>
-                                        </tr>
-                                    </g:each>
+                                <g:each in="${truckList}" var="truck">
+                                    <tr>
+                                        <th scope="row">${truck.id}</th>
+                                        <th><g:link action="show" id="${truck.id}">${truck.number}</g:link></th>
+                                        <th>${truck.modelYear}</th>
+                                        <th>${truck.stateInspectionExpDate}</th>
+                                        <th>${truck.tankVKExpDate}</th>
+                                        <th>${truck.tankIPExpDate}</th>
+                                    </tr>
+                                </g:each>
                                 </tbody>
                             </table>
 
@@ -70,7 +70,7 @@
 
         </div>
     </div>
-    <!-- /page content -->
+<!-- /page content -->
 
-    </body>
+</body>
 </html>
