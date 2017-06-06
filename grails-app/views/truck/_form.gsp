@@ -15,19 +15,19 @@
 <div class="form-group">
     <label for="stateInspectionExpDate" class="control-label col-md-3 col-sm-3 col-xs-12">State Inspection</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker id="stateInspectionExpDate" name="stateInspectionExpDate" precision="day" relativeYears="[-20..1]" value="${truck?.stateInspectionExpDate}"/>
+        <g:datePicker id="stateInspectionExpDate" name="stateInspectionExpDate" precision="day" relativeYears="[-20..1]" value="${truck?.stateInspectionExpDate}" noSelection="['':'']"/>
     </div>
 </div>
 <div class="form-group">
     <label for="tankVKExpDate" class="control-label col-md-3 col-sm-3 col-xs-12">Tank VK</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="tankVKExpDate" precision="day" relativeYears="[-20..1]" value="${truck?.tankVKExpDate}"/>
+        <g:datePicker name="tankVKExpDate" precision="day" relativeYears="[-20..1]" value="${truck?.tankVKExpDate}" noSelection="['':'']"/>
     </div>
 </div>
 <div class="form-group">
     <label for="tankIPExpDate" class="control-label col-md-3 col-sm-3 col-xs-12">Tank IP</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="tankIPExpDate" precision="day" relativeYears="[-20..1]" value="${truck?.tankIPExpDate}"/>
+        <g:datePicker name="tankIPExpDate" precision="day" relativeYears="[-20..1]" value="${truck?.tankIPExpDate}" noSelection="['':'']"/>
     </div>
 </div>
 <div class="ln_solid"></div>
