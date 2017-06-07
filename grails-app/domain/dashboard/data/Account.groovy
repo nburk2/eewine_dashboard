@@ -9,4 +9,6 @@ class Account {
         name            nullable: false, maxSize: 255, unique: true
         numberOfTickets nullable: false
     }
+
+    String toString() { name }
 }

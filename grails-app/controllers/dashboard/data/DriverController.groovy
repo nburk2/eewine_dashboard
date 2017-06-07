@@ -82,7 +82,7 @@ class DriverController {
         }
         def driverName = driver.firstName
         driver.delete(flush: true)
-println "at delete: " + driver.errors
+
         if(driver.hasErrors()){
             flash.errors = driver.errors.allErrors.collect { [message: g.message([error: it])] }
             redirect action:"show", id:params.id
@@ -92,7 +92,7 @@ println "at delete: " + driver.errors
         request.withFormat {
             form multipartForm{
                 flash.message = message(code: 'default.created.message', args: [message(code: 'driver.label', default: 'Driver'), [driverName]])
-                redirect driver
+                redirect  action: "index", method: "GET"
             }
             '*' { respond driver, [status: OK] }
         }

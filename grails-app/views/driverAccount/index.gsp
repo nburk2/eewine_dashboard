@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'driverTruck.label', default: 'DriverTruck')}" />
+        <g:set var="entityName" value="${message(code: 'driverAccount.label', default: 'Truck')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -15,10 +15,10 @@
                 <div class="clearfix"></div>
 
                 <div class="row">
-                    <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Truck Drivers</h2>
+                                <h2>Driver Accounts</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -42,22 +42,14 @@
                                     <thead>
                                     <tr>
                                         <g:sortableColumn class="idTables" property="id" title="Id"/>
-                                        %{--<g:sortableColumn class="idTables" property="useDate" title="Use Date"/>--}%
-                                        <g:sortableColumn class="idTables" property="driver.firstName" title="Driver First Name"/>
-                                        <g:sortableColumn class="idTables" property="driver.lastName" title="Driver Last Name"/>
-                                        <g:sortableColumn class="idTables" property="truck.number" title="Truck Number"/>
-                                        <g:sortableColumn class="idTables" property="off" title="Off"/>
+                                        <g:sortableColumn class="idTables" property="driver" title="Number"/>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <g:each in="${driverTruckList}" var="driverTruck">
+                                    <g:each in="${driverAccountList}" var="driverAccount">
                                         <tr>
-                                            <th scope="row">${driverTruck.id}</th>
-                                            %{--<th>${driverTruck.useDate.format("MM/dd/YYYY")}</th>--}%
-                                            <th><g:link action="show" id="${driverTruck.id}">${driverTruck.driver.firstName}</g:link></th>
-                                            <th>${driverTruck.driver.lastName}</th>
-                                            <th>${driverTruck?.truck?.number}</th>
-                                            <th>${driverTruck?.off}</th>
+                                            <th scope="row">${driverAccount.id}</th>
+                                            <th><g:link action="show" id="${driverAccount.id}">${driverAccount.driver}</g:link></th>
                                         </tr>
                                     </g:each>
                                     </tbody>
@@ -66,15 +58,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <g:render template="currentList"/>
-                    </div>
-
                 </div>
 
             </div>
         </div>
         <!-- /page content -->
+
     </body>
 </html>

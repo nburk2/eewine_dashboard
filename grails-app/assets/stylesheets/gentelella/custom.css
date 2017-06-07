@@ -1177,6 +1177,17 @@ legend {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px
 }
+.table > thead > tr > th.dashboard,
+.table > tbody > tr > th.dashboard,
+.table > tfoot > tr > th.dashboard,
+.table > thead > tr > td.dashboard,
+.table > tbody > tr > td.dashboard,
+.table > tfoot > tr > td.dashboard {
+    padding: 2px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
 table.tile h3,
 table.tile h4,
 table.tile span {

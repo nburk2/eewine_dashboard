@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="layout" content="main" />
-    <asset:stylesheet src="switchery.min.css"/>
-    <asset:javascript src="switchery.min.js"/>
-    <g:set var="entityName" value="${message(code: 'account.label', default: 'Account')}" />
-    <title><g:message code="default.edit.label" args="[entityName]" /></title>
-</head>
+    <head>
+        <meta name="layout" content="main" />
+        <g:set var="entityName" value="${message(code: 'driverAccount.label', default: 'DriverAccount')}" />
+        <title><g:message code="default.edit.label" args="[entityName]" /></title>
+    </head>
     <body>
         <div class="right_col" role="main">
             <div class="">
@@ -16,30 +14,21 @@
                 <div class="clearfix"></div>
 
                 <div class="row">
-                    <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Edit Driver & Truck Association</h2>
+                                <h2>Edit Driver Accounts</h2>
 
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <g:form id="demo-form2" url="[resource:driverTruck, action:'update']" class="form-horizontal form-label-left" method="PUT">
-
+                                <g:form id="demo-form2" url="[resource:driverAccount, action:'update']" class="form-horizontal form-label-left" method="PUT">
                                     <g:render template="form"/>
-
                                 </g:form>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-
-                        <g:render template="currentList"/>
-
-                    </div>
-
                 </div>
             </div>
         </div>

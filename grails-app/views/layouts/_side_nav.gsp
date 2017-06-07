@@ -35,9 +35,8 @@
                             <li><g:link controller="driver" action="index">Driver</g:link></li>
                             <li><g:link controller="account" action="index">Account</g:link></li>
                             <li><g:link controller="truck" action="index">Truck</g:link></li>
-                            <li><g:link controller="driverTruck" action="index">Trucks Drivers</g:link></li>
-                            <li><a href="form_upload.html">Form Upload</a></li>
-                            <li><a href="form_buttons.html">Form Buttons</a></li>
+                            <li><g:link controller="driverTruck" action="index">Truck Drivers</g:link></li>
+                            <li><g:link controller="driverAccount" action="index">Driver Accounts</g:link></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
@@ -66,12 +65,6 @@
                             <li><a href="morisjs.html">Moris JS</a></li>
                             <li><a href="echarts.html">ECharts</a></li>
                             <li><a href="other_charts.html">Other Charts</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                            <li><a href="fixed_footer.html">Fixed Footer</a></li>
                         </ul>
                     </li>
                 </ul>

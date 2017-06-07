@@ -12,7 +12,7 @@ class DriverTruckController {
     }
 
     def create() {
-        respond new DriverTruck()
+        respond new DriverTruck(), model: [driverTruckList: DriverTruck.list()]
     }
 
     def save(DriverTruck driverTruck) {
@@ -20,13 +20,12 @@ class DriverTruckController {
             notFound()
             return
         }
-        println "params: " + params
 
         driverTruck.save()
-println "errors: " + driverTruck.errors
+
         if(driverTruck.hasErrors()){
             flash.errors = driverTruck.errors.allErrors.collect { [message: g.message([error: it])] }
-            respond driverTruck, view:'create', model: []
+            respond driverTruck, view:'create', model: [driverTruckList: DriverTruck.list()]
             return
         }
 
@@ -45,7 +44,7 @@ println "errors: " + driverTruck.errors
             return
         }
 
-        respond driverTruck
+        respond driverTruck, model: [driverTruckList: DriverTruck.list()]
     }
 
     def show(DriverTruck driverTruck) {
