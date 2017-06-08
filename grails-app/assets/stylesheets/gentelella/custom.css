@@ -1053,6 +1053,21 @@ h2 {
 .accordion .panel:hover {
     background: #F2F5F7
 }
+
+.grid-item {
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    width: 31%;
+    margin:0 1% 10px;
+    padding: 20px;
+    float: left;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    display: inline-block;
+}
+
 .x_panel {
     position: relative;
     width: 100%;

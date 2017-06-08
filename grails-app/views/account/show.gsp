@@ -38,7 +38,7 @@
                                     <g:link class="btn btn-primary" action="index">Cancel</g:link>
 
                                     <g:submitButton name="update" type="submit" class="btn btn-success" value="Edit"/>
-                                    <g:actionSubmit action="delete" name="delete" type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('${message(code: 'default.button.delete.mediaItem.confirm', default: 'Are you sure?')}');"/>
+                                    <g:actionSubmit action="delete" name="delete" type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('${message(code: 'default.button.delete.account.confirm', default: 'Are you sure?')}');"/>
 
                                 </div>
                             </div>

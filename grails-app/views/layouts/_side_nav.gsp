@@ -37,6 +37,7 @@
                             <li><g:link controller="truck" action="index">Truck</g:link></li>
                             <li><g:link controller="driverTruck" action="index">Truck Drivers</g:link></li>
                             <li><g:link controller="driverAccount" action="index">Driver Accounts</g:link></li>
+                            <li><g:link controller="note" action="index">Notes</g:link></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>

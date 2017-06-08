@@ -15,13 +15,13 @@
 <div class="form-group">
     <label for="medCardExpDate" class="control-label col-md-3 col-sm-3 col-xs-12">Med Card Exp Date</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker id="medCardExpDate" name="medCardExpDate" precision="day" relativeYears="[-20..1]" value="${driver?.medCardExpDate}"/>
+        <g:datePicker id="medCardExpDate" name="medCardExpDate" precision="day" relativeYears="[-5..5]" value="${driver?.medCardExpDate}"/>
     </div>
 </div>
 <div class="form-group">
     <label for="driversLicenseExpDate" class="control-label col-md-3 col-sm-3 col-xs-12">Drivers License exp.</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="driversLicenseExpDate" precision="day" relativeYears="[-20..1]" value="${driver?.driversLicenseExpDate}"/>
+        <g:datePicker name="driversLicenseExpDate" precision="day" relativeYears="[-5..5]" value="${driver?.driversLicenseExpDate}"/>
     </div>
 </div>
 <div class="form-group">
@@ -32,7 +32,7 @@
     %{--<span id="inputSuccess2Status4" class="sr-only">(success)</span>--}%
     %{--</div>--}%
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="hazmatExpDate" precision="day" relativeYears="[-20..1]" value="${driver?.hazmatExpDate}"/>
+        <g:datePicker name="hazmatExpDate" precision="day" relativeYears="[-5..5]" value="${driver?.hazmatExpDate}"/>
     </div>
 </div>
 <div class="ln_solid"></div>

@@ -20,3 +20,13 @@ if (typeof jQuery !== 'undefined') {
         });
     })(jQuery);
 }
+
+$(document).ready(function(){
+    var $container = $('.grid-masonry');
+    // initialize
+    $container.masonry({
+        // columnWidth: 50,
+        itemSelector: '.grid-item',
+        transitionDuration: 0.2
+    });
+});
