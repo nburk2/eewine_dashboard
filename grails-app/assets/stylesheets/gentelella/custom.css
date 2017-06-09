@@ -1059,7 +1059,7 @@ h2 {
     border: 1px solid #E6E9ED;
     width: 31%;
     margin:0 1% 10px;
-    padding: 20px;
+    padding: 10px;
     float: left;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
@@ -2265,6 +2265,34 @@ p.parsley-error {
     background-color: #F2DEDE;
     border: 1px solid #EED3D7
 }
+
+.errors,
+.message {
+    font-size: 0.8em;
+    line-height: 2;
+    margin: 1em 2em;
+    padding: 0.25em;
+    word-wrap: break-word;
+}
+
+.message {
+    background: #f3f3ff;
+    border: 1px solid #b2d1ff;
+    color: #006dba;
+    -moz-box-shadow: 0 0 0.25em #b2d1ff;
+    -webkit-box-shadow: 0 0 0.25em #b2d1ff;
+    box-shadow: 0 0 0.25em #b2d1ff;
+}
+
+.errors {
+    background: #fff3f3;
+    border: 1px solid #ffaaaa;
+    color: #cc0000;
+    -moz-box-shadow: 0 0 0.25em #ff8888;
+    -webkit-box-shadow: 0 0 0.25em #ff8888;
+    box-shadow: 0 0 0.25em #ff8888;
+}
+
 ul.parsley-errors-list {
     list-style: none;
     color: #E74C3C;

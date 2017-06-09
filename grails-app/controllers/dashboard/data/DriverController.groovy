@@ -4,7 +4,9 @@ import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.NO_CONTENT
 import static org.springframework.http.HttpStatus.NOT_FOUND
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(["ROLE_ADMIN"])
 class DriverController {
 
     def index() {

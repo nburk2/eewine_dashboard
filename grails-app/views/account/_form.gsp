@@ -12,6 +12,16 @@
         <input type="number" id="numberOfTickets" name="numberOfTickets" value="${account.numberOfTickets}" required="required" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Key Required</label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="">
+            <label>
+                <g:checkBox name="keyRequired" class="js-switch" checked="${account?.keyRequired}" />
+            </label>
+        </div>
+    </div>
+</div>
 <div class="ln_solid"></div>
 <div class="form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

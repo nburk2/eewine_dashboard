@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main" />
+    <asset:stylesheet src="switchery.min.css"/>
+    <asset:javascript src="switchery.min.js"/>
     <g:set var="entityName" value="${message(code: 'account.label', default: 'Account')}" />
     <title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>

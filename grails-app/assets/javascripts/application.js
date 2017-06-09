@@ -7,6 +7,7 @@
 //
 //= require jquery-2.2.0.min
 //= require moment.min
+//= require weather
 //= require bootstrap
 //= require_tree gentelella
 //= require_self

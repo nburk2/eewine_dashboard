@@ -44,6 +44,7 @@
                                 <g:sortableColumn class="idTables" property="id" title="Id"/>
                                 <g:sortableColumn class="idTables" property="name" title="Name"/>
                                 <g:sortableColumn class="idTables" property="numberOfTickets" title="Tickets"/>
+                                <g:sortableColumn class="idTables" property="keyRequired" title="Key Required"/>
                             </tr>
                             </thead>
                             <tbody>
@@ -52,6 +53,7 @@
                                     <th scope="row">${account.id}</th>
                                     <th><g:link action="show" id="${account.id}">${account.name}</g:link></th>
                                     <th>${account.numberOfTickets}</th>
+                                    <th>${account.keyRequired}</th>
                                 </tr>
                             </g:each>
                             </tbody>

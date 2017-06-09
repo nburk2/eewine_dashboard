@@ -3,19 +3,21 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
-
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
     <div class="right_col" role="main">
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
-                %{--<div class="row">--}%
+
+                <g:render template="weather"/>
+
+                <div class="row">
                     <div class="grid-masonry">
-                    <g:render template="truckDrivers"/>
-                    <g:render template="driverAccounts"/>
+                        <g:render template="truckDrivers"/>
+                        <g:render template="driverAccounts"/>
                     </div>
-                %{--</div>--}%
+                </div>
             </div>
 
             %{--<div class="clearfix"></div>--}%

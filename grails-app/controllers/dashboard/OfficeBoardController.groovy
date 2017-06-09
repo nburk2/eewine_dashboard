@@ -1,11 +1,14 @@
 package dashboard
 
+import dashboard.authentication.UserRole
 import dashboard.data.Driver
 import dashboard.data.DriverAccount
 import dashboard.data.DriverTruck
 import dashboard.data.Note
 import dashboard.data.Truck
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(["ROLE_ADMIN"])
 class OfficeBoardController {
 
     def index() {

@@ -102,7 +102,7 @@ var setContentHeight = function () {
 // toggle small or large menu 
 $MENU_TOGGLE.on('click', function() {
 		console.log('clicked - menu toggle');
-		
+
 		if ($BODY.hasClass('nav-md')) {
 			$SIDEBAR_MENU.find('li.active ul').hide();
 			$SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -116,6 +116,14 @@ $MENU_TOGGLE.on('click', function() {
 	setContentHeight();
 
 	$('.dataTable').each ( function () { $(this).dataTable().fnDraw(); });
+
+    var $container = $('.grid-masonry');
+    // initialize
+    $container.masonry({
+        // columnWidth: 50,
+        itemSelector: '.grid-item',
+        transitionDuration: 0.2
+    });
 });
 
 	// check active menu

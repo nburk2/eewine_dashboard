@@ -28,6 +28,10 @@
                                         <th>Number of Tickets:</th>
                                         <td>${account.numberOfTickets}</td>
                                     </tr>
+                                    <tr>
+                                        <th>Key Required:</th>
+                                        <td>${account.keyRequired}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

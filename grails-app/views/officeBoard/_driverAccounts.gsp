@@ -8,10 +8,10 @@
                     <g:each in="${driverAccount.accounts}" var="account">
                         <tr>
                             <g:if test="${account.numberOfTickets == 1}">
-                                <th class="dashboard">${account.name}</th>
+                                <th class="dashboard"><g:if test="${account.keyRequired}"><i class="fa fa-key pull-right"></i> </g:if>${account.name}</th>
                             </g:if>
                             <g:else>
-                                <th class="dashboard">${account.name} <small>"${account.numberOfTickets}"</small></th>
+                                <th class="dashboard"><g:if test="${account.keyRequired}"><i class="fa fa-key pull-right"></i> </g:if>${account.name} <small>"${account.numberOfTickets}"</small></th>
                             </g:else>
                         </tr>
                     </g:each>

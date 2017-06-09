@@ -9,7 +9,7 @@ grails:
     gorm:
         # Whether to autowire entities. 
         # Disabled by default for performance reasons.
-        autowire: false         
+        autowire: true
         reactor:
             # Whether to translate GORM events into Reactor events
             # Disabled by default for performance reasons
@@ -134,3 +134,27 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+---
+grails:
+    plugin:
+        springsecurity:
+            useSecurityEventListener: true
+            userLookup:
+                userDomainClassName: 'dashboard.authentication.User'
+                usernamePropertyName: 'username'
+                authorityJoinClassName: 'dashboard.authentication.UserRole'
+            authority:
+                className: 'dashboard.authentication.Role'
+            controllerAnnotations:
+                staticRules:
+                    [
+                       {pattern: '/',               access: ['permitAll']},
+                       {pattern: '/error',          access: ['permitAll']},
+                       {pattern: '/shutdown',       access: ['permitAll']},
+                       {pattern: '/assets/**',      access: ['permitAll']},
+                       {pattern: '/**/js/**',       access: ['permitAll']},
+                       {pattern: '/**/css/**',      access: ['permitAll']},
+                       {pattern: '/**/images/**',   access: ['permitAll']},
+                       {pattern: '/**/favicon.ico', access: ['permitAll']}
+                    ]
+

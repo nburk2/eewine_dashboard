@@ -31,7 +31,12 @@
         </div>
     </div>
 
-    <asset:javascript src="application.js"/>
+    <g:if test="${controllerName == 'officeBoard'}">
+        <asset:javascript src="application.js"/>
+    </g:if>
+    <g:else>
+        <asset:javascript src="forms.js"/>
+    </g:else>
 
 </body>
 </html>
