@@ -117,11 +117,11 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url: "${MYSQL_EEWINE_URL}"
+            url: '${MYSQL_EEWINE_URL}'
             driverClassName: "com.mysql.jdbc.Driver"
             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-            username: "${MYSQL_USERNAME}"
-            password: "${MYSQL_PASSWORD}"
+            username: '${MYSQL_USERNAME}'
+            password: '${MYSQL_PASSWORD}'
             properties:
                 jmxEnabled: true
                 initialSize: 5
