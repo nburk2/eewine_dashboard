@@ -33,16 +33,14 @@ class BootStrap {
         assert adminRole && managerRole && userRole
 
         //noinspection GroovyAssignabilityCheck
-        String adminUserName = "admin"
+        String adminUserName = config.EEWINE_ADMIN_USERNAME ?: "admin"
 //        String adminUserName = config.springsecurity.syndicationAdmin.adminUsername
         if (User.findByUsername(adminUserName)) {
             return
         }
 
 //        String initialPassword = config.springsecurity.syndicationAdmin.initialAdminPassword
-        println "bootstrap var: " + config
-        println "bootstrap var: " + config.MYSQL_USERNAME
-        String initialPassword = "ABC123def"
+        String initialPassword = config.EEWINE_ADMIN_PASSWORD ?: "ABC123def"
 
         def adminUser = new User(username: adminUserName, enabled: true, password: initialPassword)
         adminUser.save(flush: true)

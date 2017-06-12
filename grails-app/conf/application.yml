@@ -106,7 +106,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:
@@ -114,8 +114,11 @@ environments:
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            dbCreate: none
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            dbCreate: update
+            url: "${MYSQL_EEWINE_URL}"
+            driverClassName: com.mysql.jdbc.Driver
+            username: "${MYSQL_USERNAME}"
+            password: "${MYSQL_PASSWORD}"
             properties:
                 jmxEnabled: true
                 initialSize: 5
