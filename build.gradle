@@ -61,6 +61,10 @@ assets {
     includes = ["fonts/*"]
 }
 
+run {
+    systemProperties = System.properties
+}
+
 tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
     if (project.hasProperty('MYSQL_USERNAME')) {
         println "Using Gradle project properties"
