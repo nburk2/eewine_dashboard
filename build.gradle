@@ -54,9 +54,19 @@ bootRun {
     addResources = true
 }
 
-
 assets {
     minifyJs = true
     minifyCss = true
     includes = ["fonts/*"]
+}
+
+tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
+    if (project.hasProperty('MYSQL_USERNAME')) {
+        println "Using Gradle project properties"
+        println "username: $MYSQL_USERNAME"
+        systemProperty('MYSQL_USERNAME', "$MYSQL_USERNAME")
+        systemProperty('MYSQL_PASSWORd', "$MYSQL_PASSWORD")
+    } else {
+        println "Using system environment variables"
+    }
 }
