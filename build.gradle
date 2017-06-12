@@ -53,16 +53,13 @@ dependencies {
 bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
     addResources = true
+    systemProperties = System.properties
 }
 
 assets {
     minifyJs = true
     minifyCss = true
     includes = ["fonts/*"]
-}
-
-run {
-    systemProperties = System.properties
 }
 
 tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
