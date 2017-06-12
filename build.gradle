@@ -53,7 +53,6 @@ dependencies {
 bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
     addResources = true
-    systemProperties = System.properties
 }
 
 assets {
@@ -67,7 +66,8 @@ tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
         println "Using Gradle project properties"
         println "username: $MYSQL_USERNAME"
         systemProperty('MYSQL_USERNAME', "$MYSQL_USERNAME")
-        systemProperty('MYSQL_PASSWORd', "$MYSQL_PASSWORD")
+        systemProperty('MYSQL_PASSWORD', "$MYSQL_PASSWORD")
+        systemProperty('MYSQL_EEWINE_URL', "$MYSQL_EEWINE_URL")
     } else {
         println "Using system environment variables"
     }
