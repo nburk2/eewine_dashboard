@@ -22,7 +22,6 @@ class BootStrap {
 
     def testData() {
         initUsers()
-        new Note([message:"This is the default message"]).save()
     }
 
     private void initUsers() {
@@ -34,12 +33,11 @@ class BootStrap {
 
         //noinspection GroovyAssignabilityCheck
         String adminUserName = config.EEWINE_ADMIN_USERNAME ?: "admin"
-//        String adminUserName = config.springsecurity.syndicationAdmin.adminUsername
+        println "username: " + config.EEWINE_ADMIN_USERNAME
         if (User.findByUsername(adminUserName)) {
             return
         }
 
-//        String initialPassword = config.springsecurity.syndicationAdmin.initialAdminPassword
         String initialPassword = config.EEWINE_ADMIN_PASSWORD ?: "ABC123def"
 
         def adminUser = new User(username: adminUserName, enabled: true, password: initialPassword)
