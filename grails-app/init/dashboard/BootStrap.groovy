@@ -21,7 +21,9 @@ class BootStrap {
     }
 
     def testData() {
-        initUsers()
+        if(User.count == 0) {
+            initUsers()
+        }
     }
 
     private void initUsers() {
@@ -33,7 +35,6 @@ class BootStrap {
 
         //noinspection GroovyAssignabilityCheck
         String adminUserName = config.EEWINE_ADMIN_USERNAME ?: "admin"
-        println "username: " + config.EEWINE_ADMIN_USERNAME
         if (User.findByUsername(adminUserName)) {
             return
         }
@@ -42,7 +43,6 @@ class BootStrap {
 
         def adminUser = new User(username: adminUserName, enabled: true, password: initialPassword)
         adminUser.save(flush: true)
-        println "user errors: " + adminUser.errors
 
         UserRole.create adminUser, adminRole, true
     }
