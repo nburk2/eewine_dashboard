@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "restarting we-app"
+
+sudo pkill -f 'java'
+cd ~/
+sudo rm -rf ~/eewine_dashboard
+sudo rm -rf ~/dashboard*.war
+git clone 'https://github.com/nburk2/eewine_dashboard.git'
+
+cd eewine_dashboard
+sudo ./gradlew assemble
+sudo mv build/libs/dashboard*.war ~/
+
+nohup sudo -E java -Dgrails.env=prod -jar ~/dashboard*.war &
