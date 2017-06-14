@@ -25,6 +25,6 @@ class OfficeBoardController {
 
     @Secured(["permitAll"])
     def pingTest() {
-     println "ping test"
+
     }
 }
