@@ -5,8 +5,10 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.OK
 import grails.plugin.springsecurity.annotation.Secured
+import com.bertramlabs.plugins.SSLRequired
 
 @Secured(["ROLE_ADMIN"])
+@SSLRequired
 class NoteController {
 
     def index() {
