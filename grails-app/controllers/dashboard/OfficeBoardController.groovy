@@ -7,8 +7,10 @@ import dashboard.data.DriverTruck
 import dashboard.data.Note
 import dashboard.data.Truck
 import grails.plugin.springsecurity.annotation.Secured
+import com.bertramlabs.plugins.SSLRequired
 
 @Secured(["ROLE_ADMIN"])
+@SSLRequired
 class OfficeBoardController {
 
     def index() {
