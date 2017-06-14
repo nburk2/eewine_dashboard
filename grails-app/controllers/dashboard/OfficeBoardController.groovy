@@ -19,7 +19,7 @@ class OfficeBoardController {
                 driverList:Driver.list(),
                 truckList:Truck.list(),
                 driverAccounts:DriverAccount.list(),
-                noteList:Note.findAllByUseFromGreaterThanEqualsAndUseToLessThanEquals(new Date().clearTime(), (new Date() + 1).clearTime())
+                noteList:Note.findAllByUseFromLessThanEqualsAndUseToGreaterThanEquals(new Date().clearTime(), (new Date() + 1).clearTime())
         ]
     }
 
