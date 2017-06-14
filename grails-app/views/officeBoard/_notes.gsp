@@ -1,6 +1,6 @@
 <div class="x_panel">
     <div class="x_content">
-        <p class="lead"><i class="fa fa-truck"></i> Notes</p>
+        <p class="lead"><i class="fa fa-sticky-note"></i> Notes</p>
         <div class="table-responsive">
             <table class="table">
                 <tbody>

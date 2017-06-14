@@ -168,4 +168,4 @@ server:
 grails:
     plugin:
         forceSSL:
-            enabled: false
+            enabled: true
