@@ -163,3 +163,9 @@ grails:
                     ]
 server:
     port: 80
+
+---
+grails:
+    plugin:
+        forceSSL:
+            enabled: true

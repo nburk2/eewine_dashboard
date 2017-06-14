@@ -9,10 +9,10 @@ import dashboard.data.Truck
 import grails.plugin.springsecurity.annotation.Secured
 import com.bertramlabs.plugins.SSLRequired
 
-@Secured(["ROLE_ADMIN"])
-@SSLRequired
 class OfficeBoardController {
 
+    @Secured(["ROLE_ADMIN"])
+    @SSLRequired
     def index() {
         [
                 driverTruckList:DriverTruck.list(),
@@ -21,5 +21,10 @@ class OfficeBoardController {
                 driverAccounts:DriverAccount.list(),
                 noteList:Note.findAllByUseFromGreaterThanEqualsAndUseToLessThanEquals(new Date().clearTime(), (new Date() + 1).clearTime())
         ]
+    }
+
+    @Secured(["permitAll"])
+    def pingTest() {
+     println "ping test"
     }
 }
