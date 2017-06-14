@@ -5,7 +5,6 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Dashboard - Login</title>
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 
 <body>

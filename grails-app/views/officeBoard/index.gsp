@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <title>Welcome to the Wine Energy Portal</title>
 </head>
 <body>
     <div class="right_col" role="main">
