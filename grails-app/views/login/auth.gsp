@@ -45,7 +45,7 @@
                 </div>
             </div>
             <p>
-                If your account is locked or you have other problems logging in, please contact <a href="mailto:nburk@eewine.com?Subject=Please%20Unlock%20My%20Account">nburk@</a>.
+                If your account is locked or you have other problems logging in, please contact <a href="mailto:nburk@eewine.com?Subject=Please%20Unlock%20My%20Account">nburk@eewine.com</a>.
             </p>
         </div>
     </div>
