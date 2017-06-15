@@ -69,6 +69,7 @@ tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
         systemProperty('MYSQL_USERNAME', "$MYSQL_USERNAME")
         systemProperty('MYSQL_PASSWORD', "$MYSQL_PASSWORD")
         systemProperty('MYSQL_EEWINE_URL', "$MYSQL_EEWINE_URL")
+        systemProperty('FORCE_SSL', "$FORCE_SSL")
     } else {
         println "Using system environment variables"
     }

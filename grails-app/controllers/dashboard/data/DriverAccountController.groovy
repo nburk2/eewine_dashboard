@@ -27,7 +27,7 @@ class DriverAccountController {
         }
 
         driverAccount.save()
-println "errors: " + driverAccount.errors
+
         if(driverAccount.hasErrors()){
             flash.errors = driverAccount.errors.allErrors.collect { [message: g.message([error: it])] }
             respond driverAccount, view:'create', model: []

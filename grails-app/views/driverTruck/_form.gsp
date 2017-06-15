@@ -2,7 +2,7 @@
 <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12">Driver</label>
     <div class="col-md-9 col-sm-9 col-xs-12">
-        <g:select name="driver" from="${dashboard.data.Driver.list()}" class="select2_single form-control" optionKey="id" value="${driverTruck?.driver?.id}" tabindex="-1"/>
+        <g:select name="driver" from="${dashboard.data.Driver.list([sort:"firstName"])}" class="select2_single form-control" optionKey="id" value="${driverTruck?.driver?.id}" tabindex="-1"/>
     </div>
 </div>
 <div class="form-group">
