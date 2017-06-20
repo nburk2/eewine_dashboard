@@ -31,6 +31,7 @@ dependencies {
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.grails:grails-datastore-rest-client:5.0.0.RC2"
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
     compile "org.grails.plugins:cache"
@@ -70,6 +71,7 @@ tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
         systemProperty('MYSQL_PASSWORD', "$MYSQL_PASSWORD")
         systemProperty('MYSQL_EEWINE_URL', "$MYSQL_EEWINE_URL")
         systemProperty('FORCE_SSL', "$FORCE_SSL")
+        systemProperty('WEATHER_KEY', "$WEATHER_KEY")
     } else {
         println "Using system environment variables"
     }

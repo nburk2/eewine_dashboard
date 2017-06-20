@@ -11,15 +11,19 @@ import com.bertramlabs.plugins.SSLRequired
 
 class OfficeBoardController {
 
+    def officeBoardService
+
     @Secured(["ROLE_ADMIN"])
     @SSLRequired
     def index() {
+        officeBoardService.getWeather()
         [
                 driverTruckList:DriverTruck.list(),
                 driverList:Driver.list(),
                 truckList:Truck.list(),
                 driverAccounts:DriverAccount.list(),
-                noteList:Note.findAllByUseFromLessThanEqualsAndUseToGreaterThanEquals(new Date().clearTime(), (new Date() + 1).clearTime())
+                noteList:Note.findAllByUseFromLessThanEqualsAndUseToGreaterThanEquals(new Date().clearTime(), (new Date() + 1).clearTime()),
+                forecastMap:officeBoardService.getWeather()
         ]
     }
 

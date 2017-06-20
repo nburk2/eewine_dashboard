@@ -1,4 +1,4 @@
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-5 col-sm-5 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Drivers</h2>
@@ -25,7 +25,6 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                     <tr>
-                        <th class="column-title dashboard">First Name</th>
                         <th class="column-title dashboard">Last Name</th>
                         <th class="column-title dashboard">Medical Card</th>
                         <th class="column-title dashboard">Drivers License</th>
@@ -36,7 +35,6 @@
                     <tbody>
                     <g:each in="${driverList}" var="driver">
                         <tr>
-                            <th class="dashboard">${driver.firstName}</th>
                             <th class="dashboard">${driver.lastName}</th>
                             <g:if test="${driver?.medCardExpDate?.year == (new java.util.Date()).year && driver?.medCardExpDate?.month == (new java.util.Date()).month || (driver?.medCardExpDate ?: new Date() + 1) <= new Date()}">
                                 <th class="dashboard alert-danger">${driver.medCardExpDate?.format("MM/dd/YY")}</th>

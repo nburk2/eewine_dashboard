@@ -1,4 +1,4 @@
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-4 col-sm-4 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Trucks</h2>
@@ -25,11 +25,11 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                     <tr>
-                        <th class="dashboard">Truck Number</th>
+                        <th class="dashboard">Truck #</th>
                         <th class="dashboard">Year</th>
                         <th class="dashboard">Vapor</th>
-                        <th class="dashboard">Internal Pressure</th>
-                        <th class="dashboard">State Inspection</th>
+                        <th class="dashboard">I/P</th>
+                        <th class="dashboard">State</th>
                     </tr>
                     </thead>
 
