@@ -42,7 +42,7 @@
                             <br>
                             <li><small>${forecastMap[0].condition}</small></li>
                         </ul>
-                        <h2><image src="${forecastMap[0].icon}"/> 75°F</h2>
+                        <h2><image src="${forecastMap[0].icon}"/> ${forecastMap[0].temp}°F</h2>
                     </g:if>
                 </div>
                 <h3>Today</h3>
