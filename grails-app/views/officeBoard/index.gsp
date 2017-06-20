@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
+    <meta http-equiv="refresh" content="1000"/>
     <title>Welcome to the Wine Energy Portal</title>
 </head>
 <body>
