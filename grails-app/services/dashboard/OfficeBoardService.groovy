@@ -13,10 +13,13 @@ class OfficeBoardService {
     def getWeather() {
         def weatherkey = config.WEATHER_KEY
         def resp = rest.get("http://api.wunderground.com/api/${weatherkey}/hourly/q/VA/Manassas.json")
-        def forecast = resp.json.hourly_forecast
-        def forecastMap = [[hour:"Now",temp:forecast[0].temp.english,condition:forecast[0].condition, icon:forecast[0].icon_url]]
-        (0..4).each { hour ->
-            forecastMap << [hour:getHour(forecast[hour * 2 + 1].FCTTIME.hour), temp:forecast[hour*2 + 1].temp.english, condition:forecast[hour*2 + 1].condition, icon:forecast[hour*2 + 1].icon_url]
+        def forecast = resp.json?.hourly_forecast
+        def forecastMap = [:]
+        if(forecast) {
+            forecastMap = [[hour:"Now",temp:forecast[0].temp.english,condition:forecast[0].condition, icon:forecast[0].icon_url]]
+            (0..4).each { hour ->
+                forecastMap << [hour:getHour(forecast[hour * 2 + 1].FCTTIME.hour), temp:forecast[hour*2 + 1].temp.english, condition:forecast[hour*2 + 1].condition, icon:forecast[hour*2 + 1].icon_url]
+            }
         }
 
         forecastMap

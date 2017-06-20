@@ -36,12 +36,14 @@
         <div class="x_panel">
             <div id="weather" class="x_content" style="text-align: center">
                 <div>
-                    <ul>
-                        <li><big>Manassas</big></li>
-                        <br>
-                        <li><small>${forecastMap[0].condition}</small></li>
-                    </ul>
-                    <h2><image src="${forecastMap[0].icon}"/> 75°F</h2>
+                    <g:if test="${forecastMap}">
+                        <ul>
+                            <li><big>Manassas</big></li>
+                            <br>
+                            <li><small>${forecastMap[0].condition}</small></li>
+                        </ul>
+                        <h2><image src="${forecastMap[0].icon}"/> 75°F</h2>
+                    </g:if>
                 </div>
                 <h3>Today</h3>
                 <div class="row">
