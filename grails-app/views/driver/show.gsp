@@ -29,6 +29,15 @@
                                             <td>${driver.lastName}</td>
                                         </tr>
                                         <tr>
+                                            <th>Color:</th>
+                                            <g:if test="${driver.colorType}">
+                                                <td style="color: ${driver.colorType}">${driver.colorType}</td>
+                                            </g:if>
+                                            <g:else>
+                                                <td>None</td>
+                                            </g:else>
+                                        </tr>
+                                        <tr>
                                             <th>Medical Card:</th>
                                             <td>${driver.medCardExpDate}</td>
                                         </tr>

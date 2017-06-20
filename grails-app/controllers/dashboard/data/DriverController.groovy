@@ -1,5 +1,7 @@
 package dashboard.data
 
+import java.awt.Color
+
 import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.NO_CONTENT

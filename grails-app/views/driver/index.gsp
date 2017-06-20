@@ -44,6 +44,7 @@
                                     <g:sortableColumn class="idTables" property="id" title="Id"/>
                                     <g:sortableColumn class="idTables" property="firstName" title="First Name"/>
                                     <g:sortableColumn class="idTables" property="lastName" title="Last Name"/>
+                                    <g:sortableColumn class="idTables" property="color" title="Color"/>
                                     <g:sortableColumn class="idTables" property="medCardExpDate" title="Medical Card"/>
                                     <g:sortableColumn class="idTables" property="driversLicenseExpDate" title="Drivers License"/>
                                     <g:sortableColumn class="idTables" property="hazmatExpDate" title="Hazmat"/>
@@ -55,6 +56,12 @@
                                             <th scope="row">${driver.id}</th>
                                             <th><g:link action="show" id="${driver.id}">${driver.firstName}</g:link></th>
                                             <th>${driver.lastName}</th>
+                                            <g:if test="${driver.colorType}">
+                                                <th style="color: ${driver.colorType}">${driver.colorType}</th>
+                                            </g:if>
+                                            <g:else>
+                                                <th>None</th>
+                                            </g:else>
                                             <th>${driver.medCardExpDate}</th>
                                             <th>${driver.driversLicenseExpDate}</th>
                                             <th>${driver.hazmatExpDate}</th>

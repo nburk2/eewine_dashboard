@@ -2,7 +2,7 @@
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstName">First Name <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="firsName" name="firstName" value="${driver.firstName}" required="required" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="firstName" name="firstName" value="${driver.firstName}" required="required" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
@@ -10,6 +10,12 @@
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <input type="text" id="lastName" name="lastName" value="${driver.lastName}" required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Color</label>
+    <div class="col-md-6 col-sm-9 col-xs-12">
+        <g:select name="colorType" from="${dashboard.data.Driver.ColorType}" class="select2_single form-control" optionValue="prettyName" value="${driver?.colorType}" tabindex="-1" noSelection="['':'None']"/>
     </div>
 </div>
 <div class="form-group">

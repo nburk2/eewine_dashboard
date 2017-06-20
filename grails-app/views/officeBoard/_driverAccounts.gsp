@@ -1,7 +1,12 @@
 <g:each in="${driverAccounts}" var="driverAccount">
     <div class="grid-item">
         <div class="x_content">
-            <p class="lead"><i class="fa fa-building-o"></i> ${driverAccount?.driver?.firstName}</p>
+            <g:if test="${driverAccount.driver.colorType == null}">
+                <p><big><i class="fa fa-building-o"></i> ${driverAccount?.driver?.firstName}</big></p>
+            </g:if>
+            <g:else>
+                <p style="color: ${driverAccount.driver.colorType}"><big><i class="fa fa-building-o"></i> ${driverAccount?.driver?.firstName}</big></p>
+            </g:else>
             <div class="table-responsive">
                 <table class="table">
                     <tbody>

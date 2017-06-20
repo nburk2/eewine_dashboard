@@ -26,7 +26,7 @@ class DriverAccountController {
             return
         }
 
-        driverAccount.save()
+        driverAccount.save(flush:true)
 
         if(driverAccount.hasErrors()){
             flash.errors = driverAccount.errors.allErrors.collect { [message: g.message([error: it])] }
