@@ -1,0 +1,7 @@
+import dashboard.data.Winotstop
+
+model {
+    Winotstop winotstop
+}
+
+json g.render(winotstop)

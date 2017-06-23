@@ -4279,7 +4279,7 @@ ul.notifications {
 
 /*
 .checkbox 																										{ display: block;position:relative;cursor:pointer; }
-.checkbox input 																								{ position:absolute;z-index:-1;opacity:0;left:0;top:0; }
+.checkbox input 																								{ position:absolute;z-entry:-1;opacity:0;left:0;top:0; }
 .checkbox div 																									{ position:absolute;top:2px;left:0;height:20px;width:20px;background:#e6e6e6;border-radius:3px; }
 .checkbox input:checked ~ div 																			{ background: #1ABC9C; }
 .checkbox:hover input:not([disabled]):checked ~ div,
