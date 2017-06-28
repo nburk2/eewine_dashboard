@@ -1,36 +1,3 @@
-%{--<div class="row">--}%
-    %{--<div class="col-sm-12">--}%
-        %{--<div class="x_panel">--}%
-            %{--<div class="x_content" style="text-align: center">--}%
-                %{--<div id="weather"></div>--}%
-                %{--<h3>Forecast</h3>--}%
-            %{--</div>--}%
-        %{--</div>--}%
-    %{--</div>--}%
-%{--</div>--}%
-%{--<div class="row">--}%
-    %{--<div class="col-sm-12">--}%
-        %{--<div class="x_panel">--}%
-            %{--<div class="x_content">--}%
-                %{--<div class="table-responsive">--}%
-                    %{--<table class="table table-striped jambo_table bulk_action">--}%
-                        %{--<thead>--}%
-                            %{--<tr>--}%
-                                %{--<th class="dashboard">day</th>--}%
-                                %{--<th class="dashboard">high</th>--}%
-                                %{--<th class="dashboard">low</th>--}%
-                                %{--<th class="dashboard">weather</th>--}%
-                            %{--</tr>--}%
-                        %{--</thead>--}%
-                        %{--<tbody id="forecast" class="table">--}%
-                        %{--</tbody>--}%
-                    %{--</table>--}%
-                %{--</div>--}%
-            %{--</div>--}%
-        %{--</div>--}%
-    %{--</div>--}%
-%{--</div>--}%
-
 <div class="row">
     <div class="col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -60,7 +27,7 @@
                                     </li>
                                     <br>
                                     <li>
-                                        ${forecast.condition}
+                                        ${forecast.temp}°F
                                     </li>
                                 </ul>
                             </div>
@@ -81,7 +48,7 @@
                                     </li>
                                     <br>
                                     <li>
-                                        ${forecast.condition}
+                                        ${forecast.temp}°F
                                     </li>
                                 </ul>
                             </div>

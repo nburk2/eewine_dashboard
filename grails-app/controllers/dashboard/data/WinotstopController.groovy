@@ -12,7 +12,9 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class WinotstopController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", getDataEntry: "GET"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", getDataEntry: "GET", getWeather: "GET"]
+
+    def officeBoardService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -111,6 +113,18 @@ class WinotstopController {
         }
 
         respond Winotstop.findByName(name), view: "entry"
+    }
+
+    @Secured(["permitAll"])
+    def getWeather() {
+        def weather = officeBoardService.getWeather(params.state, params.city)
+
+        if(!weather) {
+            def error = [error: "not found"]
+            respond error
+        }
+
+        respond (weather:weather)
     }
 
     protected void notFound() {

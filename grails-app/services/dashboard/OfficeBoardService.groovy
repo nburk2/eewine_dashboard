@@ -10,9 +10,9 @@ class OfficeBoardService {
     def config = Holders.config
     def rest = new RestBuilder()
 
-    def getWeather() {
+    def getWeather(String state = "VA", String city = "Manassas") {
         def weatherkey = config.WEATHER_KEY
-        def resp = rest.get("http://api.wunderground.com/api/${weatherkey}/hourly/q/VA/Manassas.json")
+        def resp = rest.get("http://api.wunderground.com/api/${weatherkey}/hourly/q/${state}/${city}.json")
         def forecast = resp.json?.hourly_forecast
         def forecastMap = [:]
         if(forecast) {
