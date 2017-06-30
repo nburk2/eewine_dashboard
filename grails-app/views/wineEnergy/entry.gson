@@ -1,0 +1,7 @@
+import dashboard.data.WineEnergy
+
+model {
+    WineEnergy wineEnergy
+}
+
+json g.render(wineEnergy)

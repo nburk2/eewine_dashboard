@@ -43,7 +43,7 @@
                     <li><a><i class="fa fa-desktop"></i> Website Changes <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="winotstop" action="index">Wi-Not-Stop</g:link></li>
-                            <li><a href="media_gallery.html">Wine Energy</a></li>
+                            <li><g:link controller="wineEnergy" action="index">Wine Energy</g:link></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
