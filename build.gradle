@@ -2,6 +2,7 @@ buildscript {
     repositories {
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url "https://repo.grails.org/grails/plugins" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -25,6 +26,8 @@ apply plugin:"asset-pipeline"
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "https://repo.grails.org/grails/plugins" }
+    maven { url "http://maven.apache.org" }
 }
 
 dependencies {
@@ -44,6 +47,7 @@ dependencies {
     compile 'org.grails.plugins:spring-security-core:3.1.2'
     compile 'com.bertramlabs.plugins:force-ssl:3.0.3'
     compile "org.grails.plugins:views-json:1.2.3"
+    compile "net.authorize:anet-java-sdk:1.9.3"
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.1"
@@ -75,6 +79,8 @@ tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
         systemProperty('MYSQL_EEWINE_URL', "$MYSQL_EEWINE_URL")
         systemProperty('FORCE_SSL', "$FORCE_SSL")
         systemProperty('WEATHER_KEY', "$WEATHER_KEY")
+        systemProperty('APILOGINID', "$APILOGINID")
+        systemProperty('TRANSACTIONKEY', "$TRANSACTIONKEY")
     } else {
         println "Using system environment variables"
     }
