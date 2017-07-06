@@ -162,15 +162,15 @@ grails:
                        {pattern: '/**/favicon.ico', access: ['permitAll']}
                     ]
 
-#server:
-#    port: 80
 server:
-    port: 443
-    ssl:
-      enabled: true
-      keyStore: "bin/keystore.p12"
-      keyStorePassword: "develop"
-      keyAlias: "tomcat"
+    port: 80
+#server:
+#    port: 443
+#    ssl:
+#      enabled: true
+#      keyStore: "bin/keystore.p12"
+#      keyStorePassword: "develop"
+#      keyAlias: "tomcat"
 
 ---
 grails:
