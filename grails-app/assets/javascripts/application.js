@@ -23,6 +23,9 @@ if (typeof jQuery !== 'undefined') {
 }
 
 $(document).ready(function(){
+    // $(document).ready(function() {
+        $('#menu_toggle').trigger("click");
+    // })
     var $container = $('.grid-masonry');
     // initialize
     $container.masonry({
