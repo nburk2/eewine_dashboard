@@ -21,7 +21,7 @@
 <div class="form-group">
     <label for="tankVKExpDate" class="control-label col-md-3 col-sm-3 col-xs-12">Tank VK</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="tankVKExpDate" precision="day" relativeYears="[-150..2000]" value="${truck?.tankVKExpDate}" noSelection="['':'']"/>
+        <g:datePicker name="tankVKExpDate" precision="day" relativeYears="[-5..5]" value="${truck?.tankVKExpDate}" noSelection="['':'']"/>
     </div>
 </div>
 <div class="form-group">

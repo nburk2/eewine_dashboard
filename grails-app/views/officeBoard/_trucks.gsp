@@ -64,7 +64,7 @@
                                 <th class="dashboard alert-warning">${truck.stateInspectionExpDate?.format("MM/YY")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${truck.stateInspectionExpDate.format("MM/YY")}</th>
+                                <th class="dashboard">${truck.stateInspectionExpDate?.format("MM/YY")}</th>
                             </g:else>
                             %{--airport--}%
                             <g:if test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month == (new java.util.Date()).month || (truck?.airportExpDate ?: new Date() + 1) <= new Date()}">
@@ -74,7 +74,7 @@
                                 <th class="dashboard alert-warning">${truck.airportExpDate?.format("MM/YY")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${truck.airportExpDate.format("MM/YY")}</th>
+                                <th class="dashboard">${truck.airportExpDate?.format("MM/YY")}</th>
                             </g:else>
                         </tr>
                     </g:each>

@@ -15,7 +15,7 @@ class Truck {
         stateInspectionExpDate  nullable: false
         tankVKExpDate           nullable: true
         tankIPExpDate           nullable: true
-        airportExpDate             nullable: true
+        airportExpDate          nullable: true
     }
 
     String toString() { number }
