@@ -12,7 +12,7 @@ class PaymentsController {
     def paymentsService
 
 //    static allowedMethods = [sendAuthorizePayment: "GET"]
-//    static allowedMethods = [sendAuthorizePayment: "POST"]
+    static allowedMethods = [sendAuthorizePayment: "POST"]
 
     def sendAuthorizePayment() {
         if(!request.JSON.amount) {

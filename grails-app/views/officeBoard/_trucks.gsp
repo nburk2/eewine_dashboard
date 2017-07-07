@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-4 col-xs-12">
+<div class="col-md-5 col-sm-5 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Trucks</h2>
@@ -30,6 +30,7 @@
                         <th class="dashboard">Vapor</th>
                         <th class="dashboard">I/P</th>
                         <th class="dashboard">State</th>
+                        <th class="dashboard">Airport</th>
                     </tr>
                     </thead>
 
@@ -64,6 +65,16 @@
                             </g:elseif>
                             <g:else>
                                 <th class="dashboard">${truck.stateInspectionExpDate.format("MM/YY")}</th>
+                            </g:else>
+                            %{--airport--}%
+                            <g:if test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month == (new java.util.Date()).month || (truck?.airportExpDate ?: new Date() + 1) <= new Date()}">
+                                <th class="dashboard alert-danger">${truck.stateInspectionExpDate.format("MM/YY")}</th>
+                            </g:if>
+                            <g:elseif test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month <= (new java.util.Date()).month + 2 || truck?.airportExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.airportExpDate?.month) > 9)}">
+                                <th class="dashboard alert-warning">${truck.airportExpDate?.format("MM/YY")}</th>
+                            </g:elseif>
+                            <g:else>
+                                <th class="dashboard">${truck.airportExpDate.format("MM/YY")}</th>
                             </g:else>
                         </tr>
                     </g:each>

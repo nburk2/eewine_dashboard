@@ -40,6 +40,10 @@
                                             <th>Tank IP:</th>
                                             <td>${truck.tankIPExpDate}</td>
                                         </tr>
+                                        <tr>
+                                            <th>Airport:</th>
+                                            <td>${truck.airportExpDate}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>

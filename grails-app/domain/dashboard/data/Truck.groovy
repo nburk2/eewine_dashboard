@@ -7,6 +7,7 @@ class Truck {
     Date stateInspectionExpDate
     Date tankVKExpDate
     Date tankIPExpDate
+    Date airportExpDate
 
     static constraints = {
         number                  nullable: false, unique: true
@@ -14,6 +15,7 @@ class Truck {
         stateInspectionExpDate  nullable: false
         tankVKExpDate           nullable: true
         tankIPExpDate           nullable: true
+        airportExpDate             nullable: true
     }
 
     String toString() { number }

@@ -1,4 +1,4 @@
-<div class="col-md-5 col-sm-5 col-xs-12">
+<div class="col-md-4 col-sm-4 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Drivers</h2>
@@ -26,8 +26,8 @@
                     <thead>
                     <tr>
                         <th class="column-title dashboard">Last Name</th>
-                        <th class="column-title dashboard">Medical Card</th>
-                        <th class="column-title dashboard">Drivers License</th>
+                        <th class="column-title dashboard">Medical</th>
+                        <th class="column-title dashboard">D/L</th>
                         <th class="column-title dashboard">Hazmat</th>
                     </tr>
                     </thead>
