@@ -15,13 +15,13 @@
 <div class="form-group">
     <label for="useFrom" class="control-label col-md-3 col-sm-3 col-xs-12">Use From</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker id="useFrom" name="useFrom" precision="day" relativeYears="[-5..5]" value="${note?.useFrom}"/>
+        <g:datePicker id="useFrom" name="useFrom" precision="day" relativeYears="[-5..10]" value="${note?.useFrom}"/>
     </div>
 </div>
 <div class="form-group">
     <label for="useTo" class="control-label col-md-3 col-sm-3 col-xs-12">Use To</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="useTo" precision="day" relativeYears="[-5..5]" value="${note?.useTo}"/>
+        <g:datePicker name="useTo" precision="day" relativeYears="[-5..10]" value="${note?.useTo}"/>
     </div>
 </div>
 <div class="ln_solid"></div>
