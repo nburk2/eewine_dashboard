@@ -29,7 +29,7 @@ class PaymentsService {
 
     def authorizeAndCapture(params) {
         //Common code to set for all requests
-        ApiOperationBase.setEnvironment(Environment.SANDBOX);
+        ApiOperationBase.setEnvironment(Environment.PRODUCTION);
 
         MerchantAuthenticationType merchantAuthenticationType  = new MerchantAuthenticationType() ;
         merchantAuthenticationType.setName(apiLoginId);
