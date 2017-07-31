@@ -40,7 +40,7 @@
                                 <th class="dashboard alert-danger">${driver.medCardExpDate?.format("MM/dd/YY")}</th>
                             </g:if>
                             <g:elseif test="${driver?.medCardExpDate?.year == (new java.util.Date()).year && driver?.medCardExpDate?.month <= (new java.util.Date()).month + 2 || driver?.medCardExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - driver?.medCardExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${driver.medCardExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${driver.medCardExpDate?.format("MM/dd/YY")}</th>
                             </g:elseif>
                             <g:else>
                                 <th class="dashboard">${driver.medCardExpDate?.format("MM/dd/YY")}</th>
@@ -49,7 +49,7 @@
                                 <th class="dashboard alert-danger">${driver.driversLicenseExpDate?.format("MM/dd/YYYY")}</th>
                             </g:if>
                             <g:elseif test="${driver?.driversLicenseExpDate?.year == (new java.util.Date()).year && driver?.driversLicenseExpDate?.month <= (new java.util.Date()).month + 2 || driver?.driversLicenseExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - driver?.driversLicenseExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${driver.driversLicenseExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${driver.driversLicenseExpDate?.format("MM/dd/YY")}</th>
                             </g:elseif>
                             <g:else>
                                 <th class="dashboard">${driver.driversLicenseExpDate?.format("MM/dd/YYYY")}</th>
