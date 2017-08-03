@@ -49,8 +49,8 @@ $(document).ready(function(){
     }
 
     function poll(fn, callback, errback, timeout, interval) {
-        var endTime = Number(new Date()) + (timeout || 900000);
-        interval = interval || 300000;
+        var endTime = Number(new Date()) + (timeout || 1000000);
+        interval = interval || 360000;
 
         (function p() {
             // If the condition is met, we're done!
