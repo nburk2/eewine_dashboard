@@ -33,4 +33,65 @@ $(document).ready(function(){
         itemSelector: '.grid-item',
         transitionDuration: 0.2
     });
+
+    function updateTruckStatus(truckStatus) {
+        for (var truck in truckStatus) {
+            if (truckStatus[truck].keyOn === true) {
+                if (truckStatus[truck].lastSpeed === 0) {
+                    $("#truck-" + truckStatus[truck].label).attr('class', 'bg-info');
+                } else {
+                    $("#truck-" + truckStatus[truck].label).attr('class', 'bg-success');
+                }
+            } else {
+                $("#truck-" + truckStatus[truck].label).attr('class', 'bg-danger');
+            }
+        }
+    }
+
+    function poll(fn, callback, errback, timeout, interval) {
+        var endTime = Number(new Date()) + (timeout || 900000);
+        interval = interval || 300000;
+
+        (function p() {
+            // If the condition is met, we're done!
+            if(fn()) {
+                callback();
+            }
+            // If the condition isn't met but the timeout hasn't elapsed, go again
+            else if (Number(new Date()) < endTime) {
+                setTimeout(p, interval);
+            }
+            // Didn't match and too much time, reject!
+            else {
+                errback(new Error('timed out for ' + fn + ': ' + arguments));
+            }
+        })();
+    }
+
+// Usage:  ensure element is visible
+    poll(
+        function() {
+            $.ajax({
+                url: "https://localhost:8443/officeBoard/getLocations.json",
+                type:"get",
+                dataType: 'json',
+
+                beforeSend: function(xhr) {
+                    xhr.withCredentials = true;
+                },
+                success: function(json) {
+                    updateTruckStatus(json)
+                },
+                error: function(xhr){
+                    console.log("verizon location lookup failed"); //<----when no data alert the err msg
+                }
+            });
+        },
+        function() {
+            // Done, success callback
+        },
+        function() {
+            // Error, failure callback
+        }
+    );
 });

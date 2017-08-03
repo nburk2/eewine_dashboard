@@ -6,6 +6,7 @@ import dashboard.data.DriverAccount
 import dashboard.data.DriverTruck
 import dashboard.data.Note
 import dashboard.data.Truck
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import com.bertramlabs.plugins.SSLRequired
 
@@ -30,5 +31,12 @@ class OfficeBoardController {
     @Secured(["permitAll"])
     def pingTest() {
         
+    }
+
+    @Secured(["ROLE_ADMIN"])
+    def getLocations() {
+        def locations = officeBoardService.getVehicleLocations()
+
+        render locations as JSON
     }
 }

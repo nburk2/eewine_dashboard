@@ -81,6 +81,7 @@ tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
         systemProperty('WEATHER_KEY', "$WEATHER_KEY")
         systemProperty('APILOGINID', "$APILOGINID")
         systemProperty('TRANSACTIONKEY', "$TRANSACTIONKEY")
+        systemProperty('GATEWAY_KEY', "$GATEWAY_KEY")
     } else {
         println "Using system environment variables"
     }

@@ -9,6 +9,7 @@ class OfficeBoardService {
 
     def config = Holders.config
     def rest = new RestBuilder()
+    def gatewayKey = config.GATEWAY_KEY
 
     def getWeather(String state = "VA", String city = "Manassas") {
         def weatherkey = config.WEATHER_KEY
@@ -23,6 +24,27 @@ class OfficeBoardService {
         }
 
         forecastMap
+    }
+
+    def getVehicleLocations() {
+
+        def locations = rest.get("https://ibkxdho8ce.execute-api.us-east-1.amazonaws.com/prod/verizon-locations") {
+            headers["x-api-key"] = gatewayKey
+        }
+
+        def trucks = rest.get("https://ibkxdho8ce.execute-api.us-east-1.amazonaws.com/prod/verizon-vehicles") {
+            headers["x-api-key"] = gatewayKey
+        }
+
+        locations.json.gpsMessage.each {location ->
+            trucks.json.vehicle.each { truck ->
+                if(truck.'@id' == location.vehicleId) {
+                    location.label = truck.label
+                }
+            }
+        }
+
+        locations.json.gpsMessage
     }
 
     private static def getHour(def hour) {

@@ -5,7 +5,7 @@
             <table class="table">
                 <tbody>
                 <g:each in="${driverTruckList}" var="driverTruck">
-                    <tr>
+                    <tr id="truck-${driverTruck?.truck?.number ?: "none"}">
                         <th class="dashboard" style="width:50%">${driverTruck.driver.firstName}</th>
                         <td class="dashboard">${driverTruck?.truck?.number ?: "Off"}</td>
                     </tr>
