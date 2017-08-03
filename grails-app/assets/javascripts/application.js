@@ -72,7 +72,7 @@ $(document).ready(function(){
     poll(
         function() {
             $.ajax({
-                url: "https://localhost:8443/officeBoard/getLocations.json",
+                url: "/officeBoard/getLocations.json",
                 type:"get",
                 dataType: 'json',
 
