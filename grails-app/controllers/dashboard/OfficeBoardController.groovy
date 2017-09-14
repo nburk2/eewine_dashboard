@@ -20,8 +20,8 @@ class OfficeBoardController {
         officeBoardService.getWeather()
         [
                 driverTruckList:DriverTruck.list(),
-                driverList:Driver.list(),
-                truckList:Truck.list(),
+                driverList:Driver.list(sort:"lastName"),
+                truckList:Truck.list(sort:"number"),
                 driverAccounts:DriverAccount.list(),
                 noteList:Note.findAllByUseFromLessThanEqualsAndUseToGreaterThanEquals(new Date().clearTime(), (new Date() + 1).clearTime()),
                 forecastMap:officeBoardService.getWeather()
