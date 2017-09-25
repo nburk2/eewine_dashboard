@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-3 col-xs-12">
+<div class="col-md-12 col-sm-3 col-xs-12">
     <div class="x_panel">
         <div class="x_content">
             <p class="lead"><i class="fa fa-sticky-note"></i> Notes</p>

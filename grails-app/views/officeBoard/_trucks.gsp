@@ -1,4 +1,4 @@
-<div class="col-md-5 col-sm-5 col-xs-12">
+<div class="col-md-7 col-sm-5 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Trucks</h2>

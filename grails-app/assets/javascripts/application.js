@@ -29,7 +29,7 @@ $(document).ready(function(){
     var $container = $('.grid-masonry');
     // initialize
     $container.masonry({
-        // columnWidth: 50,
+        // columnWidth: 24,
         itemSelector: '.grid-item',
         transitionDuration: 0.2
     });
