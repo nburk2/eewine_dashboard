@@ -14,7 +14,7 @@ import com.bertramlabs.plugins.SSLRequired
 class DriverController {
 
     def index() {
-        [driverList:Driver.list()]
+        [driverList:Driver.list(sort:"firstName")]
     }
 
     def create() {

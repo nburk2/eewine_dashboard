@@ -6,12 +6,17 @@ import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.OK
 import grails.plugin.springsecurity.annotation.Secured
 import com.bertramlabs.plugins.SSLRequired
+import groovy.json.*
 
 @Secured(["ROLE_ADMIN"])
 @SSLRequired
 class DriverAccountController {
 
+    def driverAccountService
+
     def index() {
+//        driverAccountService.optimizeRoutes()
+//        driverAccountService.getAddresses()
         [driverAccountList:DriverAccount.list()]
     }
 
@@ -100,6 +105,32 @@ class DriverAccountController {
             }
             '*' { respond driverAccount, [status: OK] }
         }
+    }
+
+    def updateDriverAccounts() {
+
+    }
+
+    def uploadDriverAccountsFile() {
+        def file = request.getFile('driverAccounts')
+
+        if(!file) {
+            redirect action: "updateDriverAccounts"
+            return
+        }
+
+        try {
+            driverAccountService.uploadDriverAccounts(file)
+        } catch (e) {
+            render view: "updateDriverAccounts", model: [errors:true]
+            return
+        }
+
+        redirect action: "displayDriverAccounts"
+    }
+
+    def displayDriverAccounts() {
+        [driverAccounts:DriverAccount.list()]
     }
 
     protected void notFound() {

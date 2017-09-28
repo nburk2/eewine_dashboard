@@ -12,7 +12,7 @@ import com.bertramlabs.plugins.SSLRequired
 class AccountController {
 
     def index() {
-        [accountList:Account.list()]
+        [accountList:Account.list(sort:"name")]
     }
 
     def create() {
