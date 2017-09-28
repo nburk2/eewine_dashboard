@@ -108,7 +108,7 @@ class DriverAccountController {
     }
 
     def updateDriverAccounts() {
-
+        render view:"updatedriveraccounts", model: [errors:false]
     }
 
     def uploadDriverAccountsFile() {
