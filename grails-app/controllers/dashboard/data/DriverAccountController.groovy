@@ -3,10 +3,8 @@ package dashboard.data
 import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.OK
-import static org.springframework.http.HttpStatus.OK
 import grails.plugin.springsecurity.annotation.Secured
 import com.bertramlabs.plugins.SSLRequired
-import groovy.json.*
 
 @Secured(["ROLE_ADMIN"])
 @SSLRequired
@@ -108,7 +106,7 @@ class DriverAccountController {
     }
 
     def updateDriverAccounts() {
-        render view:"updatedriveraccounts", model: [errors:false]
+        render view:"updateDriverAccounts", model: [errors:false]
     }
 
     def uploadDriverAccountsFile() {
@@ -130,7 +128,7 @@ class DriverAccountController {
     }
 
     def displayDriverAccounts() {
-        render view:"displaydriveraccounts", model: [driverAccounts:DriverAccount.list()]
+        render view:"displayDriverAccounts", model: [driverAccounts:DriverAccount.list()]
     }
 
     protected void notFound() {
