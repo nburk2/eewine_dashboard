@@ -130,7 +130,7 @@ class DriverAccountController {
     }
 
     def displayDriverAccounts() {
-        [driverAccounts:DriverAccount.list()]
+        render view:"displaydriveraccounts", model: [driverAccounts:DriverAccount.list()]
     }
 
     protected void notFound() {
