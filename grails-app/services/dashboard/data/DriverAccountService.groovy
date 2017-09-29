@@ -54,7 +54,7 @@ class DriverAccountService {
             def lineSplit = line.split(',')
             extractLineContent(lineSplit)
         }
-        DriverAccount.deleteAll()
+        DriverAccount.executeUpdate('delete from DriverAccount')
         createDriverAccounts()
     }
 
