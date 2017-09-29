@@ -10,11 +10,51 @@ class DriverAccountService {
     def rest = new RestBuilder()
     def driversMap = [:]
 
+    def optimizeRoutes(locationList) {
+        println "at method"
+        def locations = locationList
+        def resp = rest.post("https://api.routexl.nl/tour") {
+            auth("nburk", "VhG1dzH@*Sll2BL3&PtwLE!I")
+            accept("application/json")
+            contentType("application/x-www-form-urlencoded")
+            body("locations=" + (locations as JSON).toString())
+        }
+        def data = resp
+        println data.json
+    }
+
+    def getGeolocation(address) {
+        //key AIzaSyC9hB2bLGWefx0WOnzWzus_TfwnnWUQePE
+        def key = "AIzaSyC9hB2bLGWefx0WOnzWzus_TfwnnWUQePE"
+        def resp = rest.get("https://maps.googleapis.com/maps/api/geocode/json?key=" + key + "&address=" + address)
+        return resp.json.results[0].geometry
+    }
+
+    def getAddresses() {
+        def addressList = [
+//                "9108 Centreville Rd, Manassas, VA 20110",
+                "8848 whitchurch court, bristow, virginia",
+                "4215 Winchester Rd, Marshall, VA 20115",
+                "4661 Sudley Rd, Catharpin, VA 20143",
+                "6417 Lee Hwy, Warrenton, VA 20187"
+        ]
+        def geolocations = [[address:"Start", lat:"38.757572", lng:"-77.4646612"]]
+        addressList.each { address ->
+            def location = getGeolocation(address)
+            geolocations << [address:address,lat:location.location.lat,lng:location.location.lng]
+        }
+        geolocations << [address:"End", lat:"38.757572", lng:"-77.4646612"]
+        println geolocations
+        optimizeRoutes(geolocations)
+        geolocations
+    }
+
     def uploadDriverAccounts(file) {
         file.inputStream.eachLine { line ->
             def lineSplit = line.split(',')
             extractLineContent(lineSplit)
         }
+        DriverAccount.deleteAll()
         createDriverAccounts()
     }
 
