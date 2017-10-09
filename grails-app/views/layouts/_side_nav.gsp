@@ -46,12 +46,6 @@
                             <li><g:link controller="wineEnergy" action="index">Wine Energy</g:link></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="tables.html">Tables</a></li>
-                            <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                        </ul>
-                    </li>
                     <li><a><i class="fa fa-table"></i> Tanks <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="veederRoot" action="ninetyPercentages">90% Spreadsheets</g:link></li>
