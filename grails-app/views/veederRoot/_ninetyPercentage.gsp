@@ -1,0 +1,92 @@
+<%@ page import="java.math.RoundingMode; java.math.MathContext" %>
+<div class="grid-masonry">
+<g:each status="i" in="${tankInfoList}" var="tankInfo">
+    <div class="grid-item">
+        <div class="x_content">
+            <div class="x_title">
+                <h2>${tankInfo.name} <small>${tankInfo.lastUpdate}</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Tank</th>
+                        <g:each in="${tankInfo.tanks}" var="tank">
+                            <th>${tank.key}</th>
+                        </g:each>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Full Volume</th>
+                        <g:each in="${tankInfo.tanks}" var="tank">
+                            <td>${tankInfo.tanks."${tank.key}".fullvolume}</td>
+                        </g:each>
+                    </tr>
+                    <tr>
+                        <th scope="row">Volume</th>
+                        <g:each in="${tankInfo.tanks}" var="tank">
+                            <td>${tankInfo.tanks."${tank.key}".volume}</td>
+                        </g:each>
+                    </tr>
+                    <tr class="bg-warning">
+                        <th scope="row">Ullage</th>
+                        <g:each in="${tankInfo.tanks}" var="tank">
+                            <td>${tankInfo.tanks."${tank.key}".ullage}</td>
+                        </g:each>
+                    </tr>
+                    <tr>
+                        <th scope="row">10%</th>
+                        <g:each in="${tankInfo.tanks}" var="tank">
+                            <td>${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</td>
+                        </g:each>
+                    </tr>
+                    <tr class="bg-success">
+                        <th scope="row">90%</th>
+                        <g:each in="${tankInfo.tanks}" var="tank">
+                            <td>
+                                ${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}
+                            </td>
+                        </g:each>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</g:each>
+</div>
+
+<style>
+.grid-item {
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    width: 31%;
+    margin:0 1% 5px;
+    padding: 10px 10px 0px 10px;
+    float: left;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    display: inline-block;
+}
+</style>

@@ -48,6 +48,8 @@ dependencies {
     compile 'com.bertramlabs.plugins:force-ssl:3.0.3'
     compile "org.grails.plugins:views-json:1.2.3"
     compile "net.authorize:anet-java-sdk:1.9.3"
+//    compile "org.grails.plugins:aws-sdk:1.11.126"
+    compile 'org.grails.plugins:aws-sdk-s3:2.1.5'
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.1"

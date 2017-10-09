@@ -39,5 +39,9 @@
         <asset:javascript src="forms.js"/>
     </g:else>
 
+    %{-- Scripts to run for specific views after javascript loads --}%
+    <g:if test="${controllerName == 'veederRoot' && actionName == 'tankInfo'}">
+        <g:render template="/veederRoot/tankInfoScripts"/>
+    </g:if>
 </body>
 </html>
