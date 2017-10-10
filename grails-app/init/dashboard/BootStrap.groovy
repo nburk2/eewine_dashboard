@@ -21,7 +21,7 @@ class BootStrap {
     }
 
     def testData() {
-        if(User.count == 0) {
+        if(User.count <= 1) {
             initUsers()
         }
     }

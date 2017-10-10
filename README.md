@@ -13,3 +13,9 @@
 1. git
 2. mysql
 3. java
+
+
+## Extra notes
+    1. for this app an ssl redirect plugin is used to reroute all
+     http urls to https. This will interfere with some environment setups
+     in the future.
