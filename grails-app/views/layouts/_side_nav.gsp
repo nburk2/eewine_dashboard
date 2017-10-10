@@ -49,7 +49,7 @@
                     <li><a><i class="fa fa-table"></i> Tanks <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="veederRoot" action="ninetyPercentages">90% Spreadsheets</g:link></li>
-                            <li><g:link controller="veederRoot" action="tankInfo">Tank Levels</g:link></li>
+                            %{--<li><g:link controller="veederRoot" action="tankInfo">Tank Levels</g:link></li>--}%
                         </ul>
                     </li>
                     <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>

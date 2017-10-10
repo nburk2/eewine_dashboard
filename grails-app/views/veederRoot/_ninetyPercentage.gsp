@@ -37,31 +37,39 @@
                     <tr>
                         <th scope="row">Full Volume</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td>${tankInfo.tanks."${tank.key}".fullvolume}</td>
+                            <td>
+                                <b style="color:black">${tankInfo.tanks."${tank.key}".fullvolume}</b>
+                            </td>
                         </g:each>
                     </tr>
                     <tr>
                         <th scope="row">Volume</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td>${tankInfo.tanks."${tank.key}".volume}</td>
+                            <td>
+                                ${tankInfo.tanks."${tank.key}".volume}
+                            </td>
                         </g:each>
                     </tr>
                     <tr class="bg-warning">
                         <th scope="row">Ullage</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td>${tankInfo.tanks."${tank.key}".ullage}</td>
+                            <td>
+                                <b style="color:black">${tankInfo.tanks."${tank.key}".ullage}</b>
+                            </td>
                         </g:each>
                     </tr>
                     <tr>
                         <th scope="row">10%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td>${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</td>
+                            <td style="color:black">
+                                ${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}
+                            </td>
                         </g:each>
                     </tr>
                     <tr class="bg-success">
                         <th scope="row">90%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td>
+                            <td style="color:black">
                                 ${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}
                             </td>
                         </g:each>

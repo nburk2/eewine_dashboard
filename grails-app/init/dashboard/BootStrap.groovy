@@ -27,13 +27,15 @@ class BootStrap {
     }
 
     private void initUsers() {
-        def adminRole      = Role.findOrSaveByAuthority('ROLE_ADMIN')
-        def managerRole    = Role.findOrSaveByAuthority('ROLE_MANAGER')
-        def userRole  = Role.findOrSaveByAuthority('ROLE_USER')
+        def adminRole       = Role.findOrSaveByAuthority('ROLE_ADMIN')
+        def managerRole     = Role.findOrSaveByAuthority('ROLE_MANAGER')
+        def userRole        = Role.findOrSaveByAuthority('ROLE_USER')
 
         assert adminRole && managerRole && userRole
 
-        //noinspection GroovyAssignabilityCheck
+        initDriverUser()
+
+        //create / check for admin user
         String adminUserName = config.EEWINE_ADMIN_USERNAME ?: "admin"
         if (User.findByUsername(adminUserName)) {
             return
@@ -45,5 +47,23 @@ class BootStrap {
         adminUser.save(flush: true)
 
         UserRole.create adminUser, adminRole, true
+
+    }
+
+    def initDriverUser() {
+        def driverRole = Role.findOrSaveByAuthority('ROLE_DRIVER')
+
+        //create / check for Driver User
+        String driverUserName = config.EEWINE_DRIVER_USERNAME ?: "driver"
+        if (User.findByUsername(driverUserName)) {
+            return
+        }
+
+        String driverPassword = config.EEWINE_DRIVER_PASSWORD ?: "ABC123def"
+
+        def driverUser = new User(username: driverUserName, enabled: true, password: driverPassword)
+        driverUser.save(flush: true)
+
+        UserRole.create driverUser, driverRole, true
     }
 }

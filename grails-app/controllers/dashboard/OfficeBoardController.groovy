@@ -1,5 +1,6 @@
 package dashboard
 
+import dashboard.authentication.Role
 import dashboard.authentication.UserRole
 import dashboard.data.Driver
 import dashboard.data.DriverAccount
@@ -13,10 +14,15 @@ import com.bertramlabs.plugins.SSLRequired
 class OfficeBoardController {
 
     def officeBoardService
+    def springSecurityService
 
-    @Secured(["ROLE_ADMIN"])
+    @Secured(["ROLE_ADMIN","ROLE_DRIVER"])
     @SSLRequired
     def index() {
+        if(springSecurityService.getPrincipal().getAuthorities()[0].authority == "ROLE_DRIVER") {
+            redirect(uri:"/veederRoot/ninetyPercentages")
+            return
+        }
         officeBoardService.getWeather()
         [
                 driverTruckList:DriverTruck.list(),

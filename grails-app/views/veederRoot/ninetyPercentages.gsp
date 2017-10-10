@@ -15,6 +15,11 @@
         <div class="row">
             <g:render template="ninetyPercentage"/>
         </div>
+        <div class="row">
+            <g:form url="[resource:veederRoot, action:'updateVeederRootData']" class="form-horizontal form-label-left">
+                <g:submitButton name="update" type="submit" class="btn btn-success" value="Update Tank Data"/>
+            </g:form>
+        </div>
 
     </div>
 
