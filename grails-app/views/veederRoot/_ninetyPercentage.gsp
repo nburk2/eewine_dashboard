@@ -46,7 +46,7 @@
                         <th scope="row">Volume</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
                             <td>
-                                ${tankInfo.tanks."${tank.key}".volume}
+                                <b style="color:black">${tankInfo.tanks."${tank.key}".volume}</b>
                             </td>
                         </g:each>
                     </tr>
@@ -61,16 +61,16 @@
                     <tr>
                         <th scope="row">10%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td style="color:black">
-                                ${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}
+                            <td >
+                                <b style="color:black">${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
                             </td>
                         </g:each>
                     </tr>
                     <tr class="bg-success">
                         <th scope="row">90%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
-                            <td style="color:black">
-                                ${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}
+                            <td>
+                                <b style="color:black">${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
                             </td>
                         </g:each>
                     </tr>
