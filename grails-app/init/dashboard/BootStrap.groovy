@@ -33,7 +33,7 @@ class BootStrap {
 
         assert adminRole && managerRole && userRole
 
-//        initDriverUser()
+        initDriverUser()
 
         //create / check for admin user
         String adminUserName = config.EEWINE_ADMIN_USERNAME ?: "admin"
