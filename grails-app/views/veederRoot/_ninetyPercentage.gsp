@@ -4,7 +4,7 @@
     <div class="grid-item">
         <div class="x_content">
             <div class="x_title">
-                <h2>${tankInfo.name} <small>${tankInfo.lastUpdate}</small></h2>
+                <h2>${tankInfo.name} <small style="display: inline;">${tankInfo.lastUpdate}</small></h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -87,7 +87,7 @@
 .grid-item {
     background: #fff;
     border: 1px solid #E6E9ED;
-    width: 31%;
+    width: 100%;
     margin:0 1% 5px;
     padding: 10px 10px 0px 10px;
     float: left;
@@ -96,5 +96,35 @@
     column-break-inside: avoid;
     opacity: 1;
     display: inline-block;
+}
+@media only screen and (min-width: 900px) {
+    .grid-item {
+        background: #fff;
+        border: 1px solid #E6E9ED;
+        width: 48%;
+        margin:0 1% 5px;
+        padding: 10px 10px 0px 10px;
+        float: left;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        column-break-inside: avoid;
+        opacity: 1;
+        display: inline-block;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    .grid-item {
+        background: #fff;
+        border: 1px solid #E6E9ED;
+        width: 31%;
+        margin:0 1% 5px;
+        padding: 10px 10px 0px 10px;
+        float: left;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        column-break-inside: avoid;
+        opacity: 1;
+        display: inline-block;
+    }
 }
 </style>
