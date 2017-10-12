@@ -4,22 +4,27 @@
     <div class="grid-item">
         <div class="x_content">
             <div class="x_title">
-                <h2>${tankInfo.name} <small style="display: inline;">${tankInfo.lastUpdate}</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                </ul>
+                <g:if test="${tankInfo.lastUpdateSuccess == false}">
+                    <h2>${tankInfo.name} <small class="bg-danger" style="display: inline;">${tankInfo.lastUpdate}</small></h2>
+                </g:if>
+                <g:else>
+                    <h2>${tankInfo.name} <small style="display: inline;">${tankInfo.lastUpdate}</small></h2>
+                </g:else>
+                %{--<ul class="nav navbar-right panel_toolbox">--}%
+                    %{--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>--}%
+                    %{--</li>--}%
+                    %{--<li class="dropdown">--}%
+                        %{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>--}%
+                        %{--<ul class="dropdown-menu" role="menu">--}%
+                            %{--<li><a href="#">Settings 1</a>--}%
+                            %{--</li>--}%
+                            %{--<li><a href="#">Settings 2</a>--}%
+                            %{--</li>--}%
+                        %{--</ul>--}%
+                    %{--</li>--}%
+                    %{--<li><a class="close-link"><i class="fa fa-close"></i></a>--}%
+                    %{--</li>--}%
+                %{--</ul>--}%
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -50,22 +55,22 @@
                             </td>
                         </g:each>
                     </tr>
-                    <tr class="bg-warning">
-                        <th scope="row">Ullage</th>
-                        <g:each in="${tankInfo.tanks}" var="tank">
-                            <td>
-                                <b style="color:black">${tankInfo.tanks."${tank.key}".ullage}</b>
-                            </td>
-                        </g:each>
-                    </tr>
-                    <tr>
-                        <th scope="row">10%</th>
-                        <g:each in="${tankInfo.tanks}" var="tank">
-                            <td >
-                                <b style="color:black">${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
-                            </td>
-                        </g:each>
-                    </tr>
+                    %{--<tr class="bg-warning">--}%
+                        %{--<th scope="row">Ullage</th>--}%
+                        %{--<g:each in="${tankInfo.tanks}" var="tank">--}%
+                            %{--<td>--}%
+                                %{--<b style="color:black">${tankInfo.tanks."${tank.key}".ullage}</b>--}%
+                            %{--</td>--}%
+                        %{--</g:each>--}%
+                    %{--</tr>--}%
+                    %{--<tr>--}%
+                        %{--<th scope="row">10%</th>--}%
+                        %{--<g:each in="${tankInfo.tanks}" var="tank">--}%
+                            %{--<td >--}%
+                                %{--<b style="color:black">${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>--}%
+                            %{--</td>--}%
+                        %{--</g:each>--}%
+                    %{--</tr>--}%
                     <tr class="bg-success">
                         <th scope="row">90%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
@@ -87,7 +92,7 @@
 .grid-item {
     background: #fff;
     border: 1px solid #E6E9ED;
-    width: 100%;
+    width: 31%;
     margin:0 1% 5px;
     padding: 10px 10px 0px 10px;
     float: left;
@@ -97,26 +102,11 @@
     opacity: 1;
     display: inline-block;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (max-width: 960px) {
     .grid-item {
         background: #fff;
         border: 1px solid #E6E9ED;
-        width: 48%;
-        margin:0 1% 5px;
-        padding: 10px 10px 0px 10px;
-        float: left;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        opacity: 1;
-        display: inline-block;
-    }
-}
-@media only screen and (min-width: 1100px) {
-    .grid-item {
-        background: #fff;
-        border: 1px solid #E6E9ED;
-        width: 31%;
+        width: 100%;
         margin:0 1% 5px;
         padding: 10px 10px 0px 10px;
         float: left;
