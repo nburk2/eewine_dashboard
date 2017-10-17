@@ -49,6 +49,7 @@
                     <li><a><i class="fa fa-table"></i> Tanks <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="veederRoot" action="ninetyPercentages">90% Spreadsheets</g:link></li>
+                            <li><g:link controller="veederRoot" action="uploadFileToPrint">Upload File To Print</g:link></li>
                             %{--<li><g:link controller="veederRoot" action="tankInfo">Tank Levels</g:link></li>--}%
                         </ul>
                     </li>

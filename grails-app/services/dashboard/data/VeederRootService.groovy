@@ -4,6 +4,7 @@ import grails.util.Holders
 import groovy.json.JsonSlurper
 import grails.transaction.Transactional
 import grails.plugins.rest.client.RestBuilder
+import com.amazonaws.services.s3.model.CannedAccessControlList
 
 @Transactional
 class VeederRootService {
@@ -35,5 +36,9 @@ class VeederRootService {
             headers["x-api-key"] = gatewayKey
         }
         resp
+    }
+
+    def uploadFileToPrint(multipartFile) {
+        amazonS3Service.storeMultipartFile('wine-energy', 'filesToPrint/' + multipartFile.getOriginalFilename(), multipartFile, CannedAccessControlList.Private)
     }
 }
