@@ -45,12 +45,12 @@ class VeederRootService {
         def additionalVal = 0
         while (found) {
             additionalVal++
-            found = amazonS3Service.exists('filesToPrint/' + multipartFile.getOriginalFilename() + "${additionalVal}")
+            found = amazonS3Service.exists('filesToPrint/' + multipartFile.getOriginalFilename().replace(".","${additionalVal}."))
         }
         if(additionalVal == 0) {
             additionalVal = ""
         }
-        amazonS3Service.storeMultipartFile('filesToPrint/' + multipartFile.getOriginalFilename() + "${additionalVal}", multipartFile, CannedAccessControlList.Private)
+        amazonS3Service.storeMultipartFile('filesToPrint/' + multipartFile.getOriginalFilename().replace(".","${additionalVal}."), multipartFile, CannedAccessControlList.Private)
     }
 
     def getS3FilesToPrint() {
