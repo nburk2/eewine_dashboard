@@ -39,6 +39,25 @@ class VeederRootService {
     }
 
     def uploadFileToPrint(multipartFile) {
-        amazonS3Service.storeMultipartFile('wine-energy', 'filesToPrint/' + multipartFile.getOriginalFilename(), multipartFile, CannedAccessControlList.Private)
+        amazonS3Service.defaultBucketName = "wine-energy"
+        // Check if an object exists in bucket
+        def found = amazonS3Service.exists('filesToPrint/' + multipartFile.getOriginalFilename())
+        def additionalVal = 0
+        while (found) {
+            additionalVal++
+            found = amazonS3Service.exists('filesToPrint/' + multipartFile.getOriginalFilename() + "${additionalVal}")
+        }
+        if(additionalVal == 0) {
+            additionalVal = ""
+        }
+        amazonS3Service.storeMultipartFile('filesToPrint/' + multipartFile.getOriginalFilename() + "${additionalVal}", multipartFile, CannedAccessControlList.Private)
+    }
+
+    def getS3FilesToPrint() {
+        def filesToPrint = amazonS3Service.listObjects('wine-energy', 'filesToPrint/')
+        filesToPrint.objectSummaries.removeAll{
+            it.key == "filesToPrint/"
+        }
+        filesToPrint.objectSummaries
     }
 }

@@ -32,7 +32,9 @@ class VeederRootController {
 
     def uploadFileToPrint() {
 
-        render view: "uploadFileToPrint", model: []
+        def currentFilesToPrint = veederRootService.getS3FilesToPrint()
+
+        render view: "uploadFileToPrint", model: [currentFilesToPrint: currentFilesToPrint]
     }
 
     def uploadFile() {
@@ -40,20 +42,22 @@ class VeederRootController {
         def success
 
         MultipartFile multipart = request.getFile('fileToPrint')
+        def currentFilesToPrint = veederRootService.getS3FilesToPrint()
 
 
         if(!multipart) {
-            render view: "uploadFileToPrint"
+            render view: "uploadFileToPrint", model: [currentFilesToPrint: currentFilesToPrint]
             return
         }
 
         try {
             veederRootService.uploadFileToPrint(multipart)
+            currentFilesToPrint = veederRootService.getS3FilesToPrint()
         } catch (e) {
-            render view: "uploadFileToPrint", model: [errors:true]
+            render view: "uploadFileToPrint", model: [errors:true,currentFilesToPrint: currentFilesToPrint]
             return
         }
 
-        render view: "uploadFileToPrint", model: [success:true]
+        render view: "uploadFileToPrint", model: [success:true,currentFilesToPrint: currentFilesToPrint]
     }
 }

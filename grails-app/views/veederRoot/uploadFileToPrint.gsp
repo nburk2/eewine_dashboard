@@ -78,6 +78,10 @@
             </div>
         </div>
 
+        <div class="row">
+            <g:render template="currentFilesToPrint"/>
+        </div>
+
     </div>
 </div>
 <!-- /page content -->
