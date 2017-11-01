@@ -10,21 +10,6 @@
                 <g:else>
                     <h2>${tankInfo.name} <small style="display: inline;">${tankInfo.lastUpdate}</small></h2>
                 </g:else>
-                %{--<ul class="nav navbar-right panel_toolbox">--}%
-                    %{--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>--}%
-                    %{--</li>--}%
-                    %{--<li class="dropdown">--}%
-                        %{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>--}%
-                        %{--<ul class="dropdown-menu" role="menu">--}%
-                            %{--<li><a href="#">Settings 1</a>--}%
-                            %{--</li>--}%
-                            %{--<li><a href="#">Settings 2</a>--}%
-                            %{--</li>--}%
-                        %{--</ul>--}%
-                    %{--</li>--}%
-                    %{--<li><a class="close-link"><i class="fa fa-close"></i></a>--}%
-                    %{--</li>--}%
-                %{--</ul>--}%
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -55,27 +40,16 @@
                             </td>
                         </g:each>
                     </tr>
-                    %{--<tr class="bg-warning">--}%
-                        %{--<th scope="row">Ullage</th>--}%
-                        %{--<g:each in="${tankInfo.tanks}" var="tank">--}%
-                            %{--<td>--}%
-                                %{--<b style="color:black">${tankInfo.tanks."${tank.key}".ullage}</b>--}%
-                            %{--</td>--}%
-                        %{--</g:each>--}%
-                    %{--</tr>--}%
-                    %{--<tr>--}%
-                        %{--<th scope="row">10%</th>--}%
-                        %{--<g:each in="${tankInfo.tanks}" var="tank">--}%
-                            %{--<td >--}%
-                                %{--<b style="color:black">${((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>--}%
-                            %{--</td>--}%
-                        %{--</g:each>--}%
-                    %{--</tr>--}%
                     <tr class="bg-success">
                         <th scope="row">90%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
                             <td>
-                                <b style="color:black">${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
+                                <g:if test="${(tankInfo.tanks."${tank.key}".ullage).matches("\\d+")}">
+                                    <b style="color:black">${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
+                                </g:if>
+                                <g:else>
+                                    <b class="bg-danger">Please re-run bulk plant script</b>
+                                </g:else>
                             </td>
                         </g:each>
                     </tr>

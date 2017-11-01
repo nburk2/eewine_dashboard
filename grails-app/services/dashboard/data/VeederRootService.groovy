@@ -23,6 +23,7 @@ class VeederRootService {
         def file = amazonS3Service.getFile('dashboard-backup/veederRootSites.json', 'tank.json')
         def tankJson = new JsonSlurper().parseText(file.text)
         file.delete()
+        println tankJson
         tankJson
     }
 
