@@ -44,11 +44,11 @@
                         <th scope="row">90%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
                             <td>
-                                <g:if test="${(tankInfo.tanks."${tank.key}".ullage).matches("\\d+")}">
+                                <g:if test="${(tankInfo.tanks."${tank.key}".ullage).matches("\\d+") && tankInfo.tanks."${tank.key}".fullvolume.matches("\\d+")}">
                                     <b style="color:black">${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
                                 </g:if>
                                 <g:else>
-                                    <b class="bg-danger">Please re-run bulk plant script</b>
+                                    <b class="bg-danger">Error, Please update the tank Data again.</b>
                                 </g:else>
                             </td>
                         </g:each>
