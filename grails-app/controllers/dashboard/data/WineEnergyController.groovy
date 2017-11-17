@@ -102,6 +102,7 @@ class WineEnergyController {
 
     @Secured(["permitAll"])
     def getDataEntry(String name) {
+        // Request will come from api gateway with api key that is checked in the interceptor
         def entry = WineEnergy.findByName(name)
 
         if(!entry) {

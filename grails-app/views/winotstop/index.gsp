@@ -43,7 +43,7 @@
                             <tr>
                                 <g:sortableColumn class="idTables" property="id" title="Id"/>
                                 <g:sortableColumn class="idTables" property="name" title="Name"/>
-                                <g:sortableColumn class="idTables" property="value" title="Tickets"/>
+                                <g:sortableColumn class="idTables" property="value" title="Value"/>
                             </tr>
                             </thead>
                             <tbody>
