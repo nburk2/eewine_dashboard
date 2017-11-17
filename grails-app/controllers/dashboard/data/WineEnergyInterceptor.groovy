@@ -16,7 +16,6 @@ class WineEnergyInterceptor {
         if(request.getHeader("portal-api-key") == portalKey) {
             return true
         }
-        view = 'wineEnergy/entry'
         false
     }
 
