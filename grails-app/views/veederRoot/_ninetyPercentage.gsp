@@ -44,7 +44,7 @@
                         <th scope="row">90%</th>
                         <g:each in="${tankInfo.tanks}" var="tank">
                             <td>
-                                <g:if test="${(tankInfo.tanks."${tank.key}".ullage).matches("\\d+") && tankInfo.tanks."${tank.key}".fullvolume.matches("\\d+")}">
+                                <g:if test="${(tankInfo.tanks."${tank.key}".ullage).matches("\\d+")}">
                                     <b style="color:black">${((tankInfo.tanks."${tank.key}".ullage ?: 0) as int) - ((tankInfo.tanks."${tank.key}".fullvolume ?: 1) * 0.1).setScale(0, java.math.RoundingMode.HALF_UP)}</b>
                                 </g:if>
                                 <g:else>
