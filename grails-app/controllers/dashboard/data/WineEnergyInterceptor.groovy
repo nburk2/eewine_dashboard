@@ -9,7 +9,7 @@ class WineEnergyInterceptor {
     def portalKey = config.PORTAL_KEY
 
     WineEnergyInterceptor() {
-        match(action:"getDataEntry")
+        match(controller:"wineEnergy",action:"getDataEntry")
     }
 
     boolean before() {
