@@ -44,6 +44,7 @@
                                 <g:sortableColumn class="idTables" property="id" title="Id"/>
                                 <g:sortableColumn class="idTables" property="name" title="Name"/>
                                 <g:sortableColumn class="idTables" property="value" title="Value"/>
+                                <g:sortableColumn class="idTables" property="description" title="Description"/>
                             </tr>
                             </thead>
                             <tbody>
@@ -52,6 +53,7 @@
                                     <th scope="row">${wineEnergy.id}</th>
                                     <th><g:link action="show" id="${wineEnergy?.id}">${wineEnergy?.name}</g:link></th>
                                     <th>${wineEnergy?.value}</th>
+                                    <th>${wineEnergy?.description}</th>
                                 </tr>
                             </g:each>
                             </tbody>

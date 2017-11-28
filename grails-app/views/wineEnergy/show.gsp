@@ -28,6 +28,10 @@
                                     <th>Value:</th>
                                     <td>${wineEnergy.value}</td>
                                 </tr>
+                                <tr>
+                                    <th>Description:</th>
+                                    <td>${wineEnergy.description}</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
