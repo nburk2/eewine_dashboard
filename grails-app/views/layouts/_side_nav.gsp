@@ -56,6 +56,7 @@
                     <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="driverAccount" action="updateDriverAccounts">Update Driver Accounts</g:link></li>
+                            <li><g:link controller="wineEnergy" action="downloadFiles">Download Files</g:link></li>
                         </ul>
                     </li>
                 </ul>

@@ -12,6 +12,7 @@ import grails.transaction.Transactional
 class WineEnergyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def wineEnergyService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -98,6 +99,11 @@ class WineEnergyController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+
+    def downloadFiles() {
+        def fileList = wineEnergyService.getWineEnergyDocuments()
+        [fileList:fileList]
     }
 
     @Secured(["permitAll"])
