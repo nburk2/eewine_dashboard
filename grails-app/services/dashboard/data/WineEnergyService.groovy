@@ -18,9 +18,11 @@ class WineEnergyService {
             def resp = rest.get("https://ibkxdho8ce.execute-api.us-east-1.amazonaws.com/prod/gets3file?bucket=wine-energy&key=" + key) {
                 headers["x-api-key"] = gatewayKey
             }
-            def name = key.split("/")
-            name = name[name.size() - 1]
-            fileList << [name:name,signedUrl:resp.json.signedUrl]
+            if(resp.json.signedUrl) {
+                def name = key.split("/")
+                name = name[name.size() - 1]
+                fileList << [name:name,signedUrl:resp.json.signedUrl]
+            }
         }
         fileList
     }
