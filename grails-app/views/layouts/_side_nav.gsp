@@ -46,9 +46,10 @@
                             <li><g:link controller="wineEnergy" action="index">Wine Energy</g:link></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-table"></i> Tanks <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-table"></i> Data Sheets <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="veederRoot" action="ninetyPercentages">90% Spreadsheets</g:link></li>
+                            <li><g:link controller="fuelPrice" action="fuelPrices">Fuel Prices</g:link></li>
                             <li><g:link controller="veederRoot" action="uploadFileToPrint">Upload File To Print</g:link></li>
                             %{--<li><g:link controller="veederRoot" action="tankInfo">Tank Levels</g:link></li>--}%
                         </ul>
