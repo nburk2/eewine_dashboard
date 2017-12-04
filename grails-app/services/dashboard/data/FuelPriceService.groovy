@@ -4,13 +4,16 @@ import grails.transaction.Transactional
 import grails.util.Holders
 import grails.plugins.rest.client.RestBuilder
 import groovy.json.*
+import com.jameskleeh.excel.ExcelBuilder
 import org.grails.web.json.JSONObject
+import com.amazonaws.services.s3.model.CannedAccessControlList
 
 @Transactional
 class FuelPriceService {
 
     def config = Holders.config
     def gatewayKey = config.GATEWAY_KEY
+    def amazonS3Service
     def rest = new RestBuilder()
 
     def getFuelPriceFileUrl(key) {
@@ -18,6 +21,29 @@ class FuelPriceService {
             headers["x-api-key"] = gatewayKey
         }
         return resp.json.signedUrl
+    }
+
+    def createFuelPriceExcel() {
+        def fuelPrices = getFuelPrices()
+
+        File file = new File('fuelPrices.xlsx')
+
+        ExcelBuilder.output(new FileOutputStream(file)) {
+            sheet([width:20]) {
+                fuelPrices.each { fuelPrice ->
+                    row(fuelPrice.name)
+                    fuelPrice.rows.each { tempRow ->
+                        row(tempRow.bpc, tempRow.description,tempRow.price,tempRow.effectiveDate)
+                    }
+                    row()
+                }
+            }
+        }
+    }
+
+    def uploadS3FileToPrint(File file) {
+        amazonS3Service.defaultBucketName = "wine-energy"
+        amazonS3Service.storeFile('filesToPrint/' + file.name, file, CannedAccessControlList.Private)
     }
 
     def getFuelPrices() {
