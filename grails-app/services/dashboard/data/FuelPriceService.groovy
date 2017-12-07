@@ -41,6 +41,43 @@ class FuelPriceService {
         }
     }
 
+    def createDtnPriceExcel() {
+        def dtnPrices = getDtnPrices()
+        File file = new File('dtnPrices.xlsx')
+
+        ExcelBuilder.output(new FileOutputStream(file)) {
+            sheet([width:12]) {
+                row("DTN Prices")
+                row("Description", "Conoco Cont.", "Conoco", "Sunoco", "BP", "Hug", "TPSI")
+                dtnPrices.each { dtnPrice ->
+                    def conocoContract = ""
+                    def conoco = ""
+                    def sunoco = ""
+                    def bp = ""
+                    def hug = ""
+                    def tpsi = ""
+                    dtnPrice.supplier.each { tempRow ->
+                        switch(tempRow.name) {
+                            case "Conoco Contract":conocoContract = tempRow.price
+                                break
+                            case "Conoco":conoco = tempRow.price
+                                break
+                            case "Sunoco":sunoco = tempRow.price
+                                break
+                            case "BP":bp = tempRow.price
+                                break
+                            case "Huguenot":hug = tempRow.price
+                                break
+                            case "TPSI":tpsi = tempRow.price
+                                break
+                        }
+                    }
+                    row(dtnPrice.product + " ${dtnPrice.description}",conocoContract,conoco,sunoco,bp,hug,tpsi)
+                }
+            }
+        }
+    }
+
     def uploadS3FileToPrint(File file) {
         amazonS3Service.defaultBucketName = "wine-energy"
         amazonS3Service.storeFile('filesToPrint/' + file.name, file, CannedAccessControlList.Private)
@@ -55,6 +92,15 @@ class FuelPriceService {
 
         def fuelPrices = mapFuelPrices(fuelPriceMap, priceMapping())
         fuelPrices
+    }
+
+    def getDtnPrices() {
+        String fuelPriceSignedUrl = getFuelPriceFileUrl("documents/DtnPrices.json")
+        InputStream input = new URL(fuelPriceSignedUrl).openStream()
+        Reader reader = new InputStreamReader(input, "UTF-8")
+        def jsonSlurper = new JsonSlurper()
+        def dtnObject = jsonSlurper.parseText(reader.text)
+        dtnObject
     }
 
     def mapFuelPrices(fuelPriceMap, priceMapping) {

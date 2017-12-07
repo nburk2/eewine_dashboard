@@ -13,15 +13,21 @@ class FuelPriceController {
 
     def fuelPrices() {
         def fuelPrices = fuelPriceService.getFuelPrices()
-        [fuelPrices:fuelPrices]
+        def dtnPrices = fuelPriceService.getDtnPrices()
+        [fuelPrices:fuelPrices, dtnPrices:dtnPrices]
     }
 
     @Secured(["permitAll"])
     def printFuelPrices() {
         fuelPriceService.createFuelPriceExcel()
-        File file = new File("fuelPrices.xlsx")
-        fuelPriceService.uploadS3FileToPrint(file)
-        file.delete()
+        File file1 = new File("fuelPrices.xlsx")
+        fuelPriceService.uploadS3FileToPrint(file1)
+        file1.delete()
+
+        fuelPriceService.createDtnPriceExcel()
+        File file2 = new File("dtnPrices.xlsx")
+        fuelPriceService.uploadS3FileToPrint(file2)
+        file2.delete()
     }
 
 

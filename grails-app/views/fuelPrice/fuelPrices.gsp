@@ -13,6 +13,9 @@
         <div class="clearfix"></div>
 
         <div class="row">
+            <g:render template="dtnPriceTable"/>
+        </div>
+        <div class="row">
             <g:render template="priceTable"/>
         </div>
 
