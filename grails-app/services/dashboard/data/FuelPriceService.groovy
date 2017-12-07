@@ -44,18 +44,18 @@ class FuelPriceService {
     def createDtnPriceExcel() {
         def dtnPrices = getDtnPrices()
         File file = new File('dtnPrices.xlsx')
+        def conocoContract = ""
+        def conoco = ""
+        def sunoco = ""
+        def bp = ""
+        def hug = ""
+        def tpsi = ""
 
         ExcelBuilder.output(new FileOutputStream(file)) {
             sheet([width:12]) {
                 row("DTN Prices")
-                row("Description", "Conoco Cont.", "Conoco", "Sunoco", "BP", "Hug", "TPSI")
+                row("Description", "Conoco Cont.", "Conoco", "Sunoco")
                 dtnPrices.each { dtnPrice ->
-                    def conocoContract = ""
-                    def conoco = ""
-                    def sunoco = ""
-                    def bp = ""
-                    def hug = ""
-                    def tpsi = ""
                     dtnPrice.supplier.each { tempRow ->
                         switch(tempRow.name) {
                             case "Conoco Contract":conocoContract = tempRow.price
@@ -64,6 +64,16 @@ class FuelPriceService {
                                 break
                             case "Sunoco":sunoco = tempRow.price
                                 break
+                        }
+                    }
+                    row(dtnPrice.product + " ${dtnPrice.description}",conocoContract,conoco,sunoco)
+                }
+                row()
+                row()
+                row("Description", "BP", "Hug", "TPSI")
+                dtnPrices.each { dtnPrice ->
+                    dtnPrice.supplier.each { tempRow ->
+                        switch(tempRow.name) {
                             case "BP":bp = tempRow.price
                                 break
                             case "Huguenot":hug = tempRow.price
@@ -72,7 +82,7 @@ class FuelPriceService {
                                 break
                         }
                     }
-                    row(dtnPrice.product + " ${dtnPrice.description}",conocoContract,conoco,sunoco,bp,hug,tpsi)
+                    row(dtnPrice.product + " ${dtnPrice.description}",bp,hug,tpsi)
                 }
             }
         }
