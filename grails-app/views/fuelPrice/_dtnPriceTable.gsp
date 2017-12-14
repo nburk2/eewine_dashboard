@@ -31,7 +31,18 @@
                         </td>
                         <g:each in="${row.supplier}" var="supplier">
                             <td>
-                                <b style="color:black">${supplier.price}</b>
+                                <b style="color:black">
+                                    ${supplier.price}
+                                    <g:if test="${supplier.difference?.contains("-")}">
+                                        <small class="text-danger"> +${supplier.difference}</small>
+                                    </g:if>
+                                    <g:elseif test="${supplier.difference?.toFloat() == 0 || !supplier.difference}">
+
+                                    </g:elseif>
+                                    <g:else>
+                                        <small class="text-success"> +${supplier.difference}</small>
+                                    </g:else>
+                                </b>
                             </td>
                         </g:each>
                     </tr>
