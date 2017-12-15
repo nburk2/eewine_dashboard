@@ -34,13 +34,13 @@
                                 <b style="color:black">
                                     ${supplier.price}
                                     <g:if test="${supplier.difference?.contains("-")}">
-                                        <small class="text-danger"> +${supplier.difference}</small>
+                                        <small class="text-danger"> ${supplier.difference.toFloat()}</small>
                                     </g:if>
                                     <g:elseif test="${supplier.difference?.toFloat() == 0 || !supplier.difference}">
 
                                     </g:elseif>
                                     <g:else>
-                                        <small class="text-success"> +${supplier.difference}</small>
+                                        <small class="text-success"> +${supplier.difference.toFloat()}</small>
                                     </g:else>
                                 </b>
                             </td>
