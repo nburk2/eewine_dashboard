@@ -2,7 +2,7 @@
 <div class="x_panel">
     <div class="x_content">
         <div class="x_title">
-            <h2>DTN Prices</h2>
+            <h2>DTN Prices - Today</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">

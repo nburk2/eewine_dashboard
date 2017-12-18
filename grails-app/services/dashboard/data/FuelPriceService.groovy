@@ -93,6 +93,40 @@ class FuelPriceService {
         amazonS3Service.storeFile('filesToPrint/' + file.name, file, CannedAccessControlList.Private)
     }
 
+    def addTodaysFuelPrices() {
+        def fuelPrices = getFuelPrices()
+
+        fuelPrices.each { fuelType ->
+            fuelType.rows.each { price ->
+                def fuelPrice = new FuelPrice()
+                fuelPrice.fuelType = fuelType.name
+                fuelPrice.description = price.description
+                fuelPrice.bpc = price.bpc.toInteger()
+                fuelPrice.price = price.price.toFloat()
+                fuelPrice.productId = price.productId.toInteger()
+                fuelPrice.effectiveDate = new Date(price.effectiveDate)
+                fuelPrice.save()
+            }
+        }
+    }
+
+    def addTodaysDtnPrices() {
+        def dtnPrices = getDtnPrices()
+        def todaysDate = new Date()
+        todaysDate.clearTime()
+        dtnPrices.each { dtnPrice ->
+            dtnPrice.supplier.each { supplier ->
+                def dtn =  new DtnPrice()
+                dtn.supplier = supplier.name
+                dtn.description = dtnPrice.description
+                dtn.price = supplier.price.toFloat()
+                dtn.productId = dtnPrice.product
+                dtn.effectiveDate = todaysDate
+                dtn.save()
+            }
+        }
+    }
+
     def getFuelPrices() {
         String fuelPriceSignedUrl = getFuelPriceFileUrl("documents/FuelPrices.csv")
         InputStream input = new URL(fuelPriceSignedUrl).openStream()
@@ -124,7 +158,8 @@ class FuelPriceService {
                             bpc:priceInfo["Base Price Code"],
                             description:priceInfo.description,
                             price:priceInfo["Price Per Unit"],
-                            effectiveDate:priceInfo["Effective Date"]
+                            effectiveDate:priceInfo["Effective Date"],
+                            productId:category.prod
                     ]
                 }
             }

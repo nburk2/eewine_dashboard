@@ -1,6 +1,7 @@
 package dashboard.data
 
 import com.bertramlabs.plugins.SSLRequired
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -30,5 +31,12 @@ class FuelPriceController {
         file2.delete()
     }
 
-
+    @Secured(["permitAll"])
+    def addFuelPrices() {
+        // Request will come from api gateway with api key that is checked in the interceptor
+        fuelPriceService.addTodaysFuelPrices()
+        fuelPriceService.addTodaysDtnPrices()
+        def response = [status:200, creation:"success"]
+        render response as JSON
+    }
 }
