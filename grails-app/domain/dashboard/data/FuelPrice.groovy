@@ -12,7 +12,7 @@ class FuelPrice {
 
 
     static constraints = {
-        fuelType(nullable: false, unique: ['bpc','productId','effectiveDate'])
+        fuelType(nullable: false, unique: ['bpc','productId','dateCreated'])
         description nullable: false, unique: false
         bpc nullable: false, unique: false
         price nullable: false, unique: false

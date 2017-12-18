@@ -154,12 +154,14 @@ class FuelPriceService {
             category.BPCList.each { bpc ->
                 def priceInfo = getPriceInfo(category.prod, bpc, fuelPriceMap)
                 if(priceInfo) {
+                    def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndDateCreated(category.name,priceInfo["Base Price Code"],category.prod,(new Date() - 1))
                     rows << [
                             bpc:priceInfo["Base Price Code"],
                             description:priceInfo.description,
                             price:priceInfo["Price Per Unit"],
                             effectiveDate:priceInfo["Effective Date"],
-                            productId:category.prod
+                            productId:category.prod,
+                            oldPrice:oldFuelPrice?.price ?: 0
                     ]
                 }
             }
