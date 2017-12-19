@@ -95,7 +95,8 @@ class FuelPriceService {
 
     def addTodaysFuelPrices() {
         def fuelPrices = getFuelPrices()
-
+        def todaysDate = new Date()
+        todaysDate.clearTime()
         fuelPrices.each { fuelType ->
             fuelType.rows.each { price ->
                 def fuelPrice = new FuelPrice()
@@ -105,6 +106,7 @@ class FuelPriceService {
                 fuelPrice.price = price.price.toFloat()
                 fuelPrice.productId = price.productId.toInteger()
                 fuelPrice.effectiveDate = new Date(price.effectiveDate)
+                fuelPrice.createdDate = todaysDate
                 fuelPrice.save()
             }
         }
@@ -122,6 +124,7 @@ class FuelPriceService {
                 dtn.price = supplier.price.toFloat()
                 dtn.productId = dtnPrice.product
                 dtn.effectiveDate = todaysDate
+                dtn.createdDate = todaysDate
                 dtn.save()
             }
         }
@@ -154,7 +157,8 @@ class FuelPriceService {
             category.BPCList.each { bpc ->
                 def priceInfo = getPriceInfo(category.prod, bpc, fuelPriceMap)
                 if(priceInfo) {
-                    def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndDateCreated(category.name,priceInfo["Base Price Code"],category.prod,(new Date() - 1))
+                    def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndCreatedDate(category.name,priceInfo["Base Price Code"],category.prod,(new Date() - 1).clearTime())
+                    println oldFuelPrice
                     rows << [
                             bpc:priceInfo["Base Price Code"],
                             description:priceInfo.description,

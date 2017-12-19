@@ -7,7 +7,7 @@ class DtnPrice {
     Float price
     Integer productId
     Date effectiveDate
-    Date dateCreated
+    Date createdDate
 
 
     static constraints = {
@@ -16,5 +16,6 @@ class DtnPrice {
         price nullable: false, unique: false
         productId nullable: false, unique: false
         effectiveDate nullable: false, unique: false
+        createdDate nullable: false, unique: false
     }
 }

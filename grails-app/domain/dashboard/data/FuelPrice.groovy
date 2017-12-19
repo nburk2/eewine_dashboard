@@ -8,16 +8,16 @@ class FuelPrice {
     Float price
     Integer productId
     Date effectiveDate
-    Date dateCreated
+    Date createdDate
 
 
     static constraints = {
-        fuelType(nullable: false, unique: ['bpc','productId','dateCreated'])
+        fuelType(nullable: false, unique: ['bpc','productId','createdDate'])
         description nullable: false, unique: false
         bpc nullable: false, unique: false
         price nullable: false, unique: false
         productId nullable: false, unique: false
         effectiveDate nullable: false, unique: false
-
+        createdDate nullable: false, unique: false
     }
 }
