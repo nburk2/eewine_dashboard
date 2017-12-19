@@ -53,7 +53,7 @@ class FuelPriceService {
 
         ExcelBuilder.output(new FileOutputStream(file)) {
             sheet([width:12]) {
-                row("DTN Prices", new Date() + 1)
+                row("DTN Prices", new Date())
                 row("Description", "Conoco Cont.", "Conoco", "Sunoco")
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
