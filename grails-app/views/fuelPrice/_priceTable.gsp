@@ -31,6 +31,15 @@
                                     </td>
                                     <td>
                                         <b style="color:black">${row.price}</b>
+                                        <g:if test="${row.difference?.toString()?.contains("-")}">
+                                            <small class="text-danger"> ${row.difference}</small>
+                                        </g:if>
+                                        <g:elseif test="${row.difference?.toFloat() == 0 || !row.difference}">
+
+                                        </g:elseif>
+                                        <g:else>
+                                            <small class="text-success"> +${row.difference}</small>
+                                        </g:else>
                                     </td>
                                     <td>
                                         <b style="color:black">${row.effectiveDate}</b>

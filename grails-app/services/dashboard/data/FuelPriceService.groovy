@@ -158,14 +158,13 @@ class FuelPriceService {
                 def priceInfo = getPriceInfo(category.prod, bpc, fuelPriceMap)
                 if(priceInfo) {
                     def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndCreatedDate(category.name,priceInfo["Base Price Code"],category.prod,(new Date() - 1).clearTime())
-                    println oldFuelPrice
                     rows << [
                             bpc:priceInfo["Base Price Code"],
                             description:priceInfo.description,
                             price:priceInfo["Price Per Unit"],
                             effectiveDate:priceInfo["Effective Date"],
                             productId:category.prod,
-                            oldPrice:oldFuelPrice?.price ?: 0
+                            difference: priceInfo["Price Per Unit"].toFloat() - (oldFuelPrice?.price ?: priceInfo["Price Per Unit"].toFloat())
                     ]
                 }
             }
