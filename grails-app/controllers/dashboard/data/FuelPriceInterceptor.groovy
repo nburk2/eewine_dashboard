@@ -13,7 +13,7 @@ class FuelPriceInterceptor {
     }
 
     boolean before() {
-        if(request.getHeader("portal-api-key") != portalKey) {
+        if(request.getHeader("portal-api-key") == portalKey) {
             return true
         }
         false
