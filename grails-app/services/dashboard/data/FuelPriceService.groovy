@@ -164,7 +164,7 @@ class FuelPriceService {
                             price:priceInfo["Price Per Unit"],
                             effectiveDate:priceInfo["Effective Date"],
                             productId:category.prod,
-                            difference: priceInfo["Price Per Unit"].toFloat() - (oldFuelPrice?.price ?: priceInfo["Price Per Unit"].toFloat())
+                            difference: priceInfo["Price Per Unit"].toBigDecimal() - (oldFuelPrice?.price ?: priceInfo["Price Per Unit"].toBigDecimal())
                     ]
                 }
             }
