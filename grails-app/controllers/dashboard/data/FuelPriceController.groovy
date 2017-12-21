@@ -29,6 +29,8 @@ class FuelPriceController {
         File file2 = new File("dtnPrices.xlsx")
         fuelPriceService.uploadS3FileToPrint(file2)
         file2.delete()
+        flash.info = "Prints every half hour on the hour"
+        redirect(action:"fuelPrices")
     }
 
     @Secured(["permitAll"])

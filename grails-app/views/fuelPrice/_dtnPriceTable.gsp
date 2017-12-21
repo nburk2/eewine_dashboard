@@ -3,6 +3,7 @@
     <div class="x_content">
         <div class="x_title">
             <h2>DTN Prices - Today</h2>
+            <g:link action="printFuelPrices"><input class="btn btn-success pull-right" value="Print"></g:link>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
