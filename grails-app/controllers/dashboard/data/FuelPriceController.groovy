@@ -13,9 +13,20 @@ class FuelPriceController {
     def fuelPriceService
 
     def fuelPrices() {
-        def fuelPrices = fuelPriceService.getFuelPrices()
-        def dtnPrices = fuelPriceService.getDtnPrices()
-        [fuelPrices:fuelPrices, dtnPrices:dtnPrices]
+
+        def fuelPrices
+        def dtnPrices
+
+        Date priceDate = new Date()
+        if(params.priceDate) {
+            priceDate = params.getDate("priceDate")
+            fuelPrices = fuelPriceService.getFuelPricesByDate(priceDate)
+            dtnPrices = fuelPriceService.getDtnPricesByDate(priceDate)
+        } else {
+            fuelPrices = fuelPriceService.getFuelPrices()
+            dtnPrices = fuelPriceService.getDtnPrices()
+        }
+        [fuelPrices:fuelPrices, dtnPrices:dtnPrices, priceDate:priceDate]
     }
 
     @Secured(["permitAll"])

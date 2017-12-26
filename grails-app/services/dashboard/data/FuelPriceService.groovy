@@ -130,6 +130,50 @@ class FuelPriceService {
         }
     }
 
+    def getDtnPricesByDate(priceDate) {
+        def dtnMapping = dtnMapping()
+        def dtnPrices = []
+        dtnMapping.each { dtnProduct ->
+            def dtnInfo
+            def newSuppliers = []
+            dtnProduct.suppliers.each { supplier ->
+                dtnInfo = DtnPrice.findBySupplierAndProductIdAndEffectiveDate(supplier,dtnProduct.productId,priceDate)
+                def oldDtnPrice = DtnPrice.findBySupplierAndProductIdAndEffectiveDate(supplier,dtnProduct.productId,priceDate - 1)
+                newSuppliers << [name:supplier, price:dtnInfo.price, difference: (dtnInfo.price - (oldDtnPrice?.price ?: dtnInfo.price)).toString()]
+            }
+            dtnPrices << [product:dtnProduct.productId, description: dtnInfo?.description ?: "", supplier:newSuppliers]
+        }
+        dtnPrices
+    }
+
+    def getFuelPricesByDate(priceDate) {
+        def fuelMapping = fuelMapping()
+        def fuelPrices = []
+        fuelMapping.each { category ->
+            def rows = []
+            category.BPCList.each { bpc ->
+                def priceInfo = FuelPrice.findByProductIdAndBpcAndCreatedDate(category.prod, bpc, priceDate)
+                if(priceInfo) {
+                    def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndCreatedDate(category.name,priceInfo.bpc,category.prod,(priceDate - 1).clearTime())
+                    rows << [
+                            bpc:priceInfo.productId,
+                            description:priceInfo.description,
+                            price:priceInfo.price,
+                            effectiveDate:priceInfo.effectiveDate.format("MM/dd/YYYY"),
+                            productId:priceInfo.productId,
+                            difference: priceInfo.price.toBigDecimal() - (oldFuelPrice?.price?.toBigDecimal() ?: priceInfo.price.toBigDecimal())
+                    ]
+                }
+            }
+            fuelPrices << [
+                    name: category.name,
+                    rows: rows
+            ]
+
+        }
+        fuelPrices
+    }
+
     def getFuelPrices() {
         String fuelPriceSignedUrl = getFuelPriceFileUrl("documents/FuelPrices.csv")
         InputStream input = new URL(fuelPriceSignedUrl).openStream()
@@ -137,7 +181,7 @@ class FuelPriceService {
 
         def fuelPriceMap = csvToMap(reader)
 
-        def fuelPrices = mapFuelPrices(fuelPriceMap, priceMapping())
+        def fuelPrices = mapFuelPrices(fuelPriceMap, fuelMapping())
         fuelPrices
     }
 
@@ -150,9 +194,9 @@ class FuelPriceService {
         dtnObject
     }
 
-    def mapFuelPrices(fuelPriceMap, priceMapping) {
+    def mapFuelPrices(fuelPriceMap, fuelMapping) {
         def fuelPrices = []
-        priceMapping.each { category ->
+        fuelMapping.each { category ->
             def rows = []
             category.BPCList.each { bpc ->
                 def priceInfo = getPriceInfo(category.prod, bpc, fuelPriceMap)
@@ -203,7 +247,7 @@ class FuelPriceService {
         rows
     }
 
-    def priceMapping() {
+    def fuelMapping() {
         return  [
                     [
                             name:"On Road",
@@ -251,5 +295,43 @@ class FuelPriceService {
                             BPCList:["13","12","11","15"]
                     ]
                 ]
+    }
+
+    def dtnMapping() {
+        def suppliers = ["Conoco Contract","Conoco", "Sunoco", "BP", "Huguenot", "TPSI"]
+        return [
+                [
+                        productId: 3,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 5,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 7,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 8,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 9,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 17,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 18,
+                        suppliers: suppliers
+                ],
+                [
+                        productId: 19,
+                        suppliers: suppliers
+                ]
+        ]
     }
 }

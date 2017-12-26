@@ -2,8 +2,12 @@
 <div class="x_panel">
     <div class="x_content">
         <div class="x_title">
-            <h2>DTN Prices - Today</h2>
-            <g:link action="printFuelPrices"><input class="btn btn-success pull-right" value="Print"></g:link>
+            <h2 class="3rem">DTN Prices - Today <small class="invisible">--</small></h2>
+            <g:form action="fuelPrices">
+                <g:datePicker id="priceDate" name="priceDate" precision="day" relativeYears="[-3..1]" value="${priceDate}"/>
+                <input type="submit" class="btn btn-success" value="Update">
+                <g:link action="printFuelPrices"><input class="btn btn-info pull-right" value="Print"></g:link>
+            </g:form>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
