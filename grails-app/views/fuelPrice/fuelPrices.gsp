@@ -13,7 +13,7 @@
         <div class="clearfix"></div>
         <g:if test="${flash.info}">
             <div class="alert alert-info" role="alert">
-                <strong>Added to Print Que!</strong> Prints every half hour on the hour.
+                <strong>${flash.info}</strong>
             </div>
         </g:if>
 

@@ -13,11 +13,15 @@ class FuelPriceController {
     def fuelPriceService
 
     def fuelPrices() {
-
-        def fuelPrices
-        def dtnPrices
-
+        def fuelPrices = []
+        def dtnPrices = []
         Date priceDate = new Date()
+        if(params.priceDate && (FuelPrice.findByCreatedDate(params.getDate("priceDate")) == null)) {
+            priceDate = params.getDate("priceDate")
+            flash.info = "There is no stored data for this date"
+            return [fuelPrices:fuelPrices, dtnPrices:dtnPrices, priceDate:priceDate, ]
+        }
+
         if(params.priceDate) {
             priceDate = params.getDate("priceDate")
             fuelPrices = fuelPriceService.getFuelPricesByDate(priceDate)
