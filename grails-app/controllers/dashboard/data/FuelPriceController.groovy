@@ -19,7 +19,7 @@ class FuelPriceController {
         if(params.priceDate && (FuelPrice.findByCreatedDate(params.getDate("priceDate")) == null)) {
             priceDate = params.getDate("priceDate")
             flash.info = "There is no stored data for this date"
-            return [fuelPrices:fuelPrices, dtnPrices:dtnPrices, priceDate:priceDate, ]
+            return [fuelPrices:fuelPrices, dtnPrices:dtnPrices, priceDate:priceDate ]
         }
 
         if(params.priceDate) {
@@ -35,12 +35,16 @@ class FuelPriceController {
 
     @Secured(["permitAll"])
     def printFuelPrices() {
-        fuelPriceService.createFuelPriceExcel()
+        def date = null
+        if(params.priceDate) {
+            date = params.getDate("priceDate")
+        }
+        fuelPriceService.createFuelPriceExcel(date)
         File file1 = new File("fuelPrices.xlsx")
         fuelPriceService.uploadS3FileToPrint(file1)
         file1.delete()
 
-        fuelPriceService.createDtnPriceExcel()
+        fuelPriceService.createDtnPriceExcel(date)
         File file2 = new File("dtnPrices.xlsx")
         fuelPriceService.uploadS3FileToPrint(file2)
         file2.delete()

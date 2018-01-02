@@ -23,8 +23,13 @@ class FuelPriceService {
         return resp.json.signedUrl
     }
 
-    def createFuelPriceExcel() {
-        def fuelPrices = getFuelPrices()
+    def createFuelPriceExcel(date) {
+        def fuelPrices
+        if(date) {
+            fuelPrices = getFuelPricesByDate(date)
+        } else {
+            fuelPrices = getFuelPrices()
+        }
 
         File file = new File('fuelPrices.xlsx')
 
@@ -41,8 +46,13 @@ class FuelPriceService {
         }
     }
 
-    def createDtnPriceExcel() {
-        def dtnPrices = getDtnPrices()
+    def createDtnPriceExcel(date) {
+        def dtnPrices
+        if(date) {
+            dtnPrices = getDtnPricesByDate(date)
+        } else {
+            dtnPrices = getDtnPrices()
+        }
         File file = new File('dtnPrices.xlsx')
         def conocoContract = ""
         def conoco = ""
