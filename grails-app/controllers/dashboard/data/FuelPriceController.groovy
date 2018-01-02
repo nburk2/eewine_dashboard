@@ -48,7 +48,10 @@ class FuelPriceController {
         File file2 = new File("dtnPrices.xlsx")
         fuelPriceService.uploadS3FileToPrint(file2)
         file2.delete()
-        flash.info = "Prints every half hour on the hour"
+        flash.info = "Added to Print Que. Prints every half hour on the hour"
+        if(date) {
+            flash.info = "Price date for " + date + " added to Print Que. Prints every half hour on the hour"
+        }
         redirect(action:"fuelPrices")
     }
 
