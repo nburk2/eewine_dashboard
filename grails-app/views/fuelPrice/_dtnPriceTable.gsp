@@ -6,7 +6,7 @@
             <g:form action="fuelPrices">
                 <g:datePicker id="priceDate" name="priceDate" precision="day" relativeYears="[-3..1]" value="${priceDate}"/>
                 <input type="submit" class="btn btn-success" value="Update">
-                <g:link action="printFuelPrices"><input class="btn btn-info pull-right" value="Print"></g:link>
+                <g:actionSubmit class="btn btn-info pull-right" value="Print" action="printFuelPrices"/>
             </g:form>
             <div class="clearfix"></div>
         </div>

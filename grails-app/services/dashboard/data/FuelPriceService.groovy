@@ -51,6 +51,7 @@ class FuelPriceService {
         if(date) {
             dtnPrices = getDtnPricesByDate(date)
         } else {
+            date = new Date()
             dtnPrices = getDtnPrices()
         }
         File file = new File('dtnPrices.xlsx')
@@ -63,7 +64,7 @@ class FuelPriceService {
 
         ExcelBuilder.output(new FileOutputStream(file)) {
             sheet([width:12]) {
-                row("DTN Prices", new Date())
+                row("DTN Prices", date)
                 row("Description", "Conoco Cont.", "Conoco", "Sunoco")
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
@@ -149,7 +150,7 @@ class FuelPriceService {
             dtnProduct.suppliers.each { supplier ->
                 dtnInfo = DtnPrice.findBySupplierAndProductIdAndEffectiveDate(supplier,dtnProduct.productId,priceDate)
                 def oldDtnPrice = DtnPrice.findBySupplierAndProductIdAndEffectiveDate(supplier,dtnProduct.productId,priceDate - 1)
-                newSuppliers << [name:supplier, price:dtnInfo.price, difference: (dtnInfo.price?.toBigDecimal() - (oldDtnPrice?.price?.toBigDecimal() ?: dtnInfo.price.toBigDecimal())).toString()]
+                newSuppliers << [name:supplier, price:dtnInfo?.price, difference: (dtnInfo?.price?.toBigDecimal() - (oldDtnPrice?.price?.toBigDecimal() ?: dtnInfo?.price?.toBigDecimal())).toString()]
             }
             dtnPrices << [product:dtnProduct.productId, description: dtnInfo?.description ?: "", supplier:newSuppliers]
         }
