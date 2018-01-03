@@ -38,7 +38,7 @@ class FuelPriceService {
                 fuelPrices.each { fuelPrice ->
                     row(fuelPrice.name)
                     fuelPrice.rows.each { tempRow ->
-                        row(tempRow.bpc, tempRow.description,tempRow.price,tempRow.effectiveDate)
+                        row(tempRow.bpc, tempRow.description,tempRow.price.toBigDecimal(),tempRow.effectiveDate)
                     }
                     row()
                 }
@@ -85,11 +85,11 @@ class FuelPriceService {
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
                         switch(tempRow.name) {
-                            case "BP":bp = tempRow.price
+                            case "BP":bp = tempRow.price.toBigDecimal()
                                 break
-                            case "Huguenot":hug = tempRow.price
+                            case "Huguenot":hug = tempRow.price.toBigDecimal()
                                 break
-                            case "TPSI":tpsi = tempRow.price
+                            case "TPSI":tpsi = tempRow.price.toBigDecimal()
                                 break
                         }
                     }
