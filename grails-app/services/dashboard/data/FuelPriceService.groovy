@@ -278,7 +278,7 @@ class FuelPriceService {
                     [
                             name:"RFG Reg",
                             prod:"7",
-                            BPCList:["13","12","11","15"]
+                            BPCList:["14","13","12","11","15"]
                     ],
                     [
                             name:"RFG Mid",
