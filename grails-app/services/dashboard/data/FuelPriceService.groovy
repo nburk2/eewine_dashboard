@@ -69,11 +69,11 @@ class FuelPriceService {
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
                         switch(tempRow.name) {
-                            case "Conoco Contract":conocoContract = tempRow.price.toBigDecimal()
+                            case "Conoco Contract":conocoContract = tempRow.price
                                 break
-                            case "Conoco":conoco = tempRow.price.toBigDecimal()
+                            case "Conoco":conoco = tempRow.price
                                 break
-                            case "Sunoco":sunoco = tempRow.price.toBigDecimal()
+                            case "Sunoco":sunoco = tempRow.price
                                 break
                         }
                     }
@@ -85,11 +85,11 @@ class FuelPriceService {
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
                         switch(tempRow.name) {
-                            case "BP":bp = tempRow.price.toBigDecimal()
+                            case "BP":bp = tempRow.price
                                 break
-                            case "Huguenot":hug = tempRow.price.toBigDecimal()
+                            case "Huguenot":hug = tempRow.price
                                 break
-                            case "TPSI":tpsi = tempRow.price.toBigDecimal()
+                            case "TPSI":tpsi = tempRow.price
                                 break
                         }
                     }
