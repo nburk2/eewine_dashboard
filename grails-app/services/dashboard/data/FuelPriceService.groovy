@@ -167,7 +167,7 @@ class FuelPriceService {
                 if(priceInfo) {
                     def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndCreatedDate(category.name,priceInfo.bpc,category.prod,(priceDate - 1).clearTime())
                     rows << [
-                            bpc:priceInfo.productId,
+                            bpc:priceInfo.bpc,
                             description:priceInfo.description,
                             price:priceInfo.price,
                             effectiveDate:priceInfo.effectiveDate.format("MM/dd/YYYY"),
