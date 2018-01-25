@@ -35,7 +35,7 @@ class FuelPriceController {
 
     @Secured(["permitAll"])
     def printFuelPrices() {
-        def date = null
+        def date = new Date() + 1
         if(params.priceDate) {
             date = params.getDate("priceDate")
         }
