@@ -38,7 +38,7 @@ class FuelPriceService {
                 fuelPrices.each { fuelPrice ->
                     row(fuelPrice.name)
                     fuelPrice.rows.each { tempRow ->
-                        row(tempRow.bpc, tempRow.description,tempRow.price,tempRow.effectiveDate)
+                        row(tempRow.bpc, tempRow.description,"${tempRow.price.toBigDecimal()}",tempRow.effectiveDate)
                     }
                     row()
                 }
@@ -69,11 +69,11 @@ class FuelPriceService {
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
                         switch(tempRow.name) {
-                            case "Conoco Contract":conocoContract = tempRow.price.toBigDecimal()
+                            case "Conoco Contract":conocoContract = "${tempRow.price.toBigDecimal()}"
                                 break
-                            case "Conoco":conoco = tempRow.price.toBigDecimal()
+                            case "Conoco":conoco = "${tempRow.price.toBigDecimal()}"
                                 break
-                            case "Sunoco":sunoco = tempRow.price.toBigDecimal()
+                            case "Sunoco":sunoco = "${tempRow.price.toBigDecimal()}"
                                 break
                         }
                     }
@@ -85,11 +85,11 @@ class FuelPriceService {
                 dtnPrices.each { dtnPrice ->
                     dtnPrice.supplier.each { tempRow ->
                         switch(tempRow.name) {
-                            case "BP":bp = tempRow.price.toBigDecimal()
+                            case "BP":bp = "${tempRow.price.toBigDecimal()}"
                                 break
-                            case "Huguenot":hug = tempRow.price.toBigDecimal()
+                            case "Huguenot":hug = "${tempRow.price.toBigDecimal()}"
                                 break
-                            case "TPSI":tpsi = tempRow.price.toBigDecimal()
+                            case "TPSI":tpsi = "${tempRow.price.toBigDecimal()}"
                                 break
                         }
                     }
