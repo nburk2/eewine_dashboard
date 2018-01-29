@@ -86,6 +86,14 @@ class DriverController {
             notFound()
             return
         }
+        def driverAccounts = DriverAccount.findAllByDriver(driver)
+        driverAccounts.each { driverAccount ->
+            driverAccount.delete()
+        }
+        def driverTrucks = DriverTruck.findAllByDriver(driver)
+        driverTrucks.each { driverTruck ->
+            driverTruck.delete()
+        }
         def driverName = driver.firstName
         driver.delete(flush: true)
 
