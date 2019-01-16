@@ -263,7 +263,7 @@ class FuelPriceService {
                     [
                             name:"On Road",
                             prod:"3",
-                            BPCList:["14","7","13","12","11","15"]
+                            BPCList:["14","7","8","13","12","11","15"]
                     ],
                     [
                             name:"Off Road",

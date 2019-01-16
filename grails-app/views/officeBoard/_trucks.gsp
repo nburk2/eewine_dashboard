@@ -40,41 +40,41 @@
                             <th class="dashboard"><g:link action="show" id="${truck.id}">${truck.number}</g:link></th>
                             <th class="dashboard">${truck.modelYear}</th>
                             <g:if test="${truck?.tankVKExpDate?.year == (new java.util.Date()).year && truck?.tankVKExpDate?.month == (new java.util.Date()).month || (truck?.tankVKExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${truck.tankVKExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-danger">${truck.tankVKExpDate?.format("MM/yy")}</th>
                             </g:if>
                             <g:elseif test="${truck?.tankVKExpDate?.year == (new java.util.Date()).year && truck?.tankVKExpDate?.month <= (new java.util.Date()).month + 2 || truck?.tankVKExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.tankVKExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${truck.tankVKExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${truck.tankVKExpDate?.format("MM/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${truck.tankVKExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard">${truck.tankVKExpDate?.format("MM/yy")}</th>
                             </g:else>
                             <g:if test="${truck?.tankIPExpDate?.year == (new java.util.Date()).year && truck?.tankIPExpDate?.month == (new java.util.Date()).month || (truck?.tankIPExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${truck.tankIPExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-danger">${truck.tankIPExpDate?.format("MM/yy")}</th>
                             </g:if>
                             <g:elseif test="${truck?.tankIPExpDate?.year == (new java.util.Date()).year && truck?.tankIPExpDate?.month <= (new java.util.Date()).month + 2 || truck?.tankIPExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.tankIPExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${truck.tankIPExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${truck.tankIPExpDate?.format("MM/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${truck.tankIPExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard">${truck.tankIPExpDate?.format("MM/yy")}</th>
                             </g:else>
                             <g:if test="${truck?.stateInspectionExpDate?.year == (new java.util.Date()).year && truck?.stateInspectionExpDate?.month == (new java.util.Date()).month || (truck?.stateInspectionExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${truck.stateInspectionExpDate.format("MM/YY")}</th>
+                                <th class="dashboard alert-danger">${truck.stateInspectionExpDate.format("MM/yy")}</th>
                             </g:if>
                             <g:elseif test="${truck?.stateInspectionExpDate?.year == (new java.util.Date()).year && truck?.stateInspectionExpDate?.month <= (new java.util.Date()).month + 2 || truck?.stateInspectionExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.stateInspectionExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${truck.stateInspectionExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${truck.stateInspectionExpDate?.format("MM/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${truck.stateInspectionExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard">${truck.stateInspectionExpDate?.format("MM/yy")}</th>
                             </g:else>
                             %{--airport--}%
                             <g:if test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month == (new java.util.Date()).month || (truck?.airportExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${truck.stateInspectionExpDate.format("MM/YY")}</th>
+                                <th class="dashboard alert-danger">${truck.stateInspectionExpDate.format("MM/yy")}</th>
                             </g:if>
                             <g:elseif test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month <= (new java.util.Date()).month + 2 || truck?.airportExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.airportExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${truck.airportExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${truck.airportExpDate?.format("MM/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${truck.airportExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard">${truck.airportExpDate?.format("MM/yy")}</th>
                             </g:else>
                         </tr>
                     </g:each>

@@ -37,31 +37,31 @@
                         <tr>
                             <th class="dashboard">${driver.lastName}</th>
                             <g:if test="${driver?.medCardExpDate?.year == (new java.util.Date()).year && driver?.medCardExpDate?.month == (new java.util.Date()).month || (driver?.medCardExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${driver.medCardExpDate?.format("MM/dd/YY")}</th>
+                                <th class="dashboard alert-danger">${driver.medCardExpDate?.format("MM/dd/yy")}</th>
                             </g:if>
                             <g:elseif test="${driver?.medCardExpDate?.year == (new java.util.Date()).year && driver?.medCardExpDate?.month <= (new java.util.Date()).month + 2 || driver?.medCardExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - driver?.medCardExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${driver.medCardExpDate?.format("MM/dd/YY")}</th>
+                                <th class="dashboard alert-warning">${driver.medCardExpDate?.format("MM/dd/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${driver.medCardExpDate?.format("MM/dd/YY")}</th>
+                                <th class="dashboard">${driver.medCardExpDate?.format("MM/dd/yy")}</th>
                             </g:else>
                             <g:if test="${driver?.driversLicenseExpDate?.year == (new java.util.Date()).year && driver?.driversLicenseExpDate?.month == (new java.util.Date()).month || (driver?.driversLicenseExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${driver.driversLicenseExpDate?.format("MM/dd/YYYY")}</th>
+                                <th class="dashboard alert-danger">${driver.driversLicenseExpDate?.format("MM/dd/yyyy")}</th>
                             </g:if>
                             <g:elseif test="${driver?.driversLicenseExpDate?.year == (new java.util.Date()).year && driver?.driversLicenseExpDate?.month <= (new java.util.Date()).month + 2 || driver?.driversLicenseExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - driver?.driversLicenseExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${driver.driversLicenseExpDate?.format("MM/dd/YY")}</th>
+                                <th class="dashboard alert-warning">${driver.driversLicenseExpDate?.format("MM/dd/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${driver.driversLicenseExpDate?.format("MM/dd/YYYY")}</th>
+                                <th class="dashboard">${driver.driversLicenseExpDate?.format("MM/dd/yyyy")}</th>
                             </g:else>
                             <g:if test="${driver?.hazmatExpDate?.year == (new java.util.Date()).year && driver?.hazmatExpDate?.month == (new java.util.Date()).month || (driver?.hazmatExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${driver.hazmatExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-danger">${driver.hazmatExpDate?.format("MM/yy")}</th>
                             </g:if>
                             <g:elseif test="${driver?.hazmatExpDate?.year == (new java.util.Date()).year && driver?.hazmatExpDate?.month <= (new java.util.Date()).month + 2 || driver?.hazmatExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - driver?.hazmatExpDate?.month) > 9)}">
-                                <th class="dashboard alert-warning">${driver.hazmatExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard alert-warning">${driver.hazmatExpDate?.format("MM/yy")}</th>
                             </g:elseif>
                             <g:else>
-                                <th class="dashboard">${driver.hazmatExpDate?.format("MM/YY")}</th>
+                                <th class="dashboard">${driver.hazmatExpDate?.format("MM/yy")}</th>
                             </g:else>
                         </tr>
                     </g:each>
