@@ -17,12 +17,19 @@
                 <tr>
                     <th>Product</th>
                     <th>Description</th>
-                    <th>Conoco Contract</th>
-                    <th>Conoco</th>
-                    <th>Sunoco</th>
-                    <th>BP</th>
-                    <th>Huguenot</th>
-                    <th>TPSI</th>
+                    %{--<g:each in="${dtnPrices}" var="row">--}%
+                        <g:each in="${dtnPrices[0].supplier}" var="supplier">
+                            <g:if test="${supplier.name != "TPSI"}">
+                                <th>${supplier.name}</th>
+                            </g:if>
+                        </g:each>
+                    %{--</g:each>--}%
+                    %{--<th>Conoco Contract</th>--}%
+                    %{--<th>Conoco</th>--}%
+                    %{--<th>Sunoco</th>--}%
+                    %{--<th>BP</th>--}%
+                    %{--<th>Huguenot</th>--}%
+                    %{--<th>TPSI</th>--}%
                 </tr>
                 </thead>
                 <tbody>
@@ -35,20 +42,22 @@
                             <b style="color:black">${row.description}</b>
                         </td>
                         <g:each in="${row.supplier}" var="supplier">
-                            <td>
-                                <b style="color:black">
-                                    ${supplier.price}
-                                    <g:if test="${supplier.difference?.contains("-")}">
-                                        <small class="text-danger"> ${supplier.difference.indexOf(".") < 0 ? supplier.difference : supplier.difference.replaceAll("0*\$", "").replaceAll("\\.\$", "")}</small>
-                                    </g:if>
-                                    <g:elseif test="${supplier.difference?.toFloat() == 0 || !supplier.difference}">
+                            <g:if test="${supplier.name != "TPSI"}">
+                                <td>
+                                    <b style="color:black">
+                                        ${supplier.price}
+                                        <g:if test="${supplier.difference?.contains("-")}">
+                                            <small class="text-danger"> ${supplier.difference.indexOf(".") < 0 ? supplier.difference : supplier.difference.replaceAll("0*\$", "").replaceAll("\\.\$", "")}</small>
+                                        </g:if>
+                                        <g:elseif test="${supplier.difference?.toFloat() == 0 || !supplier.difference}">
 
-                                    </g:elseif>
-                                    <g:else>
-                                        <small class="text-success"> +${supplier.difference.toFloat()}</small>
-                                    </g:else>
-                                </b>
-                            </td>
+                                        </g:elseif>
+                                        <g:else>
+                                            <small class="text-success"> +${supplier.difference.toFloat()}</small>
+                                        </g:else>
+                                    </b>
+                                </td>
+                            </g:if>
                         </g:each>
                     </tr>
                 </g:each>
