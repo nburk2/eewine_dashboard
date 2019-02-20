@@ -19,9 +19,18 @@
                     <th>Description</th>
                     %{--<g:each in="${dtnPrices}" var="row">--}%
                         <g:each in="${dtnPrices[0].supplier}" var="supplier">
-                            <g:if test="${supplier.name != "TPSI"}">
+                            <g:if test="${supplier.name != "TPSI" && supplier.name != "US Oil" && supplier.name != "BUCKEYE" && supplier.name != "Citgo"}">
                                 <th>${supplier.name}</th>
                             </g:if>
+                            <g:elseif test="${supplier.name == "US Oil"}">
+                                <th>US Oil/Fred</th>
+                            </g:elseif>
+                            <g:elseif test="${supplier.name == "BUCKEYE"}">
+                                <th>Mansfield</th>
+                            </g:elseif>
+                            <g:elseif test="${supplier.name == "Citgo"}">
+                                <th>US Oil/Citgo</th>
+                            </g:elseif>
                         </g:each>
                     %{--</g:each>--}%
                     %{--<th>Conoco Contract</th>--}%
