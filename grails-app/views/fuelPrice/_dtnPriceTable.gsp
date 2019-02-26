@@ -18,7 +18,7 @@
                     <th>Product</th>
                     <th>Description</th>
                     %{--<g:each in="${dtnPrices}" var="row">--}%
-                        <g:each in="${dtnPrices[0].supplier}" var="supplier">
+                        <g:each in="${dtnPrices[0]?.supplier}" var="supplier">
                             <g:if test="${supplier.name != "TPSI" && supplier.name != "US Oil" && supplier.name != "BUCKEYE" && supplier.name != "Citgo"}">
                                 <th>${supplier.name}</th>
                             </g:if>
@@ -56,13 +56,13 @@
                                     <b style="color:black">
                                         ${supplier.price}
                                         <g:if test="${supplier.difference?.contains("-")}">
-                                            <small class="text-danger"> ${supplier.difference.indexOf(".") < 0 ? supplier.difference : supplier.difference.replaceAll("0*\$", "").replaceAll("\\.\$", "")}</small>
+                                            <small class="text-danger"> ${supplier.difference?.indexOf(".") < 0 ? supplier.difference : supplier.difference?.replaceAll("0*\$", "")?.replaceAll("\\.\$", "")}</small>
                                         </g:if>
                                         <g:elseif test="${supplier.difference?.toFloat() == 0 || !supplier.difference}">
 
                                         </g:elseif>
                                         <g:else>
-                                            <small class="text-success"> +${supplier.difference.toFloat()}</small>
+                                            <small class="text-success"> +${supplier.difference?.toFloat()}</small>
                                         </g:else>
                                     </b>
                                 </td>
