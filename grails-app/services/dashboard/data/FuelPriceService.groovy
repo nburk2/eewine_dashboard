@@ -150,7 +150,7 @@ class FuelPriceService {
             dtnProduct.suppliers.each { supplier ->
                 dtnInfo = DtnPrice.findBySupplierAndProductIdAndEffectiveDate(supplier,dtnProduct.productId,priceDate)
                 def oldDtnPrice = DtnPrice.findBySupplierAndProductIdAndEffectiveDate(supplier,dtnProduct.productId,priceDate - 1)
-                newSuppliers << [name:supplier, price:dtnInfo?.price, difference: (dtnInfo?.price?.toBigDecimal() - (oldDtnPrice?.price?.toBigDecimal() ?: dtnInfo?.price?.toBigDecimal()))?.toString()]
+                newSuppliers << [name:supplier, price:dtnInfo?.price, difference: (dtnInfo?.price?.toBigDecimal() ?: 0 - (oldDtnPrice?.price?.toBigDecimal() ?: (dtnInfo?.price?.toBigDecimal()) ?: 0))?.toString()]
             }
             dtnPrices << [product:dtnProduct.productId, description: dtnInfo?.description ?: "", supplier:newSuppliers]
         }
