@@ -35,6 +35,7 @@ class AccountsController {
 
     def addAccounts() {
         def accounts = request.JSON.accounts
+        println(Accounts.list().size())
         accounts.each { account ->
             def newAccount = new Accounts()
             newAccount.name = account.firstName + " " + account.lastName
@@ -46,9 +47,10 @@ class AccountsController {
 
         def responseData = [status:200, message:"added new accounts"]
 
-        render(contentType: "application/json") {
-            responseData
-        }
+//        render(contentType: "application/json") {
+//            responseData
+//        }
+        respond (status:200, accounts:accounts)
     }
 
     def editAccount() {

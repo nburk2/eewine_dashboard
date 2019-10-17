@@ -1,0 +1,7 @@
+
+
+model {
+    List<Map> accounts
+}
+
+json g.render(accounts)
