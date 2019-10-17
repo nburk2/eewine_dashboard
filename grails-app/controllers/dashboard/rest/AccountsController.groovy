@@ -3,11 +3,12 @@ package dashboard.rest
 import dashboard.fuelaccounts.Accounts
 
 import com.bertramlabs.plugins.SSLRequired
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured(["permitAll"])
-@SSLRequired
+//@SSLRequired
 @Transactional
 class AccountsController {
 
@@ -43,7 +44,9 @@ class AccountsController {
 
         }
 
-        respond([status:200, message:"added new accounts"])
+        def responseData = [status:200, message:"added new accounts"]
+
+        render responseData as JSON
     }
 
     def editAccount() {
