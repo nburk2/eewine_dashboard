@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured(["permitAll"])
-//@SSLRequired
+@SSLRequired
 @Transactional
 class AccountsController {
 
@@ -46,7 +46,9 @@ class AccountsController {
 
         def responseData = [status:200, message:"added new accounts"]
 
-        render responseData as JSON
+        render(contentType: "application/json") {
+            responseData
+        }
     }
 
     def editAccount() {

@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured(["permitAll"])
-//@SSLRequired
+@SSLRequired
 @Transactional
 class TanksController {
 
