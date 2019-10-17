@@ -8,10 +8,10 @@ import grails.transaction.Transactional
 
 @Secured(["permitAll"])
 @SSLRequired
-//@Transactional(readOnly = true)
+@Transactional
 class AccountsController {
 
-    static allowedMethods = [getAccounts:"POST",addAccounts: "POST"]
+    static allowedMethods = [getAccounts:"POST",addAccounts: "POST",editAccount:"POST",findByBillingType:"POST"]
 
     def index() {
 

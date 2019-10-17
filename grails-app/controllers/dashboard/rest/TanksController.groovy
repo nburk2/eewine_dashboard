@@ -9,10 +9,10 @@ import grails.transaction.Transactional
 
 @Secured(["permitAll"])
 @SSLRequired
-//@Transactional(readOnly = true)
+@Transactional
 class TanksController {
 
-    static allowedMethods = [getTanks:"POST",addTanks: "POST"]
+    static allowedMethods = [getTanks:"POST",addTanks: "POST",editTank:"POST"]
 
     def index() { }
 
