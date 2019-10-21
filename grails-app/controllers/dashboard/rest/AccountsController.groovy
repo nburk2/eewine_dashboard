@@ -75,7 +75,9 @@ class AccountsController {
         newAccount.comdataMileage = account.comdataMileage.toBoolean()
         newAccount.save(flush:true, failOnError: true)
 
-        respond([status:200, message:"updated account: " + newAccount.name])
+        Map result = [status:200, message:"updated account: " + newAccount.name]
+
+        render(view:"editAccount",model:[result:result])
     }
 
     def findByBillingType() {

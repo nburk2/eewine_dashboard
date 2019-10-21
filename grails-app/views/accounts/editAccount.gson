@@ -1,0 +1,10 @@
+
+
+model {
+    Map result
+}
+
+json {
+    status result.status
+    message result.message
+}
