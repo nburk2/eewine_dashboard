@@ -45,12 +45,9 @@ class AccountsController {
 
         }
 
-        def responseData = [status:200, message:"added new accounts"]
+        Map result = [status:200, message:"imported all accounts"]
 
-//        render(contentType: "application/json") {
-//            responseData
-//        }
-        respond (status:200, accounts:accounts)
+        render(view:"addAccounts", model:[result:result])
     }
 
     def editAccount() {

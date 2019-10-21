@@ -1,7 +1,10 @@
 
 
 model {
-    List<Map> accounts
+    Map result
 }
 
-json g.render(accounts)
+json {
+    status result.status
+    message result.message
+}
