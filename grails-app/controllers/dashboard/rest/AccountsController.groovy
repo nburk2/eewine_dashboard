@@ -29,7 +29,10 @@ class AccountsController {
         } else {
             accounts = Accounts.findAllBydiscontinued(false,[sort:"number"])
         }
-        respond([status:200, accounts:accounts])
+
+        def tanks = accounts.tanks
+
+        respond([status:200, tanks:tanks, accounts:accounts, accountNumbers:accounts.number])
 
     }
 
