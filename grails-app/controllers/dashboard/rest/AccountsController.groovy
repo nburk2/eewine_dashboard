@@ -27,7 +27,7 @@ class AccountsController {
             def numberList = request.JSON?.accountList?.number ?: []
             accounts = Accounts.findAllByNumberInList(numberList,[sort:"number"])
         } else {
-            accounts = Accounts.findAllByTerminated(false,[sort:"number"])
+            accounts = Accounts.findAllBydiscontinued(false,[sort:"number"])
         }
         respond([status:200, accounts:accounts])
 
