@@ -4,23 +4,23 @@ class Accounts {
 
     String name
     Integer number
-    boolean terminated = false
+    boolean terminated
     static hasMany = [tanks:Tanks]
 
-    boolean standard = false
-    boolean mansfield = false
-    boolean mansfieldTank = false
-    boolean fuelAll = false
-    boolean standardWeekly = false
-    boolean standardBiWeekly = false
-    boolean standardMonthly = false
-    boolean reston = false
-    boolean specialExport = false
-    boolean phoenix = false
-    boolean mclean = false
-    boolean worldFuel = false
-    boolean comdata = false
-    boolean comdataMileage = false
+    boolean standard
+    boolean mansfield
+    boolean mansfieldTank
+    boolean fuelAll
+    boolean standardWeekly
+    boolean standardBiWeekly
+    boolean standardMonthly
+    boolean reston
+    boolean specialExport
+    boolean phoenix
+    boolean mclean
+    boolean worldFuel
+    boolean comdata
+    boolean comdataMileage
 
 
 
@@ -28,9 +28,5 @@ class Accounts {
 
         name            nullable: false, maxSize: 255, unique: false
         number          nullable: false, unique: true
-        terminated()
-
-        standard()
-        mansfield()
     }
 }

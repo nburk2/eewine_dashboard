@@ -40,6 +40,21 @@ class AccountsController {
             def newAccount = new Accounts()
             newAccount.name = account.firstName + " " + account.lastName
             newAccount.number = account.number
+            newAccount.terminated = false
+            newAccount.standard = false
+            newAccount.mansfield = false
+            newAccount.mansfieldTank = false
+            newAccount.fuelAll = false
+            newAccount.standardWeekly = false
+            newAccount.standardBiWeekly = false
+            newAccount.standardMonthly = false
+            newAccount.reston = false
+            newAccount.specialExport = false
+            newAccount.phoenix = false
+            newAccount.mclean = false
+            newAccount.worldFuel = false
+            newAccount.comdata = false
+            newAccount.comdataMileage = false
 
             newAccount.save()
 
