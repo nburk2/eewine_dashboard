@@ -4,7 +4,7 @@ class Accounts {
 
     String name
     Integer number
-    boolean terminated
+    boolean discontinued
     static hasMany = [tanks:Tanks]
 
     boolean standard

@@ -40,7 +40,7 @@ class AccountsController {
             def newAccount = new Accounts()
             newAccount.name = account.firstName + " " + account.lastName
             newAccount.number = account.number
-            newAccount.terminated = false
+            newAccount.discontinued = false
             newAccount.standard = false
             newAccount.mansfield = false
             newAccount.mansfieldTank = false
