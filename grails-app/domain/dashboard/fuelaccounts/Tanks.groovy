@@ -5,16 +5,14 @@ class Tanks {
 //    Accounts account
     static belongsTo = [account: Accounts]
     int tankNum
-    //All
-//    String poNumber // change to cardNumber, only comdata uses
 
-    //mansfield
+    //mansfield & fuel All
     String customerNumber = ""
     String shipTo = ""
     String supplierCode = ""
 
-    //special export
-    String cardNumber = "" //rename to siteId
+    //special export & comdata
+    String cardNumber = "" //rename to siteId from world fuel or keep it as cardNumber
 
     //  World fuel
     String billTo = ""
