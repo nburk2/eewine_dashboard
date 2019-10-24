@@ -25,7 +25,12 @@ class AccountsController {
             accounts = Accounts.findAllByNumber(num,[sort:"number"])
         } else if(request.JSON?.addFilter == "true") {
             def numberList = request.JSON?.accountList?.number ?: []
-            accounts = Accounts.findAllByNumberInList(numberList,[sort:"number"])
+            if(request.JSON?.sendEmail) {
+                boolean sendEmail = request.JSON?.sendEmail?.toBoolean()
+                accounts = Accounts.findAllByNumberInListAndSendEmail(numberList,sendEmail,[sort:"number"])
+            } else {
+                accounts = Accounts.findAllByNumberInList(numberList,[sort:"number"])
+            }
         } else {
             accounts = Accounts.findAllBydiscontinued(false,[sort:"number"])
         }
