@@ -58,6 +58,7 @@ class AccountsController {
             newAccount.worldFuel = false
             newAccount.comdata = false
             newAccount.comdataMileage = false
+            newAccount.sendEmail = false
 
             newAccount.save()
 
@@ -74,6 +75,7 @@ class AccountsController {
 
 //        newAccount.name = account.name - don't change name
 //        newAccount.number = account.number - don't change number
+        newAccount.sendEmail = account.sendEmail.toBoolean()
         newAccount.standard = account.standard.toBoolean()
         newAccount.mansfield = account.mansfield.toBoolean()
         newAccount.mansfieldTank = account.mansfieldTank.toBoolean()

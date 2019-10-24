@@ -5,6 +5,7 @@ class Accounts {
     String name
     Integer number
     boolean discontinued
+    boolean sendEmail
     static hasMany = [tanks:Tanks]
 
     boolean standard
@@ -28,5 +29,9 @@ class Accounts {
 
         name            nullable: false, maxSize: 255, unique: false
         number          nullable: false, unique: true
+    }
+
+    static mapping = {
+        sendEmail defaultValue: false
     }
 }
