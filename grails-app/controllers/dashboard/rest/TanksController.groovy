@@ -46,6 +46,8 @@ class TanksController {
         def account = Accounts.findById(tank.accountId.toInteger())
         def newTank = Tanks.findByTankNumAndAccount(tank.tankNum.toInteger(), account)
 
+        newTank.poNumber = tank.poNumber
+
         //world fuel
         if(tank.billTo || tank.siteId) {
             newTank.billTo = tank.billTo

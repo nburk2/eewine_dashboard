@@ -6,6 +6,8 @@ class Tanks {
     static belongsTo = [account: Accounts]
     int tankNum
 
+    String poNumber
+
     //mansfield & fuel All
     String customerNumber = ""
     String shipTo = ""
