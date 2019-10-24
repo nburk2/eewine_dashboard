@@ -6,7 +6,7 @@ class Tanks {
     static belongsTo = [account: Accounts]
     int tankNum
 
-    String poNumber
+    String poNumber = ""
 
     //mansfield & fuel All
     String customerNumber = ""
@@ -25,6 +25,7 @@ class Tanks {
     static constraints = {
         account nullable: false
         tankNum nullable: false, unique: ['account']
+        poNumber blank:true
         customerNumber blank: true
         shipTo blank: true
         supplierCode blank: true
