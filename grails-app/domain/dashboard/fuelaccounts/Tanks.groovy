@@ -8,16 +8,17 @@ class Tanks {
 
     String poNumber = ""
 
-    //mansfield & fuel All
+    //mansfield & fuel All & mansfieldTank
     String customerNumber = ""
     String shipTo = ""
     String supplierCode = ""
 
-    //special export & comdata
+    //comdata
     String cardNumber = "" //rename to siteId from world fuel or keep it as cardNumber
 
     //  World fuel
     String billTo = ""
+    // World fuel and special export
     String siteId = ""
 
 

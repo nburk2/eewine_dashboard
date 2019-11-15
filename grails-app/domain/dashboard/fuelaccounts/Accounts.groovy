@@ -6,6 +6,7 @@ class Accounts {
     Integer number
     boolean discontinued
     boolean sendEmail
+    boolean print
     static hasMany = [tanks:Tanks]
 
     boolean standard
@@ -33,5 +34,6 @@ class Accounts {
 
     static mapping = {
         sendEmail defaultValue: false
+        print defaultValue: false
     }
 }
