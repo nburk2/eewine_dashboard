@@ -9,6 +9,7 @@ class Accounts {
     boolean print
     static hasMany = [tanks:Tanks]
 
+    //invoice groups
     boolean standard
     boolean mansfield
     boolean mansfieldTank
@@ -24,6 +25,15 @@ class Accounts {
     boolean comdata
     boolean comdataMileage
 
+//    reporting groups
+    boolean weekly
+    boolean biWeekly
+    boolean monthly
+    boolean quarterly
+
+    boolean includePrice
+    boolean sendReportEmail
+    boolean printReport
 
 
     static constraints = {
@@ -35,5 +45,13 @@ class Accounts {
     static mapping = {
         sendEmail defaultValue: false
         print defaultValue: false
+
+        includePrice defaultValue: false
+        sendReportEmail defaultValue: false
+        printReport defaultValue: false
+        weekly defaultValue: false
+        biWeekly defaultValue: false
+        monthly defaultValue: false
+        quarterly defaultValue: false
     }
 }

@@ -104,6 +104,27 @@ class AccountsController {
         render(view:"editAccount",model:[result:result])
     }
 
+    def editAccountReport() {
+        def account = request.JSON.account
+        def newAccount = Accounts.findByNumber(account.number.toInteger())
+
+//        newAccount.name = account.name - don't change name
+//        newAccount.number = account.number - don't change number
+        newAccount.sendReportEmail = account.sendReportEmail.toBoolean()
+        newAccount.printReport = account.printReport.toBoolean()
+        newAccount.includePrice = account.standardWeekly.toBoolean()
+        newAccount.weekly = account.weekly.toBoolean()
+        newAccount.biWeekly = account.mansfield.toBoolean()
+        newAccount.monthly = account.mansfieldTank.toBoolean()
+        newAccount.quarterly = account.fuelAll.toBoolean()
+
+        newAccount.save(flush:true, failOnError: true)
+
+        Map result = [status:200, message:"updated account: " + newAccount.name]
+
+        render(view:"editAccount",model:[result:result])
+    }
+
     def findByBillingType() {
         def billingType = request.JSON.billingType
         def accounts = []
