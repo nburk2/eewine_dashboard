@@ -112,11 +112,11 @@ class AccountsController {
 //        newAccount.number = account.number - don't change number
         newAccount.sendReportEmail = account.sendReportEmail.toBoolean()
         newAccount.printReport = account.printReport.toBoolean()
-        newAccount.includePrice = account.standardWeekly.toBoolean()
+        newAccount.includePrice = account.includePrice.toBoolean()
         newAccount.weekly = account.weekly.toBoolean()
-        newAccount.biWeekly = account.mansfield.toBoolean()
-        newAccount.monthly = account.mansfieldTank.toBoolean()
-        newAccount.quarterly = account.fuelAll.toBoolean()
+        newAccount.biWeekly = account.biWeekly.toBoolean()
+        newAccount.monthly = account.monthly.toBoolean()
+        newAccount.quarterly = account.quarterly.toBoolean()
 
         newAccount.save(flush:true, failOnError: true)
 
