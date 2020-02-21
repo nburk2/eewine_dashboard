@@ -171,6 +171,18 @@ class AccountsController {
             case "comdataMileage":
                 accounts = Accounts.findAllByComdataMileage(true)
                 break
+            case "weekly":
+                accounts = Accounts.findAllByWeekly(true)
+                break
+            case "biWeekly":
+                accounts = Accounts.findAllByBiWeekly(true)
+                break
+            case "monthly":
+                accounts = Accounts.findAllByMonthly(true)
+                break
+            case "quarterly":
+                accounts = Accounts.findAllByQuarterly(true)
+                break
         }
 
         def tanks = accounts.tanks
