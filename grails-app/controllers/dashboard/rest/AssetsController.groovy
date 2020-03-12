@@ -8,6 +8,9 @@ class AssetsController {
     def index() { }
     def addAssets() {
         def assets = request.JSON.assets
+        println("here")
+        respond([status:200, message:assets])
+        return
         assets.each { asset ->
             def newAsset = new Assets()
             newAsset.assetId = asset.assetId
