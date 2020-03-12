@@ -16,7 +16,7 @@ class Asset {
         assetId nullable: false, unique: true
         barcode nullable: false, unique: ['account']
 
-        comdataCardNum blank:true
-        department blank: true
+        comdataCardNum nullable: true
+        department nullable: true
     }
 }

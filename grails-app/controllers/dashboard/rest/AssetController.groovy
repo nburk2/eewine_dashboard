@@ -19,6 +19,7 @@ class AssetController {
     def addAssets() {
 
         def assets = request.JSON.assets
+        respond([status:200, message:"added new accounts"])
 
         assets.each { asset ->
             def newAsset = new Asset()
