@@ -13,7 +13,7 @@ class AssetsController {
             newAsset.assetId = asset.assetId
             newAsset.barcode = asset.barcode
             newAsset.tankNum = asset.tankNum
-            newAsset.account = Accounts.findByNumber(asset.assetId.toInteger())
+            newAsset.account = Accounts.findByNumber(asset.accountNumber.toInteger())
 
             newAsset.save()
         }
