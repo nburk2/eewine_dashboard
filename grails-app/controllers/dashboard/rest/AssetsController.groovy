@@ -15,7 +15,11 @@ class AssetsController {
             newAsset.tankNum = asset.tankNum
             newAsset.account = Accounts.findByNumber(asset.accountNumber.toInteger())
 
-            newAsset.save()
+            if(newAsset.hasErrors()) {
+                respond([status:400, error:newAsset.errors])
+            }
+
+            newAsset.save(flush:true, failOnError: true)
         }
 
         respond([status:200, message:"added new accounts"])
