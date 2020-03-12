@@ -20,7 +20,6 @@ class AssetController {
 
         def assets = request.JSON.assets
 
-
         assets.each { asset ->
             def newAsset = new Asset()
             newAsset.assetId = asset.assetId
@@ -28,11 +27,10 @@ class AssetController {
             newAsset.tankNum = asset.tankNum
             newAsset.account = Accounts.findByNumber(asset.accountNumber.toInteger())
 
+            newAsset.save()
             if(newAsset.hasErrors()) {
                 respond([status:400, error:newAsset.errors])
             }
-
-            newAsset.save()
         }
 
         respond([status:200, message:"added new accounts"])
