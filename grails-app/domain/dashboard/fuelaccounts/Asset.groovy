@@ -1,6 +1,6 @@
 package dashboard.fuelaccounts
 
-class Assets {
+class Asset {
 
     static belongsTo = [account: Accounts]
     int assetId

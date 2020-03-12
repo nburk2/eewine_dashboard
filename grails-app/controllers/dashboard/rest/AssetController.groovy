@@ -1,28 +1,28 @@
 package dashboard.rest
 
-import com.bertramlabs.plugins.SSLRequired
 import dashboard.fuelaccounts.Accounts
-import dashboard.fuelaccounts.Assets
+import dashboard.fuelaccounts.Asset
+
+import com.bertramlabs.plugins.SSLRequired
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Secured(["permitAll"])
 @SSLRequired
 @Transactional
-class AssetsController {
+class AssetController {
 
     static allowedMethods = [getAssets: "POST",addAssets: "POST",editAsset:"POST"]
 
     def index() { }
 
     def addAssets() {
-        respond([status:200, message:"added new accounts"])
-        return
+
         def assets = request.JSON.assets
 
 
         assets.each { asset ->
-            def newAsset = new Assets()
+            def newAsset = new Asset()
             newAsset.assetId = asset.assetId
             newAsset.barcode = asset.barcode
             newAsset.tankNum = asset.tankNum
@@ -42,7 +42,7 @@ class AssetsController {
         int num = request.JSON.accountNumber.toInteger()
         int tankNum = request.JSON.tankNum.toInteger()
         Accounts account = Accounts.findByNumber(num)
-        def assets = Assets.findAllByAccountAndTankNum(account,tankNum,[sort:"barcode"])
+        def assets = Asset.findAllByAccountAndTankNum(account,tankNum,[sort:"barcode"])
 
         respond([status:200, account:account, assets:assets])
     }
@@ -50,7 +50,7 @@ class AssetsController {
     def editAsset() {
         def asset = request.JSON.asset
         def account = Accounts.findById(asset.accountId.toInteger())
-        def newAsset = Assets.findByAssetIdAndAccount(asset.assetId.toInteger(), account)
+        def newAsset = Asset.findByAssetIdAndAccount(asset.assetId.toInteger(), account)
 
         if(asset.comdataCardNum) {
             newAsset.comdataCardNum = asset.comdataCardNum
