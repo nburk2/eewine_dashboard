@@ -14,8 +14,12 @@ class AssetsController {
     static allowedMethods = [getAssets: "POST",addAssets: "POST",editAsset:"POST"]
 
     def index() { }
+
     def addAssets() {
+        respond([status:200, message:"added new accounts"])
+        return
         def assets = request.JSON.assets
+
 
         assets.each { asset ->
             def newAsset = new Assets()
@@ -24,11 +28,11 @@ class AssetsController {
             newAsset.tankNum = asset.tankNum
             newAsset.account = Accounts.findByNumber(asset.accountNumber.toInteger())
 
-            if(newAsset.hasErrors()) {
-                respond([status:400, error:newAsset.errors])
-            }
+//            if(newAsset.hasErrors()) {
+//                respond([status:400, error:newAsset.errors])
+//            }
 
-            newAsset.save(flush:true, failOnError: true)
+            newAsset.save()
         }
 
         respond([status:200, message:"added new accounts"])
