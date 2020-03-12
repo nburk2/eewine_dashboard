@@ -28,9 +28,9 @@ class AssetController {
             newAsset.tankNum = asset.tankNum
             newAsset.account = Accounts.findByNumber(asset.accountNumber.toInteger())
 
-//            if(newAsset.hasErrors()) {
-//                respond([status:400, error:newAsset.errors])
-//            }
+            if(newAsset.hasErrors()) {
+                respond([status:400, error:newAsset.errors])
+            }
 
             newAsset.save()
         }
