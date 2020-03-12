@@ -28,10 +28,10 @@ class AssetController {
             newAsset.account = Accounts.findByNumber(asset.accountNumber.toInteger())
 
             newAsset.save()
-            if(newAsset.hasErrors()) {
-                respond([status:400, error:newAsset.errors])
-                return
-            }
+//            if(newAsset.hasErrors()) {
+//                respond([status:400, error:newAsset.errors])
+//                return
+//            }
         }
 
         respond([status:200, message:"imported new assets"])
