@@ -11,6 +11,8 @@ import grails.transaction.Transactional
 @Transactional
 class AssetsController {
 
+    static allowedMethods = [getAssets: "POST",addAssets: "POST",editAsset:"POST"]
+
     def index() { }
     def addAssets() {
         def assets = request.JSON.assets
