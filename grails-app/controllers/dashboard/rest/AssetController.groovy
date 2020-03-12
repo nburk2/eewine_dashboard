@@ -52,7 +52,7 @@ class AssetController {
         def newAsset = Asset.findByAssetIdAndAccount(asset.assetId.toInteger(), account)
 
         if(asset.comdataCardNum) {
-            newAsset.comdataCardNum = asset.comdataCardNum
+            newAsset.comdataCardNum = asset.comdataCardNum.toInteger()
         }
 
         if(asset.barcode) {
@@ -61,7 +61,7 @@ class AssetController {
 
         newAsset.save(flush:true, failOnError: true)
         if(newAsset.hasErrors()) {
-            println(newAsset.erros)
+            respond([status:200, message:"Asset error: " + newAsset.errors])
         }
 
         respond([status:200, message:"updated Asset: " + newAsset.barcode])
