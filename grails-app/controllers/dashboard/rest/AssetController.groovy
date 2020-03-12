@@ -39,9 +39,9 @@ class AssetController {
     }
 
     def getAssets() {
-        int num = request.JSON.accountNumber.toInteger()
+        int num = request.JSON.accountId.toInteger()
         int tankNum = request.JSON.tankNum.toInteger()
-        Accounts account = Accounts.findByNumber(num)
+        Accounts account = Accounts.findById(num)
         def assets = Asset.findAllByAccountAndTankNum(account,tankNum,[sort:"barcode"])
 
         respond([status:200, account:account, assets:assets])
