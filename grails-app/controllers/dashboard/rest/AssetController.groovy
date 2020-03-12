@@ -55,8 +55,8 @@ class AssetController {
             newAsset.comdataCardNum = asset.comdataCardNum.toInteger()
         }
 
-        if(asset.barcode) {
-            newAsset.barcode = asset.barcode
+        if(asset.department) {
+            newAsset.department = asset.department
         }
 
         newAsset.save(flush:true, failOnError: true)
