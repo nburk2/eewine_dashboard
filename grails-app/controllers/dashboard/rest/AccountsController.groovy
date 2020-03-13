@@ -36,8 +36,9 @@ class AccountsController {
         }
 
         def tanks = accounts.tanks
+        def assets = accounts.assets
 
-        respond([status:200, tanks:tanks, accounts:accounts, accountNumbers:accounts.number])
+        respond([status:200, assets:assets, tanks:tanks, accounts:accounts, accountNumbers:accounts.number])
 
     }
 

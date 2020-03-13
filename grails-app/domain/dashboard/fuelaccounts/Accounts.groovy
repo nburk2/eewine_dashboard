@@ -7,7 +7,7 @@ class Accounts {
     boolean discontinued
     boolean sendEmail
     boolean print
-    static hasMany = [tanks:Tanks]
+    static hasMany = [tanks:Tanks,assets:Asset]
 
     //invoice groups
     boolean standard
