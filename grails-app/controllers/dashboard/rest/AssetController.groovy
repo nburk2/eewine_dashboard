@@ -52,7 +52,7 @@ class AssetController {
         def newAsset = Asset.findByAssetIdAndAccount(asset.assetId.toInteger(), account)
 
         if(asset.comdataCardNum) {
-            newAsset.comdataCardNum = asset.comdataCardNum.toInteger()
+            newAsset.comdataCardNum = asset.comdataCardNum.toLong()
         }
 
         if(asset.department) {
