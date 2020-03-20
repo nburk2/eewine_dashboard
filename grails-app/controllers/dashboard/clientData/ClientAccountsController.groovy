@@ -1,24 +1,30 @@
-package dashboard.data
+package dashboard.clientData
 
-import static org.springframework.http.HttpStatus.CREATED
-import static org.springframework.http.HttpStatus.NOT_FOUND
-import static org.springframework.http.HttpStatus.OK
-import grails.plugin.springsecurity.annotation.Secured
 import com.bertramlabs.plugins.SSLRequired
+import grails.plugin.springsecurity.annotation.Secured
+
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.CREATED
+import static org.springframework.http.HttpStatus.OK
 
 @Secured(["ROLE_ADMIN"])
 @SSLRequired
-class AccountController {
+class ClientAccountsController {
 
     def index() {
-        [accountList:Account.list(sort:"name")]
+        [accountList:ClientAccounts.list(sort:params.sort,order:params.order)]
     }
 
     def create() {
-        respond new Account()
+        def account = new ClientAccounts()
+        [account:account]
     }
 
-    def save(Account account) {
+    def show(ClientAccounts account) {
+        [account:account]
+    }
+
+    def save(ClientAccounts account) {
         if (account == null) {
             notFound()
             return
@@ -28,33 +34,29 @@ class AccountController {
 
         if(account.hasErrors()){
             flash.errors = account.errors.allErrors.collect { [message: g.message([error: it])] }
-            respond account, view:'create', model: []
+            respond account, view:'create', model: [account:account]
             return
         }
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), [account.name]])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'clientaccount.label', default: 'ClientAccounts'), [account.name]])
                 redirect account
             }
             '*' { respond account, [status: CREATED] }
         }
     }
 
-    def edit(Account account) {
+    def edit(ClientAccounts account) {
         if (account == null) {
             notFound()
             return
         }
 
-        respond account
+        [account:account]
     }
 
-    def show(Account account) {
-        respond account
-    }
-
-    def update(Account account) {
+    def update(ClientAccounts account) {
         if (account == null) {
             notFound()
             return
@@ -70,14 +72,14 @@ class AccountController {
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'account.label', default: 'Account'), [account.name]])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'clientaccount.label', default: 'ClientAccounts'), [account.name]])
                 redirect account
             }
             '*' { respond account, [status: OK] }
         }
     }
 
-    def delete(Account account) {
+    def delete(ClientAccounts account) {
         if (account == null) {
             notFound()
             return
@@ -93,7 +95,7 @@ class AccountController {
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), [accountName]])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'clientaccount.label', default: 'ClientAccounts'), [accountName]])
                 redirect action: "index", method: "GET"
             }
             '*' { respond account, [status: OK] }
@@ -103,7 +105,7 @@ class AccountController {
     protected void notFound() {
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'account.label', default: 'Account'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'clientaccount.label', default: 'ClientAccounts'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }

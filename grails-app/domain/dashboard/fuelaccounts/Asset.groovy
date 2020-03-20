@@ -3,7 +3,7 @@ package dashboard.fuelaccounts
 class Asset {
 
     static belongsTo = [account: Accounts]
-    int assetId
+    long assetId
     String barcode
     int tankNum
 
