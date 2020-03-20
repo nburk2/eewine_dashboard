@@ -3,11 +3,11 @@ package dashboard.fuelaccounts
 class Asset {
 
     static belongsTo = [account: Accounts]
-    long assetId
+    int assetId
     String barcode
     int tankNum
 
-    int comdataCardNum
+    Long comdataCardNum
     String department
 
     static constraints = {

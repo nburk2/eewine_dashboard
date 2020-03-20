@@ -47,16 +47,16 @@
                             <thead>
                             <tr>
                                 <g:sortableColumn class="idTables" property="id" title="Id"/>
-                                <g:sortableColumn class="idTables" property="number" title="Number"/>
                                 <g:sortableColumn class="idTables" property="account.name" title="Account"/>
+                                <g:sortableColumn class="idTables" property="number" title="Number"/>
                             </tr>
                             </thead>
                             <tbody>
                             <g:each in="${tankList}" var="tank">
                                 <tr>
-                                    <th scope="row">${tank.id}</th>
-                                    <th><g:link action="show" id="${tank.id}">${tank.name}</g:link></th>
-                                    <th>${tank.number}</th>
+                                    <th scope="row"><g:link action="show" id="${tank.id}">${tank.id}</g:link></th>
+                                    <th>${tank.account.name}</th>
+                                    <th><g:link action="show" id="${tank.id}">${tank.number}</g:link></th>
                                 </tr>
                             </g:each>
                             </tbody>
