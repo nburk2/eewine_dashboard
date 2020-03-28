@@ -40,6 +40,13 @@
                             <li><g:link controller="note" action="index">Notes</g:link></li>
                         </ul>
                     </li>
+                    <li><a><i class="fa fa-edit"></i> Tanks <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><g:link controller="clientAccounts" action="index">Accounts</g:link></li>
+                            <li><g:link controller="clientTanks" action="index">Tanks</g:link></li>
+                            <li><g:link controller="clientTanks" action="findTanks">Find Tanks</g:link></li>
+                        </ul>
+                    </li>
                     <li><a><i class="fa fa-desktop"></i> Data Changes <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="winotstop" action="index">Wi-Not-Stop</g:link></li>

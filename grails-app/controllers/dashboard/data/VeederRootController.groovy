@@ -20,8 +20,16 @@ class VeederRootController {
     }
 
     def ninetyPercentages() {
-        def tankInfoList = veederRootService.getTankInfoList()
-        render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
+        try{
+            def tankInfoList = veederRootService.getTankInfoList()
+            def test = 0/0
+            render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
+        } catch (e) {
+            render view: "ninetyPercentages", model:[error:e,tankInfoList: []]
+        }
+
+//        def tankInfoList = veederRootService.getTankInfoList()
+//        render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
     }
 
     def updateVeederRootData() {

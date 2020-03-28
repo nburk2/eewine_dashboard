@@ -12,6 +12,8 @@ import static org.springframework.http.HttpStatus.OK
 @SSLRequired
 class ClientTanksController {
 
+    def clientTanksService
+
     def index() {
         [tankList:ClientTanks.list(sort:params.sort,order:params.order)]
     }
@@ -34,7 +36,6 @@ class ClientTanksController {
         tank.save()
 
         if(tank.hasErrors()){
-            println tank.errors
             flash.errors = tank.errors.allErrors.collect { [message: g.message([error: it])] }
             respond tank, view:'create', model: [tank:tank]
             return
@@ -112,5 +113,37 @@ class ClientTanksController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    def uploadTanks() {
+        render view:"uploadTanks", model: [errors:false]
+    }
+
+    def uploadTanksFile() {
+        def file = request.getFile('tanks')
+
+        if(!file) {
+            redirect action: "updateTankAccounts"
+            return
+        }
+
+        try {
+            clientTanksService.uploadTanks(file)
+        } catch (e) {
+            render view: "updateTankAccounts", model: [errors:true]
+            return
+        }
+
+        redirect action: "index"
+    }
+
+    def findTanks() {
+        def trueFalseList = ["","Wine Energy Owned","Customer Owned", "Property Labeled","Tertiary Containment","Painted","Wine Energy Logo","Filter","Ecogreen","Tank Gauge"]
+        def inputFieldsList = ["","Address","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Number Of Pumps","Number Of Dispensers","Comments","Completed By"]
+        def booleanField = params.booleanField ?: ""
+        def inputField = params.inputField ?: ""
+
+        def tanks = clientTanksService.findTanks(params)
+        render view:"findTanks", model: [errors:false, tanks:tanks, booleanField:booleanField,inputField:inputField,trueFalseList:trueFalseList, inputFieldsList:inputFieldsList]
     }
 }

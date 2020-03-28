@@ -11,6 +11,11 @@
     <div class="">
 
         <div class="clearfix"></div>
+        <g:if test="${error}">
+            <div class="alert alert-danger" role="alert">
+                ${error}
+            </div>
+        </g:if>
 
         <div class="row">
             <g:render template="ninetyPercentage"/>
