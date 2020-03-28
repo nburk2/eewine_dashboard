@@ -22,7 +22,6 @@ class VeederRootController {
     def ninetyPercentages() {
         try{
             def tankInfoList = veederRootService.getTankInfoList()
-            def test = 0/0
             render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
         } catch (e) {
             render view: "ninetyPercentages", model:[error:e,tankInfoList: []]
