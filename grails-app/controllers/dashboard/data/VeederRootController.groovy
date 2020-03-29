@@ -32,9 +32,14 @@ class VeederRootController {
     }
 
     def updateVeederRootData() {
-        veederRootService.updateVeederRootData()
-        def tankInfoList = veederRootService.getTankInfoList()
-        render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
+        try{
+            veederRootService.updateVeederRootData()
+            def tankInfoList = veederRootService.getTankInfoList()
+            render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
+        } catch (e) {
+            render view: "ninetyPercentages", model:[error:e,tankInfoList: []]
+        }
+
     }
 
     def uploadFileToPrint() {
