@@ -5,86 +5,90 @@ import grails.transaction.Transactional
 @Transactional
 class ClientTanksService {
 
-    def tankFields = []
+    def tanks = []
 
     def uploadTanks(file) {
         file.inputStream.eachLine { line ->
             def lineSplit = line.split(',')
-            tankFields << lineSplit
+            tanks << lineSplit
         }
         createUpdateTanks()
     }
 
     def createUpdateTanks() {
 //        static belongsTo = [account: ClientAccounts]
-        def account = ClientAccounts.findOrCreateByNumberAndName(tankFields[3][1].toInteger(),tankFields[2][1].trim())
-        def newTank = ClientTanks.findOrCreateByNumberAndAccount(tankFields[4][1].trim().toInteger(),account)
+        tanks.each { tank ->
+            if(tank[1] != "Benchmark Utility Services") {
+                def account = ClientAccounts.findOrCreateByNumberAndName(tank[3].toInteger(), tank[2][1].trim())
+                def newTank = ClientTanks.findOrCreateByNumberAndAccount(tank[4].trim().toInteger(), account)
 
-        newTank.account = account
-//        int number
-        newTank.number = tankFields[4][1].trim().toInteger()
-//        String address
-        newTank.address = tankFields[5][1].trim()
-//        String location
-        newTank.location = tankFields[7][1].trim()
-//        boolean wineEnergyOwned
-        newTank.wineEnergyOwned = tankFields[11][1].trim().toLowerCase().contain("y") ? true : false
-//        boolean customerOwned
-        newTank.customerOwned = tankFields[12][1].trim().toLowerCase().contain("y") ? true : false
-//        String serialNumber
-        newTank.serialNumber = tankFields[13][1].trim()
-//        String manufacturer
-        newTank.manufacturer = tankFields[14][1].trim()
-//        int size
-        newTank.size = tankFields[15][1].trim().toInteger()
-//        String type
-        newTank.type = tankFields[16][1].trim()
-//        String product
-        newTank.product = tankFields[17][1].trim()
-//        boolean propertyLabeled
-        newTank.propertyLabeled = tankFields[18][1].trim()
-//        boolean tertiaryContainment
-        newTank.tertiaryContainment = tankFields[19][1].trim()
-//        boolean painted
-        newTank.painted = tankFields[20][1].trim().toLowerCase().contain("y") ? true : false
-//        String color
-        newTank.color = tankFields[21][1].trim()
-//        String paintCondition
-        newTank.paintCondition = tankFields[22][1].trim()
-//        boolean wineEnergyLogo
-        newTank.wineEnergyLogo = tankFields[23][1].trim().toLowerCase().contain("y") ? true : false
-//        String logoCondition
-        newTank.logoCondition = tankFields[24][1].trim()
-//        String pumpType
-        newTank.pumpType = tankFields[25][1].trim()
-//        int numberOfPumps
-        newTank.numberOfPumps = tankFields[26][1].trim().toInteger()
-//        String pumpPartNumber
-        newTank.pumpPartNumber = tankFields[27][1].trim()
-//        int numberOfDispensers
-        newTank.numberOfDispensers = tankFields[28][1].trim().toInteger()
-//        String nozzleType
-        newTank.nozzleType = tankFields[29][1].trim()
-//        String hoseGaugeLength
-        newTank.hoseGaugeLength = tankFields[30][1].trim()
-//        boolean filter
-        newTank.filter = tankFields[31][1].trim().toLowerCase().contain("y") ? true : false
-//        String filterType
-        newTank.filterType = tankFields[32][1].trim()
-//        String filterPartNumber
-        newTank.filterPartNumber = tankFields[33][1].trim()
-//        boolean ecogreen
-        newTank.ecogreen = tankFields[34][1].trim().toLowerCase().contain("y") ? true : false
-//        String ecogreenSerialNumber
-        newTank.ecogreenSerialNumber = tankFields[35][1].trim()
-//        boolean tankGauge
-        newTank.tankGauge = tankFields[36][1].trim().toLowerCase().contain("y") ? true : false
-//        String comments
-        newTank.comments = tankFields[39][1].trim()
-//        String completedBy
-        newTank.completedBy = tankFields[48][1].trim()
+                newTank.account = account
+                //        int number
+                newTank.number = tank[4].trim().toInteger()
+                //        String address
+                newTank.address = tank[5].trim()
+                //        String location
+                newTank.location = tank[7].trim()
+                //        boolean wineEnergyOwned
+                newTank.wineEnergyOwned = tank[11].trim().toLowerCase().contain("y") ? true : false
+                //        boolean customerOwned
+                newTank.customerOwned = tank[12].trim().toLowerCase().contain("y") ? true : false
+                //        String serialNumber
+                newTank.serialNumber = tank[13].trim()
+                //        String manufacturer
+                newTank.manufacturer = tank[14].trim()
+                //        int size
+                newTank.size = tank[15].trim().toInteger()
+                //        String type
+                newTank.type = tank[16].trim()
+                //        String product
+                newTank.product = tank[17].trim()
+                //        boolean propertyLabeled
+                newTank.propertyLabeled = tank[18].trim()
+                //        boolean tertiaryContainment
+                newTank.tertiaryContainment = tank[19].trim()
+                //        boolean painted
+                newTank.painted = tank[20].trim().toLowerCase().contain("y") ? true : false
+                //        String color
+                newTank.color = tank[21].trim()
+                //        String paintCondition
+                newTank.paintCondition = tank[22].trim()
+                //        boolean wineEnergyLogo
+                newTank.wineEnergyLogo = tank[23].trim().toLowerCase().contain("y") ? true : false
+                //        String logoCondition
+                newTank.logoCondition = tank[24].trim()
+                //        String pumpType
+                newTank.pumpType = tank[25].trim()
+                //        int numberOfPumps
+                newTank.numberOfPumps = tank[26].trim().toInteger()
+                //        String pumpPartNumber
+                newTank.pumpPartNumber = tank[27].trim()
+                //        int numberOfDispensers
+                newTank.numberOfDispensers = tank[28].trim().toInteger()
+                //        String nozzleType
+                newTank.nozzleType = tank[29].trim()
+                //        String hoseGaugeLength
+                newTank.hoseGaugeLength = tank[30].trim()
+                //        boolean filter
+                newTank.filter = tank[31].trim().toLowerCase().contain("y") ? true : false
+                //        String filterType
+                newTank.filterType = tank[32].trim()
+                //        String filterPartNumber
+                newTank.filterPartNumber = tank[33].trim()
+                //        boolean ecogreen
+                newTank.ecogreen = tank[34].trim().toLowerCase().contain("y") ? true : false
+                //        String ecogreenSerialNumber
+                newTank.ecogreenSerialNumber = tank[35].trim()
+                //        boolean tankGauge
+                newTank.tankGauge = tank[36].trim().toLowerCase().contain("y") ? true : false
+                //        String comments
+                newTank.comments = tank[39].trim()
+                //        String completedBy
+                newTank.completedBy = tank[48].trim()
 
-        newTank.save()
+                newTank.save()
+            }
+        }
     }
 
     def findTanks(params) {
