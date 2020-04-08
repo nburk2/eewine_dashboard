@@ -123,14 +123,16 @@ class ClientTanksController {
         def file = request.getFile('tanks')
 
         if(!file) {
-            redirect action: "updateTankAccounts"
+            flash.message = "no file found"
+            redirect action: "index"
             return
         }
 
         try {
             clientTanksService.uploadTanks(file)
         } catch (e) {
-            render view: "updateTankAccounts", model: [errors:true]
+            println "the errors: " + e
+            render view: "uploadTanks", model: [errors:true]
             return
         }
 
@@ -138,8 +140,8 @@ class ClientTanksController {
     }
 
     def findTanks() {
-        def trueFalseList = ["","Wine Energy Owned","Customer Owned", "Property Labeled","Tertiary Containment","Painted","Wine Energy Logo","Filter","Ecogreen","Tank Gauge"]
-        def inputFieldsList = ["","Address","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Number Of Pumps","Number Of Dispensers","Comments","Completed By"]
+        def trueFalseList = ["","Property Labeled","Tertiary Containment","Painted","Wine Energy Logo","Ecogreen","Tank Gauge"]
+        def inputFieldsList = ["","Address","Location","Tank Ownership","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Number Of Dispensers","Comments"]
         def booleanField = params.booleanField ?: ""
         def inputField = params.inputField ?: ""
 

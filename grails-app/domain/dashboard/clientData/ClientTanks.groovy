@@ -3,12 +3,12 @@ package dashboard.clientData
 class ClientTanks {
 
     static belongsTo = [account: ClientAccounts]
-    int number
+    String number
 
+    String timeStamp
     String address
     String location
-    boolean wineEnergyOwned
-    boolean customerOwned
+    String tankOwnership
     String serialNumber
     String manufacturer
     int size
@@ -22,19 +22,19 @@ class ClientTanks {
     boolean wineEnergyLogo
     String logoCondition
     String pumpType
-    int numberOfPumps
+    String pumpCondition
     String pumpPartNumber
     int numberOfDispensers
     String nozzleType
     String hoseGaugeLength
-    boolean filter
     String filterType
     String filterPartNumber
+    String filterCondition
     boolean ecogreen
     String ecogreenSerialNumber
     boolean tankGauge
     String comments
-    String completedBy
+    String imageUrl
 
     static constraints = {
         account nullable: false
@@ -42,8 +42,8 @@ class ClientTanks {
 
         address nullable: true, blank:true
         location nullable: true, blank:true
-        wineEnergyOwned nullable: true, blank:true
-        customerOwned nullable: true, blank:true
+        timeStamp nullable: true, blank:true
+        tankOwnership nullable: true, blank:true
         serialNumber nullable: true, blank:true
         manufacturer nullable: true, blank:true
         size nullable: true, blank:true
@@ -57,18 +57,18 @@ class ClientTanks {
         wineEnergyLogo nullable: true, blank:true
         logoCondition nullable: true, blank:true
         pumpType nullable: true, blank:true
-        numberOfPumps nullable: true, blank:true
+        pumpCondition nullable: true, blank:true
         pumpPartNumber nullable: true, blank:true
         numberOfDispensers nullable: true, blank:true
         nozzleType nullable: true, blank:true
         hoseGaugeLength nullable: true, blank:true
-        filter nullable: true, blank:true
         filterType nullable: true, blank:true
         filterPartNumber nullable: true, blank:true
+        filterCondition nullable: true, blank:true
         ecogreen nullable: true, blank:true
         ecogreenSerialNumber nullable: true, blank:true
         tankGauge nullable: true, blank:true
         comments nullable: true, blank:true
-        completedBy nullable: true, blank:true
+        imageUrl nullable: true, blank:true
     }
 }

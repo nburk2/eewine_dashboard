@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Field contains</label>
-                                    <input type="text" id="inputFieldText" name="inputFieldText" value="" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" id="inputFieldText" name="inputFieldText" value="" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
 
@@ -88,6 +88,7 @@
                                 <g:sortableColumn class="idTables" property="id" title="Id"/>
                                 <g:sortableColumn class="idTables" property="account.name" title="Account"/>
                                 <g:sortableColumn class="idTables" property="number" title="Number"/>
+                                <g:sortableColumn class="idTables" property="address" title="Address"/>
                             </tr>
                             </thead>
                             <tbody>
@@ -96,6 +97,7 @@
                                     <th scope="row"><g:link action="show" id="${tank.id}">${tank.id}</g:link></th>
                                     <th>${tank.account.name}</th>
                                     <th><g:link action="show" id="${tank.id}">${tank.number}</g:link></th>
+                                    <th><g:link action="show" id="${tank.id}">${tank.address}</g:link></th>
                                 </tr>
                             </g:each>
                             </tbody>

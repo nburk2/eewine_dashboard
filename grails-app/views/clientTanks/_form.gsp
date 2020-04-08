@@ -8,7 +8,14 @@
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Number<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="number" id="number" name="number" value="${tank.number}" required="required" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="number" name="number" value="${tank.number}" required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="timeStamp">Timestamp
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="timeStamp" name="timeStamp" value="${tank.timeStamp}" required="required" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
@@ -26,23 +33,10 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">Wine Energy Owned</label>
-    <div class="col-md-9 col-sm-9 col-xs-12">
-        <div class="">
-            <label>
-                <g:checkBox name="wineEnergyOwned" class="js-switch" checked="${tank?.wineEnergyOwned}" />
-            </label>
-        </div>
-    </div>
-</div>
-<div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">Customer Owned</label>
-    <div class="col-md-9 col-sm-9 col-xs-12">
-        <div class="">
-            <label>
-                <g:checkBox name="customerOwned" class="js-switch" checked="${tank?.customerOwned}" />
-            </label>
-        </div>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tankOwnership">Tank Ownership
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="tankOwnership" name="tankOwnership" value="${tank.tankOwnership}" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
@@ -125,7 +119,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">Wine Energy Logo</label>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Wine Energy Decal</label>
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
@@ -149,10 +143,10 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="numberOfPumps">Number Of Pumps
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pumpCondition">Pump Condition
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="number" id="numberOfPumps" name="numberOfPumps" value="${tank.numberOfPumps}" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="pumpCondition" name="pumpCondition" value="${tank.pumpCondition}" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
@@ -184,16 +178,6 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">Filter</label>
-    <div class="col-md-9 col-sm-9 col-xs-12">
-        <div class="">
-            <label>
-                <g:checkBox name="filter" class="js-switch" checked="${tank?.filter}" />
-            </label>
-        </div>
-    </div>
-</div>
-<div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filterType">Filter Type
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -205,6 +189,13 @@
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <input type="text" id="filterPartNumber" name="filterPartNumber" value="${tank.filterPartNumber}" class="form-control col-md-7 col-xs-12">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filterCondition">Filter Condition
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="filterCondition" name="filterCondition" value="${tank.filterCondition}" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
@@ -242,10 +233,10 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-R3 col-sm-3 col-xs-12" for="completedBy">Completed By<span class="required">*</span>
+    <label class="control-label col-md-R3 col-sm-3 col-xs-12" for="imageUrl">Image Url<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="completedBy" name="completedBy" value="${tank.completedBy}" required="required" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="imageUrl" name="imageUrl" value="${tank.imageUrl}" required="required" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="ln_solid"></div>
