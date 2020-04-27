@@ -51,18 +51,18 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Account</label>
-                                    <g:select name="account" from="${dashboard.clientData.ClientAccounts.list([sort:"name"])}" class="select2_single form-control" optionValue="name" optionKey="id" value="${tank?.account?.id}" tabindex="-1"/>
+                                    <g:select name="account" from="${dashboard.clientData.ClientAccounts.list([sort:"name"])}" class="select2_single form-control" noSelection="${['':'Choose an Account...']}" optionValue="name" optionKey="id" value="${currentAccountField}" tabindex="-1"/>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">True False</label>
-                                    <g:select name="booleanField" from="${trueFalseList}" class="select2_single form-control" value="${booleanField == "" ? 'none' : currentBooleanField}" tabindex="-1"/>
-                                </div>
+                                %{--<div class="col-md-6 col-sm-6 col-xs-12">--}%
+                                %{--<label class="control-label col-md-3 col-sm-3 col-xs-12">True False</label>--}%
+                                    %{--<g:select name="booleanField" from="${trueFalseList}" class="select2_single form-control" value="${booleanField == "" ? 'none' : booleanField}" tabindex="-1"/>--}%
+                                %{--</div>--}%
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Choose Field</label>
-                                    <g:select name="inputField" from="${inputFieldsList}" class="select2_single form-control" value="${inputField == "" ? 'none' : currentInputField}" tabindex="-1"/>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Selection Criteria</label>
+                                    <g:select name="inputField" from="${inputFieldsList}" class="select2_single form-control" value="${inputField == "" ? 'none' : inputField}" tabindex="-1"/>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Field contains</label>

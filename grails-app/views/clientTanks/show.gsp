@@ -43,6 +43,10 @@
                                     <th>Location:</th>
                                     <td>${tank.location}</td>
                                 </tr>
+                                <tr>
+                                    <th>ImageUrl:</th>
+                                    <td>${tank.imageUrl}</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

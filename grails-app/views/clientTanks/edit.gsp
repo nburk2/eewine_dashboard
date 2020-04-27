@@ -15,9 +15,9 @@
 
         <div class="clearfix"></div>
 
-        <g:if test="${account.hasErrors()}">
+        <g:if test="${tank.hasErrors()}">
             <div class="alert alert-danger" role="alert">
-                ${account.errors}
+                ${tank.errors}
             </div>
         </g:if>
 

@@ -5,31 +5,34 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Number<span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Number
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="number" name="number" value="${tank.number}" required="required" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="number" name="number" value="${tank.number}" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="timeStamp">Timestamp
     </label>
+    %{--<div class="col-md-6 col-sm-6 col-xs-12">--}%
+        %{--<input type="text" id="timeStamp" name="timeStamp" value="${tank.timeStamp}" class="form-control col-md-7 col-xs-12">--}%
+    %{--</div>--}%
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="timeStamp" name="timeStamp" value="${tank.timeStamp}" required="required" class="form-control col-md-7 col-xs-12">
+        <g:datePicker name="timeStamp" precision="time" relativeYears="[-5..10]" value="${tank?.timeStamp ?: "none"}"/>
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address<span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="address" name="address" value="${tank.address}" required="required" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="address" name="address" value="${tank.address}" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="location">Location<span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="location">Location
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="location" name="location" value="${tank.location}" required="required" class="form-control col-md-7 col-xs-12">
+        <input type="text" id="location" name="location" value="${tank.location}" class="form-control col-md-7 col-xs-12">
     </div>
 </div>
 <div class="form-group">
@@ -75,11 +78,11 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">Property Labeled</label>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Properly Labeled</label>
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="propertyLabeled" class="js-switch" checked="${tank?.propertyLabeled}" />
+                <g:checkBox name="properlyLabeled" class="js-switch" checked="${tank?.properlyLabeled}" />
             </label>
         </div>
     </div>
@@ -233,10 +236,13 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-R3 col-sm-3 col-xs-12" for="imageUrl">Image Url<span class="required">*</span>
+    <label class="control-label col-md-R3 col-sm-3 col-xs-12" for="tankImage">Image File
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" id="imageUrl" name="imageUrl" value="${tank.imageUrl}" required="required" class="form-control col-md-7 col-xs-12">
+        %{--<g:submitButton action="uploadTankImage" name="uploadTankImage" type="submit" class="btn btn-success" value="Upload Tanks Image"/>--}%
+        <g:link class="btn btn-primary" params="[id:tank.id]" action="uploadTankImage">Upload Tanks Image</g:link>
+        %{--<input class="" type="file" name="tankImage" accept="image/*">--}%
+        %{--<input type="text" id="imageUrl" name="imageUrl" value="${tank.imageUrl}" required="required" class="form-control col-md-7 col-xs-12">--}%
     </div>
 </div>
 <div class="ln_solid"></div>

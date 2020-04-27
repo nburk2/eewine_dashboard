@@ -5,7 +5,7 @@ class ClientTanks {
     static belongsTo = [account: ClientAccounts]
     String number
 
-    String timeStamp
+    Date timeStamp
     String address
     String location
     String tankOwnership
@@ -14,7 +14,7 @@ class ClientTanks {
     int size
     String type
     String product
-    boolean propertyLabeled
+    boolean properlyLabeled
     boolean tertiaryContainment
     boolean painted
     String color
@@ -38,7 +38,7 @@ class ClientTanks {
 
     static constraints = {
         account nullable: false
-        number nullable: false, unique: ['account']
+        number nullable: true
 
         address nullable: true, blank:true
         location nullable: true, blank:true
@@ -49,7 +49,7 @@ class ClientTanks {
         size nullable: true, blank:true
         type nullable: true, blank:true
         product nullable: true, blank:true
-        propertyLabeled nullable: true, blank:true
+        properlyLabeled nullable: true, blank:true
         tertiaryContainment nullable: true, blank:true
         painted nullable: true, blank:true
         color nullable: true, blank:true
@@ -69,6 +69,6 @@ class ClientTanks {
         ecogreenSerialNumber nullable: true, blank:true
         tankGauge nullable: true, blank:true
         comments nullable: true, blank:true
-        imageUrl nullable: true, blank:true
+        imageUrl nullable: true, blank:true, maxSize:65535
     }
 }

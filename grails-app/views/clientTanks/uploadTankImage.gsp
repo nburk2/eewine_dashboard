@@ -27,7 +27,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Update Tanks</h2>
+                        <h2>Upload Tank Image</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -47,13 +47,15 @@
                     </div>
                     <div class="x_content">
 
-                        <g:uploadForm name="myUpload" url="[resource:tanks, action:'uploadTanksFile']" class="form-horizontal form-label-left">
+                        %{--<g:uploadForm name="myUpload" url="[resource:tanks, action:'uploadTankImageFile']" class="form-horizontal form-label-left">--}%
+                        <g:uploadForm params="[id:tank.id]" action="uploadTankImageFile" class="form-horizontal form-label-left">
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Upload CSV File</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Upload Tanks image for tank: ${tank.number}</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
 
-                                    <input class="" type="file" name="tanks" accept=".csv">
+                                    %{--<input class="" type="file" name="tankImage" accept="image/*">--}%
+                                    <input class="" type="file" name="tankImage" accept=".PNG">
                                 </div>
                             </div>
                             <div class="ln_solid"></div>

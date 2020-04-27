@@ -7,6 +7,7 @@ import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.OK
+import org.springframework.web.multipart.MultipartFile
 
 @Secured(["ROLE_ADMIN"])
 @SSLRequired
@@ -87,7 +88,10 @@ class ClientTanksController {
             notFound()
             return
         }
-        def tankNumber = tank.number
+
+        def tankId = tank.id
+        clientTanksService.deleteTankImage(tank)
+
         tank.delete(flush: true)
 
         if(tank.hasErrors()){
@@ -98,7 +102,7 @@ class ClientTanksController {
 
         request.withFormat {
             form multipartForm{
-                flash.message = message(code: 'default.created.message', args: [message(code: 'clienttank.label', default: 'ClientTanks'), [tankNumber]])
+                flash.message = "deleted tank id: " + tankId
                 redirect action: "index", method: "GET"
             }
             '*' { respond tank, [status: OK] }
@@ -113,6 +117,32 @@ class ClientTanksController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    def uploadTankImage(ClientTanks tank) {
+        render view:"uploadTankImage", model: [tank:tank, errors:false]
+    }
+
+    def uploadTankImageFile(ClientTanks tank) {
+        MultipartFile multipartFile = request.getFile('tankImage')
+
+        if(!multipartFile) {
+            flash.message = "no file found"
+            redirect action: "uploadTankImage", id:tank.id
+            return
+        }
+
+        try {
+            clientTanksService.uploadTankImage(multipartFile, tank.id)
+            tank.imageUrl = "https://tank-images.s3.amazonaws.com/" + tank.id + "tankImage"
+            tank.save(flush:true)
+        } catch (e) {
+            println "the errors: " + e
+            render view: "uploadTankImage", model: [tank:tank, errors:true, error:e]
+            return
+        }
+
+        redirect action:"show", id:tank.id
     }
 
     def uploadTanks() {
@@ -132,7 +162,7 @@ class ClientTanksController {
             clientTanksService.uploadTanks(file)
         } catch (e) {
             println "the errors: " + e
-            render view: "uploadTanks", model: [errors:true]
+            render view: "uploadTanks", model: [errors:true, error:e]
             return
         }
 
@@ -140,12 +170,11 @@ class ClientTanksController {
     }
 
     def findTanks() {
-        def trueFalseList = ["","Property Labeled","Tertiary Containment","Painted","Wine Energy Logo","Ecogreen","Tank Gauge"]
-        def inputFieldsList = ["","Address","Location","Tank Ownership","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Number Of Dispensers","Comments"]
-        def booleanField = params.booleanField ?: ""
+        def inputFieldsList = ["","Address","Location","Tank Ownership","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Comments","Properly Labeled - YES","Properly Labeled - NO","Tertiary Containment - YES","Tertiary Containment - NO","Painted - YES","Painted - NO","Wine Energy Logo - YES","Wine Energy Logo - NO","Ecogreen - YES","Ecogreen - NO","Tank Gauge - YES","Tank Gauge - NO"]
         def inputField = params.inputField ?: ""
+        def currentAccountField = params.account ?: ""
 
         def tanks = clientTanksService.findTanks(params)
-        render view:"findTanks", model: [errors:false, tanks:tanks, booleanField:booleanField,inputField:inputField,trueFalseList:trueFalseList, inputFieldsList:inputFieldsList]
+        render view:"findTanks", model: [errors:false, tanks:tanks,currentAccountField:currentAccountField, inputField:inputField, inputFieldsList:inputFieldsList]
     }
 }

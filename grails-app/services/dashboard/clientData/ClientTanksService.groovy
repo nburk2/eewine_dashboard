@@ -1,11 +1,39 @@
 package dashboard.clientData
 
+import com.amazonaws.services.s3.model.CannedAccessControlList
+import grails.plugins.rest.client.RestBuilder
 import grails.transaction.Transactional
+import grails.util.Holders
 
 @Transactional
 class ClientTanksService {
 
+    def config = Holders.config
+//    def gatewayKey = config.GATEWAY_KEY
+    def amazonS3Service
+    def rest = new RestBuilder()
+
     def tanks = []
+
+    def getTankImageUrl(key) {
+        def resp = rest.get("https://ibkxdho8ce.execute-api.us-east-1.amazonaws.com/prod/gets3file?bucket=tank-images&key=" + key) {
+            headers["x-api-key"] = gatewayKey
+        }
+        return resp.json.signedUrl
+    }
+
+    def uploadTankImage(file, tankId) {
+        amazonS3Service.defaultBucketName = "tank-images"
+        amazonS3Service.storeMultipartFile(tankId + file.name, file)
+    }
+
+    def deleteTankImage(tank) {
+        amazonS3Service.defaultBucketName = "tank-images"
+        def splitSlash = tank.imageUrl.split("/")
+        def length = splitSlash.length
+        def key = splitSlash[length - 1]
+        amazonS3Service.deleteFile(key)
+    }
 
     def uploadTanks(file) {
         file.inputStream.eachLine { line ->
@@ -24,16 +52,16 @@ class ClientTanksService {
                 account.name = tank[1].trim()
 
                 account.hasErrors()
-
+//                println("account num: " + tank[2].trim())
                 account.save(flush:true)
 
                 def newTank = ClientTanks.findOrCreateByNumberAndAccount(tank[3].trim(), account)
-
+//                println "tank: " + tank
                 newTank.account = account
                 //        int number
                 newTank.number = tank[3].trim()
-                // timestamp
-                newTank.timeStamp = tank[0].trim()
+                // timestamp removed from upload because of required date modifications
+//                newTank.timeStamp = tank[0].trim()
                 //        String address
                 newTank.address = tank[4].trim()
                 //        String location
@@ -50,8 +78,8 @@ class ClientTanksService {
                 newTank.type = tank[10].trim()
                 //        String product
                 newTank.product = tank[11].trim()
-                //        boolean propertyLabeled
-                newTank.propertyLabeled = tank[12].trim().toLowerCase().contains("y") ? true : false
+                //        boolean properlyLabeled
+                newTank.properlyLabeled = tank[12].trim().toLowerCase().contains("y") ? true : false
                 //        boolean tertiaryContainment
                 newTank.tertiaryContainment = tank[13].trim().toLowerCase().contains("y") ? true : false
                 //        boolean painted
@@ -94,7 +122,6 @@ class ClientTanksService {
                 newTank.imageUrl = tank[32].trim()
 
                 newTank.hasErrors()
-                println "tank: " + tank
 //                println "errors after tank check: " + newTank.errors
                 newTank.save(flush:true)
             } else {
@@ -105,15 +132,12 @@ class ClientTanksService {
 
     def findTanks(params) {
         def tanks = []
-        def trueFalseList = ["","Property Labeled","Tertiary Containment","Painted","Wine Energy Logo","Ecogreen","Tank Gauge"]
-        def inputFieldsList = ["","Address","Location","Tank Ownership","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Number Of Dispensers","Comments"]
-        def trueFalseListNames = ["", "propertyLabeled","tertiaryContainment","painted","wineEnergyLogo","ecogreen","tankGauge"]
-        def inputFieldsListNames = ["","address","location","tankOwnership","serialNumber","manufacturer","size","type","product","color","paintCondition","numberOfPumps","numberOfDispensers","comments"]
-        if(!params.booleanField && !params.inputField && !params.account && !params.inputFieldText) {
+        def inputFieldsList = ["","Address","Location","Tank Ownership","Serial Number","Manufacturer","Size","Type","Product","Color","Paint Condition","Comments","Properly Labeled - YES","Properly Labeled - NO","Tertiary Containment - YES","Tertiary Containment - NO","Painted - YES","Painted - NO","Wine Energy Logo - YES","Wine Energy Logo - NO","Ecogreen - YES","Ecogreen - NO","Tank Gauge - YES","Tank Gauge - NO"]
+        def inputFieldsListNames = ["","address","location","tankOwnership","serialNumber","manufacturer","size","type","product","color","paintCondition","comments", "properlyLabeled","properlyLabeled","tertiaryContainment","tertiaryContainment","painted","painted","wineEnergyLogo","wineEnergyLogo","ecogreen","ecogreen","tankGauge","tankGauge"]
+        if(!params.inputField && !params.account && !params.inputFieldText) {
             return tanks
         }
 
-        def booleanIndex = trueFalseList.indexOf(params.booleanField)
         def inputFieldsIndex = inputFieldsList.indexOf(params.inputField)
 
         if(params.account) {
@@ -121,14 +145,19 @@ class ClientTanksService {
             tanks = ClientTanks.findAllByAccount(account)
         }
 
-        if(booleanIndex > 0) {
-            def tankIds = tanks.id.toString().replace("[","(").replace("]",")")
-            tanks = ClientTanks.findAll("from ClientTanks Where ${trueFalseListNames[booleanIndex]}=true AND id IN " + tankIds)
-        }
-
-        if(inputFieldsIndex > 0) {
+        if(inputFieldsIndex > 0 && inputFieldsIndex <= 11) {
             def tankIds = tanks.id.toString().replace("[","(").replace("]",")")
             tanks = ClientTanks.findAll("from ClientTanks Where ${inputFieldsListNames[inputFieldsIndex]} LIKE '%${params.inputFieldText}%' AND id IN " + tankIds)
+        } else if(inputFieldsIndex > 11) {
+            //odd number is true - YES
+            //even number is false - NO
+            def boolValue = true
+            if (inputFieldsIndex % 2 != 0) {
+                boolValue = false
+            }
+
+            def tankIds = tanks.id.toString().replace("[","(").replace("]",")")
+            tanks = ClientTanks.findAll("from ClientTanks Where ${inputFieldsListNames[inputFieldsIndex]} = ${boolValue} AND id IN " + tankIds)
         }
 
         return tanks
