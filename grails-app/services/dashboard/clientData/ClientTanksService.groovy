@@ -55,7 +55,8 @@ class ClientTanksService {
 //                println("account num: " + tank[2].trim())
                 account.save(flush:true)
 
-                def newTank = ClientTanks.findOrCreateByNumberAndAccount(tank[3].trim(), account)
+//                def newTank = ClientTanks.findOrCreateByNumberAndAccount(tank[3].trim(), account)
+                def newTank = new ClientTanks()
 //                println "tank: " + tank
                 newTank.account = account
                 //        int number
