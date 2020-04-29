@@ -12,13 +12,13 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="timeStamp">Timestamp
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="creationDate">Timestamp
     </label>
     %{--<div class="col-md-6 col-sm-6 col-xs-12">--}%
         %{--<input type="text" id="timeStamp" name="timeStamp" value="${tank.timeStamp}" class="form-control col-md-7 col-xs-12">--}%
     %{--</div>--}%
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <g:datePicker name="timeStamp" precision="time" relativeYears="[-5..10]" value="${tank?.timeStamp ?: "none"}"/>
+        <g:datePicker name="creationDate" precision="time" relativeYears="[-5..10]" value="${tank?.creationDate ?: "none"}"/>
     </div>
 </div>
 <div class="form-group">
