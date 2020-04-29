@@ -5,7 +5,7 @@ class ClientTanks {
     static belongsTo = [account: ClientAccounts]
     String number
 
-    String timeStamp
+    Date creationDate
     String address
     String location
     String tankOwnership
@@ -42,7 +42,7 @@ class ClientTanks {
 
         address nullable: true, blank:true
         location nullable: true, blank:true
-        timeStamp nullable: true, blank:true
+        creationDate nullable: true, blank:true
         tankOwnership nullable: true, blank:true
         serialNumber nullable: true, blank:true
         manufacturer nullable: true, blank:true
@@ -69,6 +69,6 @@ class ClientTanks {
         ecogreenSerialNumber nullable: true, blank:true
         tankGauge nullable: true, blank:true
         comments nullable: true, blank:true
-        imageUrl nullable: true, blank:true
+        imageUrl nullable: true, blank:true, maxSize:65535
     }
 }
