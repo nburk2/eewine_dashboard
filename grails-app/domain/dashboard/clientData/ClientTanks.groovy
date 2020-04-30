@@ -3,9 +3,9 @@ package dashboard.clientData
 class ClientTanks {
 
     static belongsTo = [account: ClientAccounts]
-//    String number
+    String number
 
-//    Date creationDate
+    Date creationDate
     String address
     String location
     String tankOwnership
@@ -38,11 +38,11 @@ class ClientTanks {
 
     static constraints = {
         account nullable: false
-//        number nullable: true
+        number nullable: true
 
         address nullable: true, blank:true
         location nullable: true, blank:true
-//        creationDate nullable: true, blank:true
+        creationDate nullable: true, blank:true
         tankOwnership nullable: true, blank:true
         serialNumber nullable: true, blank:true
         manufacturer nullable: true, blank:true
