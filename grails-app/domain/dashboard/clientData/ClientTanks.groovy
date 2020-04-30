@@ -6,18 +6,18 @@ class ClientTanks {
 //    String number
 
 //    Date creationDate
-//    String address
-//    String location
-//    String tankOwnership
-//    String serialNumber
-//    String manufacturer
-//    int size
-//    String type
-//    String product
-//    boolean properlyLabeled
-//    boolean tertiaryContainment
-//    boolean painted
-//    String color
+    String address
+    String location
+    String tankOwnership
+    String serialNumber
+    String manufacturer
+    int size
+    String type
+    String product
+    boolean properlyLabeled
+    boolean tertiaryContainment
+    boolean painted
+    String color
     String paintCondition
     boolean wineEnergyLogo
     String logoCondition
@@ -40,19 +40,19 @@ class ClientTanks {
         account nullable: false
 //        number nullable: true
 
-//        address nullable: true, blank:true
-//        location nullable: true, blank:true
+        address nullable: true, blank:true
+        location nullable: true, blank:true
 //        creationDate nullable: true, blank:true
-//        tankOwnership nullable: true, blank:true
-//        serialNumber nullable: true, blank:true
-//        manufacturer nullable: true, blank:true
-//        size nullable: true, blank:true
-//        type nullable: true, blank:true
-//        product nullable: true, blank:true
-//        properlyLabeled nullable: true, blank:true
-//        tertiaryContainment nullable: true, blank:true
-//        painted nullable: true, blank:true
-//        color nullable: true, blank:true
+        tankOwnership nullable: true, blank:true
+        serialNumber nullable: true, blank:true
+        manufacturer nullable: true, blank:true
+        size nullable: true, blank:true
+        type nullable: true, blank:true
+        product nullable: true, blank:true
+        properlyLabeled nullable: true, blank:true
+        tertiaryContainment nullable: true, blank:true
+        painted nullable: true, blank:true
+        color nullable: true, blank:true
         paintCondition nullable: true, blank:true
         wineEnergyLogo nullable: true, blank:true
         logoCondition nullable: true, blank:true
