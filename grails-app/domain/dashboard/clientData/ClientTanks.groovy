@@ -34,7 +34,7 @@ class ClientTanks {
     String ecogreenSerialNumber
     boolean tankGauge
     String comments
-    String imageUrl
+//    String imageUrl
 
     static constraints = {
         account nullable: false
@@ -69,6 +69,6 @@ class ClientTanks {
         ecogreenSerialNumber nullable: true, blank:true
         tankGauge nullable: true, blank:true
         comments nullable: true, blank:true
-        imageUrl nullable: true, blank:true, maxSize:65535
+//        imageUrl nullable: true, blank:true, maxSize:65535
     }
 }
