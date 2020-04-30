@@ -21,7 +21,7 @@ class AssetController {
         def assets = request.JSON.assets
 
         assets.each { asset ->
-            def newAsset = Asset.findOrCreateByBarcode(asset.barcode)
+            def newAsset = Asset.findOrCreateByAssetId(asset.assetId)
             newAsset.assetId = asset.assetId
             newAsset.barcode = asset.barcode
             newAsset.tankNum = asset.tankNum
