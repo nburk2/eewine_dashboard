@@ -6,6 +6,7 @@ class Asset {
     int assetId
     String barcode
     int tankNum
+    String description
 
     Long comdataCardNum
     String department
@@ -15,6 +16,7 @@ class Asset {
         tankNum nullable: false
         assetId nullable: false, unique: true
         barcode nullable: false, unique: ['account']
+        description nullable: true, blank: true
 
         comdataCardNum nullable: true
         department nullable: true
