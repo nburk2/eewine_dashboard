@@ -69,6 +69,6 @@ class ClientTanks {
         ecogreenSerialNumber nullable: true, blank:true
         tankGauge nullable: true, blank:true
         comments nullable: true, blank:true
-        imageUrl nullable: true, blank:true, maxSize:65535
+        imageUrl nullable: true, blank:true, maxSize:6553
     }
 }
