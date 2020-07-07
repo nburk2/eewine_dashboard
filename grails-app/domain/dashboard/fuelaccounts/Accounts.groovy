@@ -9,6 +9,12 @@ class Accounts {
     boolean print
     static hasMany = [tanks:Tanks,assets:Asset]
 
+    // for troy
+//    Integer numberOfTickets = 1//is the tanks
+    boolean keyRequired = false //Key, open, combo
+    boolean openLock = false
+    boolean combo = false
+
     //invoice groups
     boolean standard
     boolean mansfield
@@ -46,6 +52,9 @@ class Accounts {
         sendEmail defaultValue: false
         print defaultValue: false
 
+        keyRequired defaultValue: false
+        openLock defaultValue: false
+        combo defaultValue: false
         includePrice defaultValue: false
         sendReportEmail defaultValue: false
         printReport defaultValue: false

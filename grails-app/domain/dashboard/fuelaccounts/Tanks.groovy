@@ -21,6 +21,14 @@ class Tanks {
     // World fuel and special export
     String siteId = ""
 
+    //for troy scheduling
+    boolean Monday = false
+    boolean Tuesday = false
+    boolean Wednesday = false
+    boolean Thursday = false
+    boolean Friday = false
+    boolean Saturday = false
+    boolean Sunday = false
 
 
     static constraints = {
