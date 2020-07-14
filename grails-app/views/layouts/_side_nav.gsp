@@ -33,10 +33,11 @@
                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><g:link controller="driver" action="index">Driver</g:link></li>
-                            <li><g:link controller="account" action="index">Account</g:link></li>
+                            <li><g:link controller="accounts" action="index">Accounts</g:link></li>
+                            <li><g:link controller="tanks" action="index">Tanks</g:link></li>
                             <li><g:link controller="truck" action="index">Truck</g:link></li>
                             <li><g:link controller="driverTruck" action="index">Truck Drivers</g:link></li>
-                            <li><g:link controller="driverAccount" action="index">Driver Accounts</g:link></li>
+                            <li><g:link controller="driverTank" action="index">Driver Tanks</g:link></li>
                             <li><g:link controller="note" action="index">Notes</g:link></li>
                         </ul>
                     </li>

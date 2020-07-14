@@ -13,8 +13,8 @@ class DriverTankController {
     def driverTankService
 
     def index() {
-//        TODO: list by date
-        [driverTankList:DriverTank.list()]
+        Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date()
+        [driverTankList:DriverTank.findByScheduledDay(scheduledDate),scheduledDate:scheduledDate]
     }
 
     def create() {
@@ -102,11 +102,6 @@ class DriverTankController {
             }
             '*' { respond driverTank, [status: OK] }
         }
-    }
-
-    def displayDriverTanks() {
-    // TODO: display by date
-        render view:"displayDriverTanks", model: [driverTanks:DriverTank.list()]
     }
 
     protected void notFound() {

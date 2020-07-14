@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'driverAccount.label', default: 'DriverAccount')}" />
+        <g:set var="entityName" value="${message(code: 'driverTank.label', default: 'DriverTank')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -17,13 +17,13 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Create Driver Accounts</h2>
+                                <h2>Create Driver Tanks</h2>
 
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <g:form id="demo-form2" url="[resource:driverAccount, action:'save']" class="form-horizontal form-label-left">
+                                <g:form id="demo-form2" url="[resource:driverTank, action:'save']" class="form-horizontal form-label-left">
 
                                     <g:render template="form"/>
 

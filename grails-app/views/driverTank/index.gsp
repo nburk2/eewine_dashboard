@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'driverAccount.label', default: 'Truck')}" />
+        <g:set var="entityName" value="${message(code: 'driverTank.label', default: 'Truck')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -18,7 +18,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Driver Accounts</h2>
+                                <h2>Driver Tanks</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -36,6 +36,17 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+                            %{--Scheduled Day--}%
+                            <div class="x_title">
+                                <h2 class="3rem">Scheduled Day - Today <small class="invisible">--</small></h2>
+                                <g:form action="index">
+                                    <g:datePicker id="scheduledDate" name="scheduledDate" precision="day" relativeYears="[-3..1]" value="${scheduledDate}"/>
+                                    <input type="submit" class="btn btn-success" value="Set Date">
+                                    <g:actionSubmit class="btn btn-info pull-right" value="Generate Previous Weeks schedule for current Date" action="generateFromPreviousSchedule"/>
+                                </g:form>
+                                <div class="clearfix"></div>
+                            </div>
+                            %{-- Scheduled Day--}%
                             <div class="x_content">
 
                                 <table class="table table-bordered">
@@ -46,10 +57,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <g:each in="${driverAccountList}" var="driverAccount">
+                                    <g:each in="${driverTankList}" var="driverTank">
                                         <tr>
-                                            <th scope="row">${driverAccount.id}</th>
-                                            <th><g:link action="show" id="${driverAccount.id}">${driverAccount.driver}</g:link></th>
+                                            <th scope="row">${driverTank.id}</th>
+                                            <th><g:link action="show" id="${driverTank.id}">${driverTank.driver}</g:link></th>
                                         </tr>
                                     </g:each>
                                     </tbody>
