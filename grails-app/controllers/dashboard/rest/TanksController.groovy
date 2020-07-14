@@ -21,85 +21,85 @@ class TanksController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Accounts.list(params), model:[accountsCount: Accounts.count()]
+        respond model:[tanksList:Tanks.list(params),tanksCount: Tanks.count()]
     }
 
-    def show(Accounts accounts) {
-        respond accounts
+    def show(Tanks tanks) {
+        respond tanks
     }
 
     def create() {
-        respond new Accounts(params)
+        respond new Tanks(params)
     }
 
     @Transactional
-    def save(Accounts accounts) {
-        if (accounts == null) {
+    def save(Tanks tanks) {
+        if (tanks == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (accounts.hasErrors()) {
+        if (tanks.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond accounts.errors, view:'create'
+            respond tanks.errors, view:'create'
             return
         }
 
-        accounts.save flush:true
+        tanks.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'accounts.label', default: 'Accounts'), accounts.id])
-                redirect accounts
+                flash.message = message(code: 'default.created.message', args: [message(code: 'tanks.label', default: 'Tanks'), tanks.id])
+                redirect tanks
             }
-            '*' { respond accounts, [status: CREATED] }
+            '*' { respond tanks, [status: CREATED] }
         }
     }
 
-    def edit(Accounts accounts) {
-        respond accounts
+    def edit(Tanks tanks) {
+        respond tanks
     }
 
     @Transactional
-    def update(Accounts accounts) {
-        if (accounts == null) {
+    def update(Tanks tanks) {
+        if (tanks == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        if (accounts.hasErrors()) {
+        if (tanks.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond accounts.errors, view:'edit'
+            respond tanks.errors, view:'edit'
             return
         }
 
-        accounts.save flush:true
+        tanks.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'accounts.label', default: 'Accounts'), accounts.id])
-                redirect accounts
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'tanks.label', default: 'Tanks'), tanks.id])
+                redirect tanks
             }
-            '*'{ respond accounts, [status: OK] }
+            '*'{ respond tanks, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Accounts accounts) {
+    def delete(Tanks tanks) {
 
-        if (accounts == null) {
+        if (tanks == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
 
-        accounts.delete flush:true
+        tanks.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'accounts.label', default: 'Accounts'), accounts.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'tanks.label', default: 'Tanks'), tanks.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -109,7 +109,7 @@ class TanksController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'accounts.label', default: 'Accounts'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'tanks.label', default: 'Tanks'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

@@ -20,10 +20,10 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <tbody>
-                                    <tr>
-                                        <th style="width:50%">Account Name:</th>
-                                        <td>${tanks.account.name}</td>
-                                    </tr>
+                                    %{--<tr>--}%
+                                        %{--<th style="width:50%">Account Name:</th>--}%
+                                        %{--<td>${tanks.account.name}</td>--}%
+                                    %{--</tr>--}%
                                     <tr>
                                         <th>Tank Number:</th>
                                         <td>${tanks.tankNum}</td>

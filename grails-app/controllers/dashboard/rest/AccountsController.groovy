@@ -21,7 +21,7 @@ class AccountsController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Accounts.list(params), model:[accountsCount: Accounts.count()]
+        respond model:[accountsList:Accounts.list(params),accountsCount: Accounts.count()]
     }
 
     def show(Accounts accounts) {
