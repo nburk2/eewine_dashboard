@@ -14,7 +14,7 @@ class Accounts {
     boolean keyRequired //Key, open, combo
     boolean openLock
     boolean combo
-    boolean show
+    boolean showAccount
 
     //invoice groups
     boolean standard
@@ -56,7 +56,7 @@ class Accounts {
         keyRequired defaultValue: false
         openLock defaultValue: false
         combo defaultValue: false
-        show defaultValue: false
+        showAccount defaultValue: false
         includePrice defaultValue: false
         sendReportEmail defaultValue: false
         printReport defaultValue: false

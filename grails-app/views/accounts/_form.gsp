@@ -6,6 +6,16 @@
     </div>
 </div>
 <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Show Account</label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="">
+            <label>
+                <g:checkBox name="showAccount" class="js-switch" checked="${account?.showAccount}" />
+            </label>
+        </div>
+    </div>
+</div>
+<div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12">Key Required</label>
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">

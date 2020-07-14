@@ -29,7 +29,7 @@ class Tanks {
     boolean friday
     boolean saturday
     boolean sunday
-    boolean show
+    boolean showTank
 
 
     static constraints = {
@@ -49,7 +49,7 @@ class Tanks {
         friday defaultValue: false
         saturday defaultValue: false
         sunday defaultValue: false
-        show defaultValue: false
+        showTank defaultValue: false
     }
 
 }
