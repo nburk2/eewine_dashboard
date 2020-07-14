@@ -22,13 +22,14 @@ class Tanks {
     String siteId = ""
 
     //for troy scheduling
-    boolean Monday = false
-    boolean Tuesday = false
-    boolean Wednesday = false
-    boolean Thursday = false
-    boolean Friday = false
-    boolean Saturday = false
-    boolean Sunday = false
+    boolean monday
+    boolean tuesday = false
+    boolean wednesday = false
+    boolean thursday = false
+    boolean friday = false
+    boolean saturday = false
+    boolean sunday = false
+    boolean show = false
 
 
     static constraints = {
@@ -41,6 +42,14 @@ class Tanks {
         cardNumber blank: true
         billTo blank: true
         siteId blank: true
+        monday defaultValue: false
+        tuesday defaultValue: false
+        wednesday defaultValue: false
+        thursday defaultValue: false
+        friday defaultValue: false
+        saturday defaultValue: false
+        sunday defaultValue: false
+        show defaultValue: false
     }
 
 }

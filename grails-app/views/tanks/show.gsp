@@ -30,31 +30,31 @@
                                     </tr>
                                     <tr>
                                         <th>Monday:</th>
-                                        <td>${tanks.Monday}</td>
+                                        <td>${tanks.monday}</td>
                                     </tr>
                                     <tr>
                                         <th>Tuesday:</th>
-                                        <td>${tanks.Tuesday}</td>
+                                        <td>${tanks.tuesday}</td>
                                     </tr>
                                     <tr>
                                         <th>Wednesday:</th>
-                                        <td>${tanks.Wednesday}</td>
+                                        <td>${tanks.wednesday}</td>
                                     </tr>
                                     <tr>
                                         <th>Thursday:</th>
-                                        <td>${tanks.Thursday}</td>
+                                        <td>${tanks.thursday}</td>
                                     </tr>
                                     <tr>
                                         <th>Friday:</th>
-                                        <td>${tanks.Friday}</td>
+                                        <td>${tanks.friday}</td>
                                     </tr>
                                     <tr>
                                         <th>Saturday:</th>
-                                        <td>${tanks.Saturday}</td>
+                                        <td>${tanks.saturday}</td>
                                     </tr>
                                     <tr>
                                         <th>Sunday:</th>
-                                        <td>${tanks.Sunday}</td>
+                                        <td>${tanks.sunday}</td>
                                     </tr>
                                     </tbody>
                                 </table>
