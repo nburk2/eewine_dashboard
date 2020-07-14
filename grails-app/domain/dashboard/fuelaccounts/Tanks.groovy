@@ -23,13 +23,13 @@ class Tanks {
 
     //for troy scheduling
     boolean monday
-    boolean tuesday = false
-    boolean wednesday = false
-    boolean thursday = false
-    boolean friday = false
-    boolean saturday = false
-    boolean sunday = false
-    boolean show = false
+    boolean tuesday
+    boolean wednesday
+    boolean thursday
+    boolean friday
+    boolean saturday
+    boolean sunday
+    boolean show
 
 
     static constraints = {

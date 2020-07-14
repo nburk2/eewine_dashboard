@@ -11,10 +11,10 @@ class Accounts {
 
     // for troy
 //    Integer numberOfTickets = 1//is the tanks
-    boolean keyRequired = false //Key, open, combo
-    boolean openLock = false
-    boolean combo = false
-    boolean show = false
+    boolean keyRequired //Key, open, combo
+    boolean openLock
+    boolean combo
+    boolean show
 
     //invoice groups
     boolean standard
