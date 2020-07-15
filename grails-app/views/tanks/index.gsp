@@ -17,7 +17,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Tanks ${tanksCount}</h2>
+                            <h2>Tanks</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -55,6 +55,13 @@
                                 </g:each>
                                 </tbody>
                             </table>
+
+                            <div class="dataTables_paginate paging_full_numbers">
+                                <g:paginate class="pagination" next="next" prev="Previous"
+                                            maxsteps="5" controller="tanks"
+                                            action="index" total="${tanksCount}" />
+                            </div>
+
 
                         </div>
                     </div>
