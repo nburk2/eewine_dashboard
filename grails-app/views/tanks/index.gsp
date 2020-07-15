@@ -17,7 +17,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Tanks</h2>
+                            <h2>Tanks ${tanksCount}</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -41,7 +41,7 @@
                                 <thead>
                                 <tr>
                                     <g:sortableColumn class="idTables" property="id" title="Id"/>
-                                    %{--<g:sortableColumn class="idTables" property="account.name" title="Account Name"/>--}%
+                                    <g:sortableColumn class="idTables" property="account.name" title="Account Name"/>
                                     <g:sortableColumn class="idTables" property="tankNum" title="Tank Number"/>
                                 </tr>
                                 </thead>
@@ -49,7 +49,7 @@
                                 <g:each in="${tanksList}" var="tank">
                                     <tr>
                                         <th scope="row">${tank.id}</th>
-                                        %{--<th><g:link action="show" id="${tank.id}">${tank.account.name}</g:link></th>--}%
+                                        <th><g:link action="show" id="${tank.id}">${tank.account.name}</g:link></th>
                                         <th><g:link action="show" id="${tank.id}">${tank.tankNum}</g:link></th>
                                     </tr>
                                 </g:each>
