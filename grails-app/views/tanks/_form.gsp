@@ -3,7 +3,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="showTank" class="js-switch" checked="${account?.showTank}" />
+                <g:checkBox name="showTank" class="js-switch" checked="${tanks?.showTank}" />
             </label>
         </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="monday" class="js-switch" checked="${account?.monday}" />
+                <g:checkBox name="monday" class="js-switch" checked="${tanks?.monday}" />
             </label>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="tuesday" class="js-switch" checked="${account?.tuesday}" />
+                <g:checkBox name="tuesday" class="js-switch" checked="${tanks?.tuesday}" />
             </label>
         </div>
     </div>
@@ -33,7 +33,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="wednesday" class="js-switch" checked="${account?.wednesday}" />
+                <g:checkBox name="wednesday" class="js-switch" checked="${tanks?.wednesday}" />
             </label>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="thursday" class="js-switch" checked="${account?.thursday}" />
+                <g:checkBox name="thursday" class="js-switch" checked="${tanks?.thursday}" />
             </label>
         </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="friday" class="js-switch" checked="${account?.friday}" />
+                <g:checkBox name="friday" class="js-switch" checked="${tanks?.friday}" />
             </label>
         </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="saturday" class="js-switch" checked="${account?.saturday}" />
+                <g:checkBox name="saturday" class="js-switch" checked="${tanks?.saturday}" />
             </label>
         </div>
     </div>
@@ -73,7 +73,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="sunday" class="js-switch" checked="${account?.sunday}" />
+                <g:checkBox name="sunday" class="js-switch" checked="${tanks?.sunday}" />
             </label>
         </div>
     </div>

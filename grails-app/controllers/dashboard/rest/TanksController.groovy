@@ -21,7 +21,7 @@ class TanksController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [tanksList:Tanks.list(sort:params.sort,order:params.order),tanksCount: Tanks.count()]
+        [tanksList:Tanks.list(params),tanksCount: Tanks.count()]
     }
 
     def show(Tanks tanks) {

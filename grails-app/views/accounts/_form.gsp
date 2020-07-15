@@ -10,7 +10,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12">
         <div class="">
             <label>
-                <g:checkBox name="showAccount" class="js-switch" checked="${account?.showAccount}" />
+                <g:checkBox name="showAccount" class="js-switch" checked="${accounts?.showAccount}" />
             </label>
         </div>
     </div>
