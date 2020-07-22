@@ -5,9 +5,9 @@
     </div>
 </div>
 <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts</label>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts / Tanks</label>
     <div class="col-md-9 col-sm-9 col-xs-12">
-        <g:select name="tanks" size="7" from="${dashboard.fuelaccounts.Tanks.findAllByShowTank(true,[sort:"name"])}" noSelection="['':'']" class="select2_single form-control" optionKey="id" value="${driverTank?.tanks?.id}" tabindex="-1" multiple="true"/>
+        <g:select name="tanks" size="7" from="${dashboard.fuelaccounts.Tanks.findAllByShowTank(true,[sort:"account.name"])}" noSelection="['':'']" class="select2_single form-control" optionKey="id" value="${driverTank?.tanks?.id}" tabindex="-1" multiple="true"/>
     </div>
 </div>
 <div class="form-group">
