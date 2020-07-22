@@ -20,8 +20,19 @@ class AccountsController {
     static allowedMethods = [getAccounts:"POST",addAccounts: "POST",editAccount:"POST",findByBillingType:"POST",save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [accountsList:Accounts.list(params),accountsCount: Accounts.count()]
+        if(params.accountNumber) {
+            Accounts account = Accounts.findByNumber(params.getInt("accountNumber"))
+            if(account == null) {
+                render view:"index", model:[accountsList: [],accountsCount: 0,error:"Could Not find Account: " + params.accountNumber]
+                return
+            } else {
+                params.max = Math.min(max ?: 10, 100)
+                [accountsList:Accounts.findAllByNumber(account.number,params),accountsCount: Accounts.countByNumber(account,params)]
+            }
+        } else {
+            params.max = Math.min(max ?: 10, 100)
+            [accountsList:Accounts.list(params),accountsCount: Accounts.count()]
+        }
     }
 
     def show(Accounts accounts) {

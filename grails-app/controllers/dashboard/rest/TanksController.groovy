@@ -20,8 +20,19 @@ class TanksController {
     static allowedMethods = [getTanks:"POST",addTanks: "POST",editTank:"POST",save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [tanksList:Tanks.list(params),tanksCount: Tanks.count()]
+        if(params.accountNumber) {
+            Accounts account = Accounts.findByNumber(params.getInt("accountNumber"))
+            println account
+            if(account == null) {
+                render view:"index", model:[tanksList: [],tanksCount: 0,error:"Could Not find Account: " + params.accountNumber]
+                return
+            }
+            params.max = Math.min(max ?: 10, 100)
+            [tanksList:Tanks.findAllByAccount(account,params),tanksCount: Tanks.countByAccount(account,params)]
+        } else {
+            params.max = Math.min(max ?: 10, 100)
+            [tanksList:Tanks.list(params),tanksCount: Tanks.count()]
+        }
     }
 
     def show(Tanks tanks) {
