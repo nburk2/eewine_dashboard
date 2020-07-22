@@ -1,5 +1,7 @@
 package dashboard.fuelaccounts
 
+import groovy.transform.ToString
+
 class Tanks {
 
 //    Accounts account
@@ -50,6 +52,10 @@ class Tanks {
         saturday defaultValue: false
         sunday defaultValue: false
         showTank defaultValue: false
+    }
+
+    String toString() {
+        return this.account.name + " : Tank Number: " + tankNum;
     }
 
 }
