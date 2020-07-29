@@ -14,6 +14,7 @@ class DriverTankController {
 
     def index() {
         Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date()
+
         [driverTankList:DriverTank.findByScheduledDay(scheduledDate),scheduledDate:scheduledDate]
     }
 

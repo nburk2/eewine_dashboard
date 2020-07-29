@@ -69,6 +69,13 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="grid-masonry">
+                            <g:render template="driverTanks"/>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
