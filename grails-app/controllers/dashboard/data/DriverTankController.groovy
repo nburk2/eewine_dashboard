@@ -13,7 +13,7 @@ class DriverTankController {
     def driverTankService
 
     def index() {
-        Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date()
+        Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date().clearTime()
 
         [driverTankList:DriverTank.findByScheduledDay(scheduledDate),scheduledDate:scheduledDate]
     }
