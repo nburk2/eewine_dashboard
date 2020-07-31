@@ -52,7 +52,9 @@ class DriverTankController {
             return
         }
 
-        respond driverTank
+        Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date().clearTime()
+        [driverTank:driverTank,driverTankList:DriverTank.findAllByScheduledDay(scheduledDate),scheduledDate:scheduledDate]
+//        respond driverTank
     }
 
     def show(DriverTank driverTank) {
@@ -80,6 +82,16 @@ class DriverTankController {
             }
             '*' { respond driverTank, [status: OK] }
         }
+    }
+
+    def generateLastWeeksDay(){
+        Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date().clearTime()
+        if(DriverTank.countByScheduledDay(scheduledDate) > 0) {
+            respond view: 'index', model: [error:"There already exist a driver schedule for this Day."]
+        }
+        def driverTankList = driverTankService.generateLastWeeksDay(scheduledDate)
+
+        respond view:'index', model:[driverTankList:driverTankList,scheduledDate:scheduledDate]
     }
 
     def delete(DriverTank driverTank) {

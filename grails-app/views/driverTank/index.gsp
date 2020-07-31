@@ -39,7 +39,7 @@
                             %{--Scheduled Day--}%
                             <div class="x_title">
                                 <h2 class="3rem">Scheduled Day - Today <small class="invisible">--</small></h2>
-                                <g:form action="index">
+                                <g:form action="generateLastWeeksDay">
                                     <g:datePicker id="scheduledDate" name="scheduledDate" precision="day" relativeYears="[-3..1]" value="${scheduledDate}"/>
                                     <input type="submit" class="btn btn-success" value="Set Date">
                                     <g:actionSubmit class="btn btn-info pull-right" value="Generate Previous Weeks schedule for current Date" action="generateFromPreviousSchedule"/>
@@ -60,7 +60,7 @@
                                     <g:each in="${driverTankList}" var="driverTank">
                                         <tr>
                                             <th scope="row">${driverTank.id}</th>
-                                            <th><g:link action="show" id="${driverTank.id}">${driverTank.driver}</g:link></th>
+                                            <th><g:link action="edit" params="[scheduledDate:scheduledDate]" id="${driverTank.id}">${driverTank.driver}</g:link></th>
                                         </tr>
                                     </g:each>
                                     </tbody>
