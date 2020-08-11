@@ -7,7 +7,7 @@
 <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts / Tanks</label>
     <div class="col-md-9 col-sm-9 col-xs-12">
-        <g:select name="tanks" size="7" from="${dashboard.fuelaccounts.Tanks.findAllByShowTank(true,[sort:"account.name"])}" noSelection="['':'']" class="select2_single form-control" optionKey="id" value="${driverTank?.tanks?.id}" tabindex="-1" multiple="true"/>
+        <g:select name="tanks" size="7" from="${tanks}" noSelection="['':'']" class="select2_single form-control" optionKey="id" value="${driverTank?.tanks?.id}" tabindex="-1" multiple="true"/>
     </div>
 </div>
 <div class="form-group">
@@ -40,6 +40,7 @@
         </g:if>
         <g:else>
             <g:submitButton name="update" type="submit" class="btn btn-success" value="Update"/>
+            <g:actionSubmit action="delete" name="delete" type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('${message(code: 'default.button.delete.driverTank.confirm', default: 'Are you sure?')}');"/>
         </g:else>
 
     </div>

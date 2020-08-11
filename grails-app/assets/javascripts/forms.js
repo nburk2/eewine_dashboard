@@ -29,4 +29,5 @@ $(document).ready(function(){
         itemSelector: '.grid-item',
         transitionDuration: 0.2
     });
+    $('tbody').sortable();
 });

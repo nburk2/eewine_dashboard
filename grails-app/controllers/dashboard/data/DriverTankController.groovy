@@ -1,5 +1,7 @@
 package dashboard.data
 
+import dashboard.fuelaccounts.Tanks
+
 import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.OK
@@ -53,7 +55,9 @@ class DriverTankController {
         }
 
         Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date().clearTime()
-        [driverTank:driverTank,driverTankList:DriverTank.findAllByScheduledDay(scheduledDate),scheduledDate:scheduledDate]
+
+        def tanks = driverTankService.getTanksByDay(scheduledDate)
+        [tanks:tanks,driverTank:driverTank,driverTankList:DriverTank.findAllByScheduledDay(scheduledDate),scheduledDate:scheduledDate]
 //        respond driverTank
     }
 
@@ -91,7 +95,19 @@ class DriverTankController {
         }
         def driverTankList = driverTankService.generateLastWeeksDay(scheduledDate)
 
-        respond view:'index', model:[driverTankList:driverTankList,scheduledDate:scheduledDate]
+        render view:'index', model:[driverTankList:driverTankList,scheduledDate:scheduledDate]
+    }
+
+    def generateSpecificDay() {
+        Date scheduledDate = params.scheduledDate ? params.getDate("scheduledDate") : new Date().clearTime()
+        if(DriverTank.countByScheduledDay(scheduledDate) > 0) {
+            respond view: 'index', model: [error:"Ther  e already exist a driver schedule for this Day."]
+        }
+        Date specificDay = params.specificDay ? params.getDate("specificDay") : new Date().clearTime()
+
+        def driverTankList = driverTankService.generateSpecificDay(scheduledDate, specificDay)
+
+        render view:'index', model:[driverTankList:driverTankList,scheduledDate:scheduledDate]
     }
 
     def delete(DriverTank driverTank) {

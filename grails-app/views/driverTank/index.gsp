@@ -3,6 +3,7 @@
     <head>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'driverTank.label', default: 'Truck')}" />
+        %{--<link rel="stylesheet" href="extensions/reorder-rows/bootstrap-table-reorder-rows.css">--}%
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -37,38 +38,58 @@
                                 <div class="clearfix"></div>
                             </div>
                             %{--Scheduled Day--}%
-                            <div class="x_title">
-                                <h2 class="3rem">Scheduled Day - Today <small class="invisible">--</small></h2>
-                                <g:form action="generateLastWeeksDay">
-                                    <g:datePicker id="scheduledDate" name="scheduledDate" precision="day" relativeYears="[-3..1]" value="${scheduledDate}"/>
-                                    <input type="submit" class="btn btn-success" value="Set Date">
-                                    <g:actionSubmit class="btn btn-info pull-right" value="Generate Previous Weeks schedule for current Date" action="generateFromPreviousSchedule"/>
-                                </g:form>
-                                <div class="clearfix"></div>
-                            </div>
+                            <g:if test="${driverTankList.size()==0}">
+                                <div class="x_title">
+                                    <g:form action="generateLastWeeksDay">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                %{--<h2 class="3rem">Scheduled Day - Today <small class="invisible">--</small></h2>--}%
+                                                <g:datePicker id="scheduledDate" name="scheduledDate" precision="day" relativeYears="[-3..1]" value="${scheduledDate}"/>
+                                                <g:actionSubmit action="index" type="submit" class="btn btn-success" value="Set Date"/>
+                                                <g:actionSubmit class="btn btn-info pull-right" value="Generate Previous Weeks schedule" action="generateLastWeeksDay"/>
+                                            </div>
+                                            <div class="pull-right col-md-5">
+                                                <g:actionSubmit class="btn btn-info" value="Generate Specific Schedule" action="generateSpecificDay"/>
+                                                <g:datePicker id="specificDate" name="specificDate" precision="day" relativeYears="[-3..1]" value="${scheduledDate}"/>
+                                            </div>
+                                        </div>
+                                    </g:form>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </g:if>
                             %{-- Scheduled Day--}%
-                            <div class="x_content">
+                            <g:form id="demo-form2" url="[resource:driverTank, action:'edit']" params="[scheduledDate:scheduledDate]" class="form-horizontal form-label-left">
+                                <div class="x_content">
 
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <g:sortableColumn class="idTables" property="id" title="Id"/>
-                                        <g:sortableColumn class="idTables" property="driver" title="Number"/>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <g:each in="${driverTankList}" var="driverTank">
+                                    <table class="table table-bordered">
+                                        <thead>
                                         <tr>
-                                            <th scope="row">${driverTank.id}</th>
-                                            <th><g:link action="edit" params="[scheduledDate:scheduledDate]" id="${driverTank.id}">${driverTank.driver}</g:link></th>
+                                            <g:sortableColumn class="idTables" property="id" title="Id"/>
+                                            <g:sortableColumn class="idTables" property="driver" title="Number"/>
                                         </tr>
-                                    </g:each>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        <g:each in="${driverTankList}" var="driverTank">
+                                            <tr>
+                                                <th scope="row">${driverTank.id}</th>
+                                                %{--<g:actionSubmit name="edit${driverTank.driver.id}" type="submit" value="${driverTank.driver}"/>--}%
+                                                <th>
+                                                    <g:link action="edit" params="[driverTank:driverTank,scheduledDate:scheduledDate]">
+                                                        ${driverTank.driver.firstName}
+                                                    </g:link>
+                                                </th>
+                                            </tr>
+                                        </g:each>
+                                        </tbody>
+                                    </table>
 
-                            </div>
+                                </div>
+                            </g:form>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <h3 class="text-center">${scheduledDate.format("MM-dd-yyyy")}</h3>
                 </div>
                 <div class="row">
                     <div class="grid-masonry">
@@ -78,7 +99,15 @@
 
             </div>
         </div>
-        <!-- /page content -->
+        <!-- /This is declared in the main.gsp -->
+    %{--<script src="https://cdnjs.cloudflare.com/ajax/libs/TableDnD/0.9.1/jquery.tablednd.js" integrity="sha256-d3rtug+Hg1GZPB7Y/yTcRixO/wlI78+2m08tosoRn7A=" crossorigin="anonymous"></script>--}%
+    %{--<script type="text/javascript">--}%
+        %{--$(document).ready(function() {--}%
+            %{--// Initialise the table--}%
+            %{--$("#table-1").tableDnD();--}%
+        %{--});--}%
+    %{--</script>--}%
 
     </body>
+
 </html>
