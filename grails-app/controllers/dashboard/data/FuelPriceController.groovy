@@ -28,6 +28,7 @@ class FuelPriceController {
             dtnPrices = fuelPriceService.getDtnPricesByDate(priceDate)
         } else {
             fuelPrices = fuelPriceService.getFuelPrices()
+//            fuelPrices = []
             dtnPrices = fuelPriceService.getDtnPrices()
         }
         [fuelPrices:fuelPrices, dtnPrices:dtnPrices, priceDate:priceDate]

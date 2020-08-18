@@ -21,7 +21,7 @@
             </g:else>
             <div class="table-responsive">
                 <table class="table table-bordered">
-                    <tbody>
+                    <tbody id="table-${driverTank.status}">
                     <g:if test="${driverTank.loadTime}">
                         <tr class="bg-warning">
                             <td colspan="3" style="color:black;" class="dashboard text-center"> <b>${driverTank.loadTime}</b></td>
@@ -64,8 +64,8 @@
         </p>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-hovor">
-                <tbody>
+            <table class="table table-bordered">
+                <tbody id="table-1">
                 <tr class="bg-warning">
                     <td colspan="3" style="color:black;" class="dashboard text-center"> <b>Load after shift</b></td>
                 </tr>
@@ -92,7 +92,7 @@
                 <p style="background-color:lightblue;color:black;" class="text-center"><big><b>Johnson</b></big></p>
             <div class="table-responsive">
                 <table class="table table-bordered">
-                    <tbody>
+                    <tbody id="table-2">
                         <tr>
                                 <td class="dashboard">123456 (1)</td>
                                 <td class="dashboard">CBS Spring </td>
@@ -108,4 +108,24 @@
             </div>
         </div>
     </div>
-
+<div class="grid-item">
+    <div class="x_content">
+        <p style="background-color:lightblue;color:black;" class="text-center"><big><b>Nathan</b></big></p>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tbody id="table-3">
+                <tr>
+                    <td class="dashboard">9999999 (1)</td>
+                    <td class="dashboard">Water works</td>
+                    <td class="dashboard">Key <i class="fa fa-key pull-right"></i></td>
+                </tr>
+                <tr>
+                    <td class="dashboard">2222222 </td>
+                    <td class="dashboard">Splash Down</td>
+                    <td class="dashboard">Open</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

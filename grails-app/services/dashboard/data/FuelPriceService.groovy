@@ -212,15 +212,17 @@ class FuelPriceService {
             category.BPCList.each { bpc ->
                 def priceInfo = getPriceInfo(category.prod, bpc, fuelPriceMap)
                 if(priceInfo) {
-                    def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndCreatedDate(category.name,priceInfo["Base Price Code"],category.prod,(new Date() - 1).clearTime())
-                    rows << [
-                            bpc:priceInfo["Base Price Code"],
-                            description:priceInfo.description,
-                            price:priceInfo["Price Per Unit"],
-                            effectiveDate:priceInfo["Effective Date"],
-                            productId:category.prod,
-                            difference: priceInfo["Price Per Unit"].toBigDecimal() - (oldFuelPrice?.price?.toBigDecimal() ?: priceInfo["Price Per Unit"].toBigDecimal())
-                    ]
+                    def oldFuelPrice = FuelPrice.findByFuelTypeAndBpcAndProductIdAndCreatedDate(category.name, priceInfo["Base Price Code"], category.prod, (new Date() - 1).clearTime())
+                    if (priceInfo["Price Per Unit"].isNumber()) {
+                        rows << [
+                                bpc          : priceInfo["Base Price Code"],
+                                description  : priceInfo.description,
+                                price        : priceInfo["Price Per Unit"],
+                                effectiveDate: priceInfo["Effective Date"],
+                                productId    : category.prod,
+                                difference   : priceInfo["Price Per Unit"].toBigDecimal() - (oldFuelPrice?.price?.toBigDecimal() ?: priceInfo["Price Per Unit"].toBigDecimal())
+                        ]
+                }
                 }
             }
             fuelPrices << [

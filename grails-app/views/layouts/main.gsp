@@ -36,7 +36,50 @@
         <asset:javascript src="application.js"/>
     </g:if>
     <g:else>
+
         <asset:javascript src="forms.js"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        %{--<script>--}%
+            %{--$(document).ready(function () {--}%
+                %{--if(${controllerName == "driverTank"}) {--}%
+                     %{--if(${driverTankList.length > 0}) {--}%
+                        %{--for(var index=0;index < driverTankList.length;index++) {--}%
+                            %{--var cloneArray = driverTankList.slice();--}%
+%{--//                            cloneArray.splice(index,1);--}%
+                            %{--var connectWithTables = ""--}%
+                            %{--for(var connectIndex = 0; connectIndex < cloneArray.length; connnectIndex++) {--}%
+                                %{--if((connectIndex != index) && ((connectIndex + 1) == cloneArray.length)) {--}%
+                                    %{--connectWithTables += "#tables-" + connectIndex--}%
+                                %{--} else if(((connectIndex + 2) == cloneArray.length) && (connectIndex + 1) == index) {--}%
+                                    %{--connectWithTables += "#tables-" + connectIndex--}%
+                                %{--} else if(connectIndex != index){--}%
+                                    %{--connectWithTables += "#tables-" + connectIndex + ","--}%
+                                %{--}--}%
+%{--//                              Add one more check for the the input of tables if the index is in the last spot--}%
+                            %{--}--}%
+%{--//                            create table jquery data--}%
+                            %{--$("#table-" + index).sortable({--}%
+                                %{--connectWith: connectWithTables--}%
+                            %{--});--}%
+                        %{--}--}%
+                     %{--} else {--}%
+                         %{--$("#table-1").sortable({--}%
+                             %{--connectWith: "#table-2,#table-3"--}%
+                         %{--});--}%
+%{--//                     } else {--}%
+                         %{--$("#table-1").sortable({--}%
+                             %{--connectWith: "#table-2,#table-3"--}%
+                         %{--});--}%
+                         %{--$("#table-2").sortable({--}%
+                             %{--connectWith: "#table-1,#table-3"--}%
+                         %{--});--}%
+                         %{--$("#table-3").sortable({--}%
+                             %{--connectWith: "#table-1,#table-2"--}%
+                         %{--});--}%
+                     %{--}--}%
+                %{--}--}%
+            %{--});--}%
+        %{--</script>--}%
     </g:else>
 
     %{-- Scripts to run for specific views after javascript loads --}%
