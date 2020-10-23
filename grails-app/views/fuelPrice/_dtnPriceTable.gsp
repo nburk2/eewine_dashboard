@@ -23,13 +23,13 @@
                                 <th>${supplier.name}</th>
                             </g:if>
                             <g:elseif test="${supplier.name == "US Oil"}">
-                                <th>US Oil/Fred</th>
+                                %{--<th>US Oil/Fred</th>--}%
                             </g:elseif>
                             <g:elseif test="${supplier.name == "BUCKEYE"}">
                                 <th>Mansfield</th>
                             </g:elseif>
                             <g:elseif test="${supplier.name == "Citgo"}">
-                                <th>US Oil/Citgo</th>
+                                %{--<th>US Oil/Citgo</th>--}%
                             </g:elseif>
                         </g:each>
                     %{--</g:each>--}%
@@ -51,7 +51,7 @@
                             <b style="color:black">${row.description}</b>
                         </td>
                         <g:each in="${row.supplier}" var="supplier">
-                            <g:if test="${supplier.name != "TPSI"}">
+                            <g:if test="${supplier.name != "TPSI" && supplier.name != "US Oil" && supplier.name != "Citgo"}">
                                 <td>
                                     <b style="color:black">
                                         ${supplier.price}
