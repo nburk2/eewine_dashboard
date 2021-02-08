@@ -312,16 +312,16 @@ class FuelPriceService {
 
     def dtnMapping() {
 //        ["Conoco Contract","Conoco", "Sunoco", "BP", "Huguenot", "US Oil", "BUCKEYE", "MARATHON", "Citgo"]
-        def suppliers = ["Conoco Contract","Conoco", "Sunoco", "BP", "Huguenot", "BUCKEYE", "MARATHON"]
+        def suppliers = ["Conoco Contract","Conoco", "Sunoco", "BP", "Huguenot", "BUCKEYE", "MARATHON", "United"]
         return [
                 [
                         productId: 2,
                         suppliers: suppliers
                 ],
-//                [
-//                        productId: 3,
-//                        suppliers: suppliers
-//                ],
+                [
+                        productId: 3,
+                        suppliers: suppliers
+                ],
                 [
                         productId: 5,
                         suppliers: suppliers
