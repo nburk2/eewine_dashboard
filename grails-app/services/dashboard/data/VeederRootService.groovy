@@ -1,5 +1,6 @@
 package dashboard.data
 
+import com.amazonaws.services.s3.model.GetObjectRequest
 import grails.util.Holders
 import groovy.json.JsonSlurper
 import grails.transaction.Transactional
@@ -26,8 +27,66 @@ class VeederRootService {
         tankJson
     }
 
+    def getTankJsonByDate(date) {
+
+        def versions = amazonS3Service.client.listVersions("wine-energy","dashboard-backup/veederRootSites.json",null,null,null,1000)
+        def versionSummaries = versions.getVersionSummaries()
+        def lastVersion = versionSummaries[versionSummaries.size-1]
+
+        while(date<lastVersion.lastModified) {
+            String versionStartingPoint = lastVersion.versionId
+            versions = amazonS3Service.client.listVersions("wine-energy","dashboard-backup/veederRootSites.json","dashboard-backup/veederRootSites.json",versionStartingPoint,null,1000)
+            versionSummaries = versions.getVersionSummaries()
+            lastVersion = versionSummaries[versionSummaries.size-1]
+        }
+
+        def version = findClosestVersion(versionSummaries,date)
+        String versionId = version.versionId
+
+        File localFile = new File("tank.json")
+        amazonS3Service.client.getObject(new GetObjectRequest("wine-energy", "dashboard-backup/veederRootSites.json",versionId), localFile)
+
+        def versionJson = new JsonSlurper().parseText(localFile.text)
+//        Headers.GET_OBJECT_IF_MODIFIED_SINCE
+        localFile.delete()
+        versionJson
+    }
+
+    def findClosestVersion(versions,date) {
+        def closestVersion
+        def oldTimeDiff
+        def latestTimeDiff = 1
+//        closestVersion.lastModified.getTime() - date.getTime()
+        def i = 0
+        for(i;(i<versions.size() && latestTimeDiff>0);i++) {
+            if(i>0) {
+                oldTimeDiff = versions[i-1].lastModified.getTime() - date.getTime()
+            }
+            closestVersion = versions[i]
+
+            latestTimeDiff = versions[i].lastModified.getTime() - date.getTime()
+        }
+
+        if((i+1)==versions.size()) {
+            return closestVersion
+        } else if(i==0) {
+            return closestVersion
+        }
+
+        if(oldTimeDiff < (date.getTime() - versions[i].lastModified.getTime())) {
+            return versions[i-1]
+        }
+        return closestVersion
+
+    }
+
     def getTankInfoList() {
         def tankJson = getTankJson()
+        tankJson
+    }
+
+    def getTankInfoListByDate(date) {
+        def tankJson = getTankJsonByDate(date)
         tankJson
     }
 

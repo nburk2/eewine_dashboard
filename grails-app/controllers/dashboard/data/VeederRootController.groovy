@@ -21,14 +21,19 @@ class VeederRootController {
 
     def ninetyPercentages() {
         try{
-            def tankInfoList = veederRootService.getTankInfoList()
-            render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
+            def tankInfoList
+            Date priceDate
+            if(params.priceDate) {
+                priceDate = params.getDate("priceDate")
+                tankInfoList = veederRootService.getTankInfoListByDate(priceDate)
+            } else {
+                tankInfoList = veederRootService.getTankInfoList()
+            }
+            render view: "ninetyPercentages", model:[tankInfoList: tankInfoList,priceDate:params.priceDate]
         } catch (e) {
             render view: "ninetyPercentages", model:[error:e,tankInfoList: []]
         }
 
-//        def tankInfoList = veederRootService.getTankInfoList()
-//        render view: "ninetyPercentages", model:[tankInfoList: tankInfoList]
     }
 
     def updateVeederRootData() {
