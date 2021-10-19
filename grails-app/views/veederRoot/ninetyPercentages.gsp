@@ -21,13 +21,21 @@
             <div class="x_panel">
                 <div class="x_content">
                     <div class="x_title">
-                        <h2 class="3rem">DTN Prices - Today <small class="invisible">--</small></h2>
+                        <h2 class="3rem">DTN Prices - Reset <small class="invisible">--</small></h2>
+                        <g:form action="ninetyPercentages">
+                            <input type="submit" class="btn btn-success" value="Reset">
+                        </g:form>
+                        <h2 class="3rem">DTN Prices - Date Selection <small class="invisible">--</small></h2>
                         <g:form action="ninetyPercentages">
                             <g:datePicker id="priceDate" name="priceDate" precision="hour" relativeYears="[-3..0]" value="${priceDate}"/>
                             <input type="submit" class="btn btn-success" value="Update">
                         </g:form>
-                        %{--<div class="clearfix"></div>--}%
+                        %{--<div class="x_content">--}%
+                        %{--</div>--}%
+
+                        %{--<div class="clearfix"></div> --}%
                     </div>
+
                 </div>
             </div>
         </div>
