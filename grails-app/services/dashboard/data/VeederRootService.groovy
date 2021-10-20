@@ -27,7 +27,15 @@ class VeederRootService {
         tankJson
     }
 
+    Date addHoursToJavaUtilDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
+    }
+
     def getTankJsonByDate(date) {
+        date = addHoursToJavaUtilDate(date,1)
 
         def versions = amazonS3Service.client.listVersions("wine-energy","dashboard-backup/veederRootSites.json",null,null,null,1000)
         def versionSummaries = versions.getVersionSummaries()
@@ -37,6 +45,9 @@ class VeederRootService {
             String versionStartingPoint = lastVersion.versionId
             versions = amazonS3Service.client.listVersions("wine-energy","dashboard-backup/veederRootSites.json","dashboard-backup/veederRootSites.json",versionStartingPoint,null,1000)
             versionSummaries = versions.getVersionSummaries()
+            if(versionSummaries.size()==0){
+                return 0
+            }
             lastVersion = versionSummaries[versionSummaries.size-1]
         }
 

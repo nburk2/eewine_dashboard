@@ -23,9 +23,15 @@ class VeederRootController {
         try{
             def tankInfoList
             Date priceDate
+            println(params.values())
             if(params.priceDate) {
                 priceDate = params.getDate("priceDate")
                 tankInfoList = veederRootService.getTankInfoListByDate(priceDate)
+                if(tankInfoList==0) {
+                    tankInfoList = veederRootService.getTankInfoList()
+                    render view: "ninetyPercentages", model:[error:"No Tank Data for this Date",tankInfoList: tankInfoList]
+                    return
+                }
             } else {
                 tankInfoList = veederRootService.getTankInfoList()
             }
