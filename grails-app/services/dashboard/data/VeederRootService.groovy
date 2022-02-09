@@ -35,7 +35,7 @@ class VeederRootService {
     }
 
     def getTankJsonByDate(date) {
-        date = addHoursToJavaUtilDate(date,1)
+        date = addHoursToJavaUtilDate(date,6)
 
         def versions = amazonS3Service.client.listVersions("wine-energy","dashboard-backup/veederRootSites.json",null,null,null,1000)
         def versionSummaries = versions.getVersionSummaries()
