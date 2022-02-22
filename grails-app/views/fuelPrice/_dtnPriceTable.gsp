@@ -55,7 +55,7 @@
                                 <td>
                                     <b style="color:black">
                                         ${supplier.price}
-                                        <g:if test="${supplier.difference?.toString()?.contains("-")}">
+                                        <g:if test="${supplier.difference?.contains("-")}">
                                             <small class="text-danger"> ${supplier.difference?.indexOf(".") < 0 ? supplier.difference : supplier.difference?.replaceAll("0*\$", "")?.replaceAll("\\.\$", "")}</small>
                                         </g:if>
                                         <g:elseif test="${supplier.difference?.toFloat() == 0 || !supplier.difference}">
