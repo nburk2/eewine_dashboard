@@ -7,12 +7,15 @@ import dashboard.data.Account
 import dashboard.data.Driver
 import dashboard.data.DriverAccount
 import dashboard.data.DriverTruck
+import dashboard.data.DtnPrice
+import dashboard.data.FuelPrice
 import dashboard.data.Note
 import dashboard.data.Truck
 import grails.util.Holders
 
 class BootStrap {
     def config = Holders.config
+    def fuelPriceService
 
     def init = { servletContext ->
         testData()
@@ -48,6 +51,43 @@ class BootStrap {
 
         UserRole.create adminUser, adminRole, true
 
+//        initFuelPrices()
+
+    }
+
+    def initFuelPrices() {
+        def dtnPrices = fuelPriceService.getDtnPrices()
+        def todaysDate = new Date()
+        todaysDate.clearTime()
+        dtnPrices.each { dtnPrice ->
+            dtnPrice.supplier.each { supplier ->
+                def dtn =  new DtnPrice()
+                dtn.supplier = supplier.name
+                dtn.description = dtnPrice.description
+                dtn.price = supplier.price.toFloat()
+                dtn.productId = dtnPrice.product
+                dtn.effectiveDate = todaysDate
+                dtn.createdDate = todaysDate
+                dtn.save()
+            }
+        }
+
+        def fuelPrices = fuelPriceService.getFuelPrices()
+        todaysDate = new Date()
+        todaysDate.clearTime()
+        fuelPrices.each { fuelType ->
+            fuelType.rows.each { price ->
+                def fuelPrice = new FuelPrice()
+                fuelPrice.fuelType = fuelType.name
+                fuelPrice.description = price.description
+                fuelPrice.bpc = price.bpc.toInteger()
+                fuelPrice.price = price.price.toFloat()
+                fuelPrice.productId = price.productId.toInteger()
+                fuelPrice.effectiveDate = new Date(price.effectiveDate)
+                fuelPrice.createdDate = todaysDate
+                fuelPrice.save()
+            }
+        }
     }
 
     def initDriverUser() {
