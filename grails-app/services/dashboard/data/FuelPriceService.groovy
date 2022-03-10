@@ -155,6 +155,7 @@ class FuelPriceService {
             }
             dtnPrices << [product:dtnProduct.productId, description: dtnInfo?.description ?: "", supplier:newSuppliers]
         }
+        dtnPrices = addDTNPriceHike(dtnPrices)
         dtnPrices
     }
 
@@ -203,7 +204,24 @@ class FuelPriceService {
         Reader reader = new InputStreamReader(input, "UTF-8")
         def jsonSlurper = new JsonSlurper()
         def dtnObject = jsonSlurper.parseText(reader.text)
+        dtnObject = addDTNPriceHike(dtnObject)
         dtnObject
+    }
+
+    def addDTNPriceHike(dtnObject) {
+        for(def index=0;index<dtnObject.size;index++) {
+            for(def supIndex=0;supIndex<dtnObject[index].supplier.size;supIndex++) {
+                if(dtnObject[index].supplier[supIndex].name=="Sunoco" || dtnObject[index].supplier[supIndex].name=="BP" || dtnObject[index].supplier[supIndex].name=="MARATHON") {
+                    println(dtnObject[index].supplier[supIndex].name)
+                    println(dtnObject[index].supplier[supIndex].price)
+                    dtnObject[index].supplier[supIndex].price = (dtnObject[index].supplier[supIndex].price.toFloat() * 0.99).round(6)
+                    dtnObject[index].supplier[supIndex].price = dtnObject[index].supplier[supIndex].price.toString()
+                    println(dtnObject[index].supplier[supIndex].price)
+                }
+            }
+
+        }
+        return dtnObject
     }
 
     def mapFuelPrices(fuelPriceMap, fuelMapping) {
