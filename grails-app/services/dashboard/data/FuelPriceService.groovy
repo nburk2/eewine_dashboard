@@ -211,6 +211,9 @@ class FuelPriceService {
     def addDTNPriceHike(dtnObject) {
         for(def index=0;index<dtnObject.size;index++) {
             for(def supIndex=0;supIndex<dtnObject[index].supplier.size;supIndex++) {
+                if(dtnObject[index].supplier[supIndex].name=="MARATHON" && dtnObject[index].supplier[supIndex].price.toFloat() > 0) {
+                    dtnObject[index].supplier[supIndex].price = (dtnObject[index].supplier[supIndex].price.toFloat() - 0.005).round(6)
+                }//3.741507 to 3.736557 ---- 3.077019 to 3.072069   ----  3.217005 to 3.212055  ------ 3.496977 to 3.492027 ----- 2.960496 to 2.955546
                 if(dtnObject[index].supplier[supIndex].name=="Sunoco" || dtnObject[index].supplier[supIndex].name=="BP" || dtnObject[index].supplier[supIndex].name=="MARATHON") {
                     dtnObject[index].supplier[supIndex].price = (dtnObject[index].supplier[supIndex].price.toFloat() * 0.99).round(6)
                     dtnObject[index].supplier[supIndex].price = dtnObject[index].supplier[supIndex].price.toString()
