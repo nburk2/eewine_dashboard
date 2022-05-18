@@ -155,7 +155,7 @@ class FuelPriceService {
             }
             dtnPrices << [product:dtnProduct.productId, description: dtnInfo?.description ?: "", supplier:newSuppliers]
         }
-        dtnPrices = addDTNPriceHike(dtnPrices)
+//        dtnPrices = addDTNPriceHike(dtnPrices)
         dtnPrices
     }
 
