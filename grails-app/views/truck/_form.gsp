@@ -36,6 +36,12 @@
         <g:datePicker name="airportExpDate" precision="day" relativeYears="[-3..10]" value="${truck?.airportExpDate ?: "none"}" noSelection="['':'']"/>
     </div>
 </div>
+<div class="form-group">
+    <label for="tag" class="control-label col-md-3 col-sm-3 col-xs-12">Tag</label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <g:datePicker name="tag" precision="day" relativeYears="[-3..10]" value="${truck?.tag ?: "none"}" noSelection="['':'']"/>
+    </div>
+</div>
 <div class="ln_solid"></div>
 <div class="form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

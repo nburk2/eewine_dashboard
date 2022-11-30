@@ -4,7 +4,7 @@
     <div class="grid-item">
         <div class="x_content">
             <div class="x_title">
-                <g:if test="${tankInfo.lastUpdateSuccess == false && priceInfo}">
+                <g:if test="${tankInfo.lastUpdateSuccess == false}">
                     <h2>${tankInfo.name} <small class="bg-danger" style="display: inline;">${tankInfo.lastUpdate}</small></h2>
                 </g:if>
                 <g:else>

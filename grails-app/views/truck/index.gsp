@@ -48,6 +48,7 @@
                                     <g:sortableColumn class="idTables" property="tankVKExpDate" title="Tank VK"/>
                                     <g:sortableColumn class="idTables" property="tankIPExpDate" title="Tank IP"/>
                                     <g:sortableColumn class="idTables" property="airportExpDate" title="Airport"/>
+                                    <g:sortableColumn class="idTables" property="tag" title="Tag"/>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +61,7 @@
                                         <th>${truck.tankVKExpDate}</th>
                                         <th>${truck.tankIPExpDate}</th>
                                         <th>${truck.airportExpDate}</th>
+                                        <th>${truck.tag}</th>
                                     </tr>
                                 </g:each>
                                 </tbody>

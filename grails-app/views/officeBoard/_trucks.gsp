@@ -31,6 +31,7 @@
                         <th class="dashboard">I/P</th>
                         <th class="dashboard">State</th>
                         <th class="dashboard">Airport</th>
+                        <th class="dashboard">Tag</th>
                     </tr>
                     </thead>
 
@@ -68,13 +69,23 @@
                             </g:else>
                             %{--airport--}%
                             <g:if test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month == (new java.util.Date()).month || (truck?.airportExpDate ?: new Date() + 1) <= new Date()}">
-                                <th class="dashboard alert-danger">${truck.stateInspectionExpDate.format("MM/yy")}</th>
+                                <th class="dashboard alert-danger">${truck.airportExpDate.format("MM/yy")}</th>
                             </g:if>
                             <g:elseif test="${truck?.airportExpDate?.year == (new java.util.Date()).year && truck?.airportExpDate?.month <= (new java.util.Date()).month + 2 || truck?.airportExpDate?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.airportExpDate?.month) > 9)}">
                                 <th class="dashboard alert-warning">${truck.airportExpDate?.format("MM/yy")}</th>
                             </g:elseif>
                             <g:else>
                                 <th class="dashboard">${truck.airportExpDate?.format("MM/yy")}</th>
+                            </g:else>
+                            %{--Tags--}%
+                            <g:if test="${truck?.tag?.year == (new java.util.Date()).year && truck?.tag?.month == (new java.util.Date()).month || (truck?.tag ?: new Date() + 1) <= new Date()}">
+                                <th class="dashboard alert-danger">${truck.tag.format("MM/yy")}</th>
+                            </g:if>
+                            <g:elseif test="${truck?.tag?.year == (new java.util.Date()).year && truck?.tag?.month <= (new java.util.Date()).month + 2 || truck?.tag?.year == (new java.util.Date()).year + 1 && (((new java.util.Date()).month - truck?.tag?.month) > 9)}">
+                                <th class="dashboard alert-warning">${truck.tag?.format("MM/yy")}</th>
+                            </g:elseif>
+                            <g:else>
+                                <th class="dashboard">${truck.tag?.format("MM/yy")}</th>
                             </g:else>
                         </tr>
                     </g:each>

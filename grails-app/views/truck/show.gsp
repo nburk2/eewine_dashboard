@@ -44,6 +44,10 @@
                                             <th>Airport:</th>
                                             <td>${truck.airportExpDate}</td>
                                         </tr>
+                                        <tr>
+                                            <th>Tag:</th>
+                                            <td>${truck.tag}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>

@@ -39,10 +39,10 @@ class OfficeBoardController {
         
     }
 
-    @Secured(["ROLE_ADMIN"])
-    def getLocations() {
-        def locations = officeBoardService.getVehicleLocations()
-
-        render locations as JSON
-    }
+//    @Secured(["ROLE_ADMIN"])
+//    def getLocations() {
+//        def locations = officeBoardService.getVehicleLocations()
+//
+//        render locations as JSON
+//    }
 }

@@ -8,6 +8,7 @@ class Truck {
     Date tankVKExpDate
     Date tankIPExpDate
     Date airportExpDate
+    Date tag
 
     static constraints = {
         number                  nullable: false, unique: true
@@ -16,6 +17,7 @@ class Truck {
         tankVKExpDate           nullable: true
         tankIPExpDate           nullable: true
         airportExpDate          nullable: true
+        tag                     nullable: true
     }
 
     String toString() { number }
